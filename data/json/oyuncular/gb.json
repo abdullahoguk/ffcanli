@@ -1,0 +1,154 @@
+{
+  "gb": {
+    "gb01": {
+      "team": "gb",
+      "name": "Ertaç",
+      "pozisyon": "k"
+    },
+    "gb02": {
+      "team": "gb",
+      "name": "Kristoffer Nordfeldt",
+      "pozisyon": "k"
+    },
+    "gb03": {
+      "team": "gb",
+      "name": "Abdoulaye Diallo",
+      "pozisyon": "k"
+    },
+    "gb04": {
+      "team": "gb",
+      "name": "Taha",
+      "pozisyon": "k"
+    },
+    "gb05": {
+      "team": "gb",
+      "name": "Übeyd",
+      "pozisyon": "k"
+    },
+    "gb06": {
+      "team": "gb",
+      "name": "Toure",
+      "pozisyon": "d"
+    },
+    "gb07": {
+      "team": "gb",
+      "name": "Mattias Bjarsmyr",
+      "pozisyon": "d"
+    },
+    "gb08": {
+      "team": "gb",
+      "name": "Erdem Özgenç",
+      "pozisyon": "d"
+    },
+    "gb09": {
+      "team": "gb",
+      "name": "Flavio",
+      "pozisyon": "d"
+    },
+    "gb10": {
+      "team": "gb",
+      "name": "Ahmet Oğuz",
+      "pozisyon": "d"
+    },
+    "gb11": {
+      "team": "gb",
+      "name": "Mike van Beijnen",
+      "pozisyon": "d"
+    },
+    "gb12": {
+      "team": "gb",
+      "name": "Polomat",
+      "pozisyon": "d"
+    },
+    "gb13": {
+      "team": "gb",
+      "name": "Halil İbrahim",
+      "pozisyon": "d"
+    },
+    "gb14": {
+      "team": "gb",
+      "name": "Arda Kızıldağ",
+      "pozisyon": "d"
+    },
+    "gb15": {
+      "team": "gb",
+      "name": "Sessegnon",
+      "pozisyon": "os"
+    },
+    "gb16": {
+      "team": "gb",
+      "name": "Floyd Ayit",
+      "pozisyon": "os"
+    },
+    "gb17": {
+      "team": "gb",
+      "name": "Nadir Çiftçi",
+      "pozisyon": "os"
+    },
+    "gb18": {
+      "team": "gb",
+      "name": "Seuntjens",
+      "pozisyon": "os"
+    },
+    "gb19": {
+      "team": "gb",
+      "name": "Yasin P.",
+      "pozisyon": "os"
+    },
+    "gb20": {
+      "team": "gb",
+      "name": "Daniel Candeias",
+      "pozisyon": "os"
+    },
+    "gb21": {
+      "team": "gb",
+      "name": "Fabricio Baiano",
+      "pozisyon": "os"
+    },
+    "gb22": {
+      "team": "gb",
+      "name": "Sefa Yılmaz",
+      "pozisyon": "os"
+    },
+    "gb23": {
+      "team": "gb",
+      "name": "Sadio Diallo",
+      "pozisyon": "os"
+    },
+    "gb24": {
+      "team": "gb",
+      "name": "Soner Dikmen",
+      "pozisyon": "os"
+    },
+    "gb25": {
+      "team": "gb",
+      "name": "Berat Ayberk",
+      "pozisyon": "os"
+    },
+    "gb26": {
+      "team": "gb",
+      "name": "Çayan",
+      "pozisyon": "os"
+    },
+    "gb27": {
+      "team": "gb",
+      "name": "Rahmetullah",
+      "pozisyon": "os"
+    },
+    "gb28": {
+      "team": "gb",
+      "name": "Stancu",
+      "pozisyon": "f"
+    },
+    "gb29": {
+      "team": "gb",
+      "name": "Giovanni Sio",
+      "pozisyon": "f"
+    },
+    "gb30": {
+      "team": "gb",
+      "name": "İlker Karakaş",
+      "pozisyon": "os"
+    }
+  }
+}

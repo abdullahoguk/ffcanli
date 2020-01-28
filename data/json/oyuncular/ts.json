@@ -1,0 +1,159 @@
+{
+  "ts": {
+    "ts01": {
+      "team": "ts",
+      "name": "Uğurcan",
+      "pozisyon": "k"
+    },
+    "ts02": {
+      "team": "ts",
+      "name": "Erce",
+      "pozisyon": "k"
+    },
+    "ts03": {
+      "team": "ts",
+      "name": "Arda",
+      "pozisyon": "k"
+    },
+    "ts04": {
+      "team": "ts",
+      "name": "Novak",
+      "pozisyon": "d"
+    },
+    "ts05": {
+      "team": "ts",
+      "name": "Joao Pereira",
+      "pozisyon": "d"
+    },
+    "ts06": {
+      "team": "ts",
+      "name": "Majid Hosseini",
+      "pozisyon": "d"
+    },
+    "ts07": {
+      "team": "ts",
+      "name": "Gaston Campi",
+      "pozisyon": "d"
+    },
+    "ts08": {
+      "team": "ts",
+      "name": "Kamil Ahmet",
+      "pozisyon": "d"
+    },
+    "ts09": {
+      "team": "ts",
+      "name": "Hüseyin",
+      "pozisyon": "d"
+    },
+    "ts10": {
+      "team": "ts",
+      "name": "Oğuzhan Açıl",
+      "pozisyon": "d"
+    },
+    "ts11": {
+      "team": "ts",
+      "name": "Atakan Gündüz",
+      "pozisyon": "d"
+    },
+    "ts12": {
+      "team": "ts",
+      "name": "Serkan Asan",
+      "pozisyon": "d"
+    },
+    "ts13": {
+      "team": "ts",
+      "name": "Abdurrahim",
+      "pozisyon": "d"
+    },
+    "ts14": {
+      "team": "ts",
+      "name": "Nwakaeme",
+      "pozisyon": "os"
+    },
+    "ts15": {
+      "team": "ts",
+      "name": "Sosa",
+      "pozisyon": "os"
+    },
+    "ts16": {
+      "team": "ts",
+      "name": "Badou Ndiaye",
+      "pozisyon": "os"
+    },
+    "ts17": {
+      "team": "ts",
+      "name": "Obi Mikel",
+      "pozisyon": "os"
+    },
+    "ts18": {
+      "team": "ts",
+      "name": "Abdulkadir Ö.",
+      "pozisyon": "os"
+    },
+    "ts19": {
+      "team": "ts",
+      "name": "Avdijaj",
+      "pozisyon": "os"
+    },
+    "ts20": {
+      "team": "ts",
+      "name": "Bilal Başakçıoğlu",
+      "pozisyon": "os"
+    },
+    "ts21": {
+      "team": "ts",
+      "name": "Abdulkadir P.",
+      "pozisyon": "os"
+    },
+    "ts22": {
+      "team": "ts",
+      "name": "Yusuf Sarı",
+      "pozisyon": "os"
+    },
+    "ts23": {
+      "team": "ts",
+      "name": "Doğan Erdoğan",
+      "pozisyon": "os"
+    },
+    "ts24": {
+      "team": "ts",
+      "name": "Ahmet Canbaz",
+      "pozisyon": "os"
+    },
+    "ts25": {
+      "team": "ts",
+      "name": "Fıratcan Üzüm",
+      "pozisyon": "os"
+    },
+    "ts26": {
+      "team": "ts",
+      "name": "Koray Kılınç",
+      "pozisyon": "os"
+    },
+    "ts27": {
+      "team": "ts",
+      "name": "Cafer Tosun",
+      "pozisyon": "os"
+    },
+    "ts28": {
+      "team": "ts",
+      "name": "Sörloth",
+      "pozisyon": "f"
+    },
+    "ts29": {
+      "team": "ts",
+      "name": "Sturridge",
+      "pozisyon": "f"
+    },
+    "ts30": {
+      "team": "ts",
+      "name": "Caleb Ekuban",
+      "pozisyon": "f"
+    },
+    "ts31": {
+      "team": "ts",
+      "name": "Ahmet Hakan",
+      "pozisyon": "f"
+    }
+  }
+}

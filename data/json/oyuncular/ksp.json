@@ -1,0 +1,179 @@
+{
+  "ksp": {
+    "ksp01": {
+      "team": "ksp",
+      "name": "Fatih Öztürk",
+      "pozisyon": "k"
+    },
+    "ksp02": {
+      "team": "ksp",
+      "name": "Ramazan Köse",
+      "pozisyon": "k"
+    },
+    "ksp03": {
+      "team": "ksp",
+      "name": "Mehmet Enes Sarı",
+      "pozisyon": "k"
+    },
+    "ksp04": {
+      "team": "ksp",
+      "name": "Murat Can Yıldız",
+      "pozisyon": "k"
+    },
+    "ksp05": {
+      "team": "ksp",
+      "name": "Karim Hafez",
+      "pozisyon": "d"
+    },
+    "ksp06": {
+      "team": "ksp",
+      "name": "Ben Youssef",
+      "pozisyon": "d"
+    },
+    "ksp07": {
+      "team": "ksp",
+      "name": "Veigneau",
+      "pozisyon": "d"
+    },
+    "ksp08": {
+      "team": "ksp",
+      "name": "Mickael Tirpan",
+      "pozisyon": "d"
+    },
+    "ksp09": {
+      "team": "ksp",
+      "name": "Sarlija",
+      "pozisyon": "d"
+    },
+    "ksp10": {
+      "team": "ksp",
+      "name": "Oussama Haddadi",
+      "pozisyon": "d"
+    },
+    "ksp11": {
+      "team": "ksp",
+      "name": "Jorge Fernandes",
+      "pozisyon": "d"
+    },
+    "ksp12": {
+      "team": "ksp",
+      "name": "Doğucan Haspolat",
+      "pozisyon": "d"
+    },
+    "ksp13": {
+      "team": "ksp",
+      "name": "Tomas Brecka",
+      "pozisyon": "d"
+    },
+    "ksp14": {
+      "team": "ksp",
+      "name": "Çağtay Kurukalıp",
+      "pozisyon": "d"
+    },
+    "ksp15": {
+      "team": "ksp",
+      "name": "Burak Turan",
+      "pozisyon": "d"
+    },
+    "ksp16": {
+      "team": "ksp",
+      "name": "Emre Elmalı",
+      "pozisyon": "d"
+    },
+    "ksp17": {
+      "team": "ksp",
+      "name": "Furkan Çetinkaya",
+      "pozisyon": "d"
+    },
+    "ksp18": {
+      "team": "ksp",
+      "name": "Uğurcan Yazğılı",
+      "pozisyon": "d"
+    },
+    "ksp19": {
+      "team": "ksp",
+      "name": "Quaresma",
+      "pozisyon": "os"
+    },
+    "ksp20": {
+      "team": "ksp",
+      "name": "Hajradinovic",
+      "pozisyon": "os"
+    },
+    "ksp21": {
+      "team": "ksp",
+      "name": "Heintz",
+      "pozisyon": "os"
+    },
+    "ksp22": {
+      "team": "ksp",
+      "name": "Aytaç Kara",
+      "pozisyon": "os"
+    },
+    "ksp23": {
+      "team": "ksp",
+      "name": "Khalili",
+      "pozisyon": "os"
+    },
+    "ksp24": {
+      "team": "ksp",
+      "name": "Tarkan Serbest",
+      "pozisyon": "os"
+    },
+    "ksp25": {
+      "team": "ksp",
+      "name": "Ndongala",
+      "pozisyon": "os"
+    },
+    "ksp26": {
+      "team": "ksp",
+      "name": "Pavelka",
+      "pozisyon": "os"
+    },
+    "ksp27": {
+      "team": "ksp",
+      "name": "Sadiku",
+      "pozisyon": "os"
+    },
+    "ksp28": {
+      "team": "ksp",
+      "name": "Azad Toptik",
+      "pozisyon": "os"
+    },
+    "ksp29": {
+      "team": "ksp",
+      "name": "Yusuf Erdoğan",
+      "pozisyon": "os"
+    },
+    "ksp30": {
+      "team": "ksp",
+      "name": "İlhan Depe",
+      "pozisyon": "os"
+    },
+    "ksp31": {
+      "team": "ksp",
+      "name": "Yılmaz Daler",
+      "pozisyon": "os"
+    },
+    "ksp32": {
+      "team": "ksp",
+      "name": "Berk Çolak",
+      "pozisyon": "os"
+    },
+    "ksp33": {
+      "team": "ksp",
+      "name": "Koita",
+      "pozisyon": "f"
+    },
+    "ksp34": {
+      "team": "ksp",
+      "name": "Mame Thiam",
+      "pozisyon": "f"
+    },
+    "ksp35": {
+      "team": "ksp",
+      "name": "Gerard Gohou",
+      "pozisyon": "f"
+    }
+  }
+}

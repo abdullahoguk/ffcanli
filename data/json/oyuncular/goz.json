@@ -1,0 +1,169 @@
+{
+  "goz": {
+    "goz01": {
+      "team": "goz",
+      "name": "Beto",
+      "pozisyon": "k"
+    },
+    "goz02": {
+      "team": "goz",
+      "name": "Göktuğ Bakırtaş",
+      "pozisyon": "k"
+    },
+    "goz03": {
+      "team": "goz",
+      "name": "Eren",
+      "pozisyon": "k"
+    },
+    "goz04": {
+      "team": "goz",
+      "name": "Arda Özçimen",
+      "pozisyon": "k"
+    },
+    "goz05": {
+      "team": "goz",
+      "name": "Wallace Reis",
+      "pozisyon": "d"
+    },
+    "goz06": {
+      "team": "goz",
+      "name": "Gassama",
+      "pozisyon": "d"
+    },
+    "goz07": {
+      "team": "goz",
+      "name": "Titi",
+      "pozisyon": "d"
+    },
+    "goz08": {
+      "team": "goz",
+      "name": "Atınç Nukan",
+      "pozisyon": "d"
+    },
+    "goz09": {
+      "team": "goz",
+      "name": "Berkan Emir",
+      "pozisyon": "d"
+    },
+    "goz10": {
+      "team": "goz",
+      "name": "Sanneh",
+      "pozisyon": "d"
+    },
+    "goz11": {
+      "team": "goz",
+      "name": "Hakan Çinemre",
+      "pozisyon": "d"
+    },
+    "goz12": {
+      "team": "goz",
+      "name": "Leo Schwechlen",
+      "pozisyon": "d"
+    },
+    "goz13": {
+      "team": "goz",
+      "name": "Zlatko Tripiç",
+      "pozisyon": "d"
+    },
+    "goz14": {
+      "team": "goz",
+      "name": "Veli Çetin",
+      "pozisyon": "d"
+    },
+    "goz15": {
+      "team": "goz",
+      "name": "Murat Paluli",
+      "pozisyon": "d"
+    },
+    "goz16": {
+      "team": "goz",
+      "name": "Serdar Gürler",
+      "pozisyon": "os"
+    },
+    "goz17": {
+      "team": "goz",
+      "name": "Andre Castro",
+      "pozisyon": "os"
+    },
+    "goz18": {
+      "team": "goz",
+      "name": "Mossoro",
+      "pozisyon": "os"
+    },
+    "goz19": {
+      "team": "goz",
+      "name": "Soner Aydoğdu",
+      "pozisyon": "os"
+    },
+    "goz20": {
+      "team": "goz",
+      "name": "Poko",
+      "pozisyon": "os"
+    },
+    "goz21": {
+      "team": "goz",
+      "name": "Napoleoni",
+      "pozisyon": "os"
+    },
+    "goz22": {
+      "team": "goz",
+      "name": "Halil",
+      "pozisyon": "os"
+    },
+    "goz23": {
+      "team": "goz",
+      "name": "Borges",
+      "pozisyon": "os"
+    },
+    "goz24": {
+      "team": "goz",
+      "name": "Alpaslan Öztürk",
+      "pozisyon": "os"
+    },
+    "goz25": {
+      "team": "goz",
+      "name": "Yalçın Kayan",
+      "pozisyon": "os"
+    },
+    "goz26": {
+      "team": "goz",
+      "name": "Atakan",
+      "pozisyon": "os"
+    },
+    "goz27": {
+      "team": "goz",
+      "name": "Hüseyin Bulut",
+      "pozisyon": "os"
+    },
+    "goz28": {
+      "team": "goz",
+      "name": "Batuhan Kırdaroğlu",
+      "pozisyon": "os"
+    },
+    "goz29": {
+      "team": "goz",
+      "name": "Jerome",
+      "pozisyon": "f"
+    },
+    "goz30": {
+      "team": "goz",
+      "name": "Deniz Kadah",
+      "pozisyon": "f"
+    },
+    "goz31": {
+      "team": "goz",
+      "name": "Kamil Wilczek",
+      "pozisyon": "f"
+    },
+    "goz32": {
+      "team": "goz",
+      "name": "Samed Ali",
+      "pozisyon": "f"
+    },
+    "goz33": {
+      "team": "goz",
+      "name": "Ege Ö.",
+      "pozisyon": "f"
+    }
+  }
+}

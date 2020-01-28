@@ -1,0 +1,139 @@
+{
+  "gfk": {
+    "gfk01": {
+      "team": "gfk",
+      "name": "Günay",
+      "pozisyon": "k"
+    },
+    "gfk02": {
+      "team": "gfk",
+      "name": "Haydar Yılmaz",
+      "pozisyon": "k"
+    },
+    "gfk03": {
+      "team": "gfk",
+      "name": "Burak Bozan",
+      "pozisyon": "k"
+    },
+    "gfk04": {
+      "team": "gfk",
+      "name": "Djilobodji",
+      "pozisyon": "d"
+    },
+    "gfk05": {
+      "team": "gfk",
+      "name": "Kana Bıyık",
+      "pozisyon": "d"
+    },
+    "gfk06": {
+      "team": "gfk",
+      "name": "Tosca",
+      "pozisyon": "d"
+    },
+    "gfk07": {
+      "team": "gfk",
+      "name": "Junior Morais",
+      "pozisyon": "d"
+    },
+    "gfk08": {
+      "team": "gfk",
+      "name": "Olkowski",
+      "pozisyon": "d"
+    },
+    "gfk09": {
+      "team": "gfk",
+      "name": "Oğuz Ceylan",
+      "pozisyon": "d"
+    },
+    "gfk10": {
+      "team": "gfk",
+      "name": "Ulaş Zengin",
+      "pozisyon": "d"
+    },
+    "gfk11": {
+      "team": "gfk",
+      "name": "Mehmet Erdem",
+      "pozisyon": "d"
+    },
+    "gfk12": {
+      "team": "gfk",
+      "name": "Patrick Twusami",
+      "pozisyon": "os"
+    },
+    "gfk13": {
+      "team": "gfk",
+      "name": "Günay Vural",
+      "pozisyon": "os"
+    },
+    "gfk14": {
+      "team": "gfk",
+      "name": "Segbefia",
+      "pozisyon": "os"
+    },
+    "gfk15": {
+      "team": "gfk",
+      "name": "Tetteh",
+      "pozisyon": "os"
+    },
+    "gfk16": {
+      "team": "gfk",
+      "name": "Souleymanne Diarra",
+      "pozisyon": "os"
+    },
+    "gfk17": {
+      "team": "gfk",
+      "name": "Chibsah",
+      "pozisyon": "os"
+    },
+    "gfk18": {
+      "team": "gfk",
+      "name": "Furkan Soyalp",
+      "pozisyon": "os"
+    },
+    "gfk19": {
+      "team": "gfk",
+      "name": "Pawlowski",
+      "pozisyon": "os"
+    },
+    "gfk20": {
+      "team": "gfk",
+      "name": "Kenan Özer",
+      "pozisyon": "os"
+    },
+    "gfk21": {
+      "team": "gfk",
+      "name": "Jefferson",
+      "pozisyon": "os"
+    },
+    "gfk22": {
+      "team": "gfk",
+      "name": "Kubilay A.",
+      "pozisyon": "os"
+    },
+    "gfk23": {
+      "team": "gfk",
+      "name": "Ali Ateş",
+      "pozisyon": "os"
+    },
+    "gfk24": {
+      "team": "gfk",
+      "name": "Kayode",
+      "pozisyon": "f"
+    },
+    "gfk25": {
+      "team": "gfk",
+      "name": "Muhammet Demir",
+      "pozisyon": "f"
+    },
+    "gfk26": {
+      "team": "gfk",
+      "name": "Muğdat Çelik",
+      "pozisyon": "f"
+    },
+    "gfk27": {
+      "team": "gfk",
+      "name": "Chabbi",
+      "pozisyon": "f"
+    }
+  }
+}

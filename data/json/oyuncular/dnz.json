@@ -1,0 +1,154 @@
+{
+  "dnz": {
+    "dnz01": {
+      "team": "dnz",
+      "name": "Stachowiak",
+      "pozisyon": "k"
+    },
+    "dnz02": {
+      "team": "dnz",
+      "name": "Tolgahan Acar",
+      "pozisyon": "k"
+    },
+    "dnz03": {
+      "team": "dnz",
+      "name": "Hüseyin Altıntaş",
+      "pozisyon": "k"
+    },
+    "dnz04": {
+      "team": "dnz",
+      "name": "Ömer Yazıcı",
+      "pozisyon": "k"
+    },
+    "dnz05": {
+      "team": "dnz",
+      "name": "Zeki Yavru",
+      "pozisyon": "d"
+    },
+    "dnz06": {
+      "team": "dnz",
+      "name": "Tiago Lopes",
+      "pozisyon": "d"
+    },
+    "dnz07": {
+      "team": "dnz",
+      "name": "Özgür Çek",
+      "pozisyon": "d"
+    },
+    "dnz08": {
+      "team": "dnz",
+      "name": "Mustafa Yumlu",
+      "pozisyon": "d"
+    },
+    "dnz09": {
+      "team": "dnz",
+      "name": "Bergdich",
+      "pozisyon": "d"
+    },
+    "dnz10": {
+      "team": "dnz",
+      "name": "Muhammet Özkal",
+      "pozisyon": "d"
+    },
+    "dnz11": {
+      "team": "dnz",
+      "name": "Kerem Can Akyüz",
+      "pozisyon": "d"
+    },
+    "dnz12": {
+      "team": "dnz",
+      "name": "Oğuz Yılmaz",
+      "pozisyon": "d"
+    },
+    "dnz13": {
+      "team": "dnz",
+      "name": "Emre Sağlık",
+      "pozisyon": "d"
+    },
+    "dnz14": {
+      "team": "dnz",
+      "name": "Kadir Kurt",
+      "pozisyon": "d"
+    },
+    "dnz15": {
+      "team": "dnz",
+      "name": "Murathan Sütçü",
+      "pozisyon": "d"
+    },
+    "dnz16": {
+      "team": "dnz",
+      "name": "İsmail Aissati",
+      "pozisyon": "os"
+    },
+    "dnz17": {
+      "team": "dnz",
+      "name": "Onazzi",
+      "pozisyon": "os"
+    },
+    "dnz18": {
+      "team": "dnz",
+      "name": "Olcay Şahan",
+      "pozisyon": "os"
+    },
+    "dnz19": {
+      "team": "dnz",
+      "name": "Modou Barrow",
+      "pozisyon": "os"
+    },
+    "dnz20": {
+      "team": "dnz",
+      "name": "Hadi Sacko",
+      "pozisyon": "os"
+    },
+    "dnz21": {
+      "team": "dnz",
+      "name": "Issac Sackey",
+      "pozisyon": "os"
+    },
+    "dnz22": {
+      "team": "dnz",
+      "name": "Radoslaw Murawski",
+      "pozisyon": "os"
+    },
+    "dnz23": {
+      "team": "dnz",
+      "name": "Sedat Şahintürk",
+      "pozisyon": "os"
+    },
+    "dnz24": {
+      "team": "dnz",
+      "name": "Recep Niyaz",
+      "pozisyon": "os"
+    },
+    "dnz25": {
+      "team": "dnz",
+      "name": "Mbamba",
+      "pozisyon": "os"
+    },
+    "dnz26": {
+      "team": "dnz",
+      "name": "Burak Çalık",
+      "pozisyon": "os"
+    },
+    "dnz27": {
+      "team": "dnz",
+      "name": "Asım",
+      "pozisyon": "os"
+    },
+    "dnz28": {
+      "team": "dnz",
+      "name": "Alihan Kalkan",
+      "pozisyon": "os"
+    },
+    "dnz29": {
+      "team": "dnz",
+      "name": "Rodallega",
+      "pozisyon": "f"
+    },
+    "dnz30": {
+      "team": "dnz",
+      "name": "Oscar Estupinan",
+      "pozisyon": "os"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+-------- Mevkiiler
+
+k: Kaleci
+d: Defans
+os: Orta Saha
+f: Forvet
+y: yedek
+
+---------- JSON Dosyaları 
+--- oyuncular.json
+"gs01":{
+    "team":"gs",
+    "name":"Fernando Muslera",
+    "pozisyon":"k"
+}
+
+***--puanlar.json (oyuncularla aynı gibi) ismi hafta numarası (17.json >> 17.hafta)
+{
+"id":"gs01",
+"puan":"7",
+}
+
+---takimlar.json (tüm takımlar puanları eklenebilir)
+{
+"id":"fb",
+"name":"Fenerbahçe",
+"renk":["yellow","darkblue"],
+"puandurumu":{"om":18, "g":10, "b":4, "m":4, "ag":36, "yg":21, "avg":15, "p":34}
+}
+
+***---kadro.json
+{
+"taktik":[4,4,2],
+"kaptan":"gs13",
+"oyuncular":{
+            "k":["gs1"],
+            "d":["gs03","gs04","gs05","gs06"],
+            "os":["gs10","gs13","gs15","gs16"],
+            "f":["gs20","gs25"],
+            "y":["gs17","gs12","gs07","gs01"]
+            }
+}

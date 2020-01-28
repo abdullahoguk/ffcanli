@@ -1,0 +1,154 @@
+{
+  "bjk": {
+    "bjk01": {
+      "team": "bjk",
+      "name": "Loris Karius",
+      "pozisyon": "k"
+    },
+    "bjk02": {
+      "team": "bjk",
+      "name": "Utku Yuvakuran",
+      "pozisyon": "k"
+    },
+    "bjk03": {
+      "team": "bjk",
+      "name": "Ersin Destanoğlu",
+      "pozisyon": "k"
+    },
+    "bjk04": {
+      "team": "bjk",
+      "name": "Doğukan Özkan",
+      "pozisyon": "k"
+    },
+    "bjk05": {
+      "team": "bjk",
+      "name": "Domagoj Vida",
+      "pozisyon": "d"
+    },
+    "bjk06": {
+      "team": "bjk",
+      "name": "Caner Erkin",
+      "pozisyon": "d"
+    },
+    "bjk07": {
+      "team": "bjk",
+      "name": "Enzo Roco",
+      "pozisyon": "d"
+    },
+    "bjk08": {
+      "team": "bjk",
+      "name": "Victor Ruiz",
+      "pozisyon": "d"
+    },
+    "bjk09": {
+      "team": "bjk",
+      "name": "Rebocho",
+      "pozisyon": "d"
+    },
+    "bjk10": {
+      "team": "bjk",
+      "name": "Gökhan Gönül",
+      "pozisyon": "d"
+    },
+    "bjk11": {
+      "team": "bjk",
+      "name": "Douglas",
+      "pozisyon": "d"
+    },
+    "bjk12": {
+      "team": "bjk",
+      "name": "Rıdvan Yılmaz",
+      "pozisyon": "d"
+    },
+    "bjk13": {
+      "team": "bjk",
+      "name": "N'Koudou",
+      "pozisyon": "os"
+    },
+    "bjk14": {
+      "team": "bjk",
+      "name": "Adem Ljajic",
+      "pozisyon": "os"
+    },
+    "bjk15": {
+      "team": "bjk",
+      "name": "Atiba Hutchinson",
+      "pozisyon": "os"
+    },
+    "bjk16": {
+      "team": "bjk",
+      "name": "Jeremain Lens",
+      "pozisyon": "os"
+    },
+    "bjk17": {
+      "team": "bjk",
+      "name": "Mohamed Elneny",
+      "pozisyon": "os"
+    },
+    "bjk18": {
+      "team": "bjk",
+      "name": "Oğuzhan Özyakup",
+      "pozisyon": "os"
+    },
+    "bjk19": {
+      "team": "bjk",
+      "name": "Tyler Boyd",
+      "pozisyon": "os"
+    },
+    "bjk20": {
+      "team": "bjk",
+      "name": "Dorukhan Toköz",
+      "pozisyon": "os"
+    },
+    "bjk21": {
+      "team": "bjk",
+      "name": "Orkan Çınar",
+      "pozisyon": "os"
+    },
+    "bjk22": {
+      "team": "bjk",
+      "name": "Muhayer Oktay",
+      "pozisyon": "os"
+    },
+    "bjk23": {
+      "team": "bjk",
+      "name": "Necip Uysal",
+      "pozisyon": "os"
+    },
+    "bjk24": {
+      "team": "bjk",
+      "name": "Kartal Yılmaz",
+      "pozisyon": "os"
+    },
+    "bjk25": {
+      "team": "bjk",
+      "name": "Mertcan Açıkgöz",
+      "pozisyon": "os"
+    },
+    "bjk26": {
+      "team": "bjk",
+      "name": "Burak Yılmaz",
+      "pozisyon": "f"
+    },
+    "bjk27": {
+      "team": "bjk",
+      "name": "Abdoulay Diaby",
+      "pozisyon": "f"
+    },
+    "bjk28": {
+      "team": "bjk",
+      "name": "Umut Nayir",
+      "pozisyon": "f"
+    },
+    "bjk29": {
+      "team": "bjk",
+      "name": "Güven Yalçın",
+      "pozisyon": "f"
+    },
+    "bjk30": {
+      "team": "bjk",
+      "name": "Oğuzhan Akgün",
+      "pozisyon": "f"
+    }
+  }
+}
