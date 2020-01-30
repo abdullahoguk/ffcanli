@@ -30,28 +30,59 @@ body{
   justify-content: center;
 }
 
+.hidden{
+  display: none!important;
+}
+
 .searchSection{
   width: 90%;
   height: inherit;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-gap: .5em;
+  grid-template-columns: 100%;
+  grid-template-rows: 3fr 1fr 12fr;
+  grid-template-areas: 
+    "userTeam"
+    "searchInput"
+    "searchResultsContainer";
 }
+
 
 .userTeam{
+  grid-area: userTeam;
   width: 100%;
-  height: 20%;
 }
 
-input.search{
+input#search{
+  grid-area: searchInput;
   width: 100%;
 }
+
+.searchResultsContainer{
+  position: relative;
+  grid-area: searchResultsContainer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 
 .searchResults{
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  flex-grow: 2;
+  align-items: stretch;
 }
 
+.playerItem{
+  width: 100%;
+  display: grid;
+  align-items: stretch;
+  justify-content: space-between;
+  grid-template-columns: 1fr 7fr 3fr 1fr;
+  grid-template-rows: 1fr;
+}
 
-
+.playerItem.title{
+  background-color: lawngreen;
+}
