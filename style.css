@@ -1,0 +1,57 @@
+/* Border box declaration 
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+html {
+  box-sizing: border-box;
+}
+/* inherit border-box on all elements in the universe and before and after
+ */
+*, 
+*:before, 
+*:after {
+  box-sizing: inherit;
+  margin:0;
+  padding: 0;
+}
+
+
+*{
+  /*border: 2px solid black;*/
+}
+
+html,body{
+  width: 98vw;
+  height: 98vh;
+}
+
+body{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchSection{
+  width: 90%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.userTeam{
+  width: 100%;
+  height: 20%;
+}
+
+input.search{
+  width: 100%;
+}
+
+.searchResults{
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+}
+
+
+
