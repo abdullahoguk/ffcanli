@@ -23,7 +23,8 @@ var userTeam={
         "os": [],
         "f": [],
         "y": []
-    }
+    },
+    "count":0
 }
 
 var positions={
@@ -58,7 +59,8 @@ $('.team.dropdown').dropdown({onChange: filterResults});
 $('.position.dropdown').dropdown({onChange: filterResults});
 
 //Player chosing Events
-
+var playerItems = document.querySelectorAll(".playerItem");
+playerItems.forEach(player=> player.addEventListener("click", handlePlayerClick));
 
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
@@ -116,6 +118,36 @@ function filterResults(){
         }
     })
 }
+
+function handlePlayerClick(e){
+    e.stopPropagation();
+
+    var player = e.currentTarget;
+    var playerId=player.dataset.id;
+    var position=player.dataset.position;
+    //add player 
+    if(!player.hasAttribute("selected") && userTeam.count< 16){
+        if(position == "k") userTeam.players[position] = playerId;
+        else userTeam.players[position].push(playerId);
+        player.setAttribute("selected","");
+        userTeam.count++;
+    }
+
+    //remove player
+    else if(player.hasAttribute("selected")){
+        if(position == "k") userTeam.players[position] = null;
+        else userTeam.players[position].splice(userTeam.players[position].indexOf(playerId), 1 );
+        userTeam.count--;
+        player.removeAttribute("selected");
+    }
+
+    else{
+        console.log("max player reached");
+    }
+    console.log(userTeam.players,userTeam.count)
+    console.log(player.dataset.selected)
+
+};
 
 /*-------------------------------
 HTML Content Generating Functions

@@ -115,6 +115,10 @@ background-color:#E0E5EC;
   background-color: lightblue;
 }
 
+.playerItem[selected]{
+  background-color: rgb(10, 59, 194);
+}
+
 .playerItem, .playerItem *{
   cursor: pointer;
 }
