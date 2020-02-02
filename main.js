@@ -9,7 +9,11 @@ var teamInput = document.querySelector("select.team");
 var positionInput = document.querySelector("select.position");
 
 //data elements
-var players = Object.entries(allPlayers);
+var players = Object.entries(allPlayers).sort(function (a, b) {
+    if (teams[a[0]].name > teams[b[0]].name) {return 1;}
+    if (teams[b[0]].name > teams[a[0]].name) {return -1;}
+    return 0;})
+
 
 var userTeam={
     "strategy":[],
@@ -30,20 +34,42 @@ var positions={
     "y": {"name":"Yedek"}
 }
 
-/*------------------------------
+/*-------------------------------------------------------------------------------------------------
             MAIN WORKFLOW
 -----------------------------*/
 
-//Inıtial Render
+//-------- Initial Render
 resultsDOM.innerHTML = renderAllPlayers();
-//initialize dropdowns
-teamInput.innerHTML += renderDropdown(Object.entries(teams));
+//initialize and render dropdowns
+teamInput.innerHTML += renderDropdown(Object.entries(teams).
+    sort(function (a, b) {
+        if (a[1].name > b[1].name) {return 1;}
+        if (b[1].name > a[1].name) {return -1;}
+        return 0;})
+);
 positionInput.innerHTML += renderDropdown(Object.entries(positions).slice(0,4));
 $('.ui.dropdown').dropdown();
 
+//---------- Binding Events
+//Filter Events
+searchInput.addEventListener("input",filterResults);
+
+$('.team.dropdown').dropdown({onChange: filterResults});
+$('.position.dropdown').dropdown({onChange: filterResults});
+
+//Player chosing Events
 
 
-//Render Functions
+//--------------------------  END OF WORKFLOW     -------------------------------------------------
+
+
+/*-------------------------------------------------
+                    FUNCTIONS
+-------------------------------------------------*/
+/*--------------
+Initial render functions
+*/
+
 function renderAllPlayers(){
     var resultHTML= ""; 
 
@@ -70,12 +96,9 @@ function renderDropdown(arr){
     return resultHTML;
 }
 
-
-/*-----------------------------------
-                Event Listeners 
-------------------------------------*/
-searchInput.addEventListener("input",filterResults);
-
+/*--------------
+Event Functions 
+----------------*/
 function filterResults(){
     var re = new RegExp(searchInput.value,"gi");
     var list = document.querySelectorAll(".searchResults > .playerItem");
@@ -94,12 +117,9 @@ function filterResults(){
     })
 }
 
-$('.team.dropdown').dropdown({onChange: filterResults});
-$('.position.dropdown').dropdown({onChange: filterResults});
-
-/*-----------------------------------
-                Helper Functions
-------------------------------------*/
+/*-------------------------------
+HTML Content Generating Functions
+--------------------------------*/
 function createResultItem(id, team, name, position, point){
     return `
     <div class="playerItem" data-id=${id} data-team=${team} data-position=${position} data-name=${name}>
