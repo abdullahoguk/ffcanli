@@ -33,7 +33,7 @@ var teams={
   },
   "ant": {
     "id": "ant",
-    "name": "Antalyaspor",
+    "name": "Antalya S.",
     "renk": [
       "white",
       "red"
@@ -41,7 +41,7 @@ var teams={
   },
   "als": {
     "id": "als",
-    "name": "Alanyaspor",
+    "name": "Alanya S.",
     "renk": [
       "#ff6600",
       "#029835"
@@ -57,7 +57,7 @@ var teams={
   },
   "mlt": {
     "id": "mlt",
-    "name": "Malatyaspor",
+    "name": "Malatya S.",
     "renk": [
       "yellow",
       "black"
@@ -81,7 +81,7 @@ var teams={
   },
   "gfk": {
     "id": "gfk",
-    "name": "Gaziantep Futbol Klübü",
+    "name": "Gaziantep F.K.",
     "renk": [
       "red",
       "black"
@@ -105,7 +105,7 @@ var teams={
   },
   "kay": {
     "id": "kay",
-    "name": "Kayserispor",
+    "name": "Kayseri S.",
     "renk": [
       "red",
       "yellow"
@@ -129,7 +129,7 @@ var teams={
   },
   "med": {
     "id": "med",
-    "name": "Medipol Başakşehir",
+    "name": "Medipol BŞK",
     "renk": [
       "darkblue",
       "orange"
@@ -137,7 +137,7 @@ var teams={
   },
   "dnz": {
     "id": "dnz",
-    "name": "DenizliSpor",
+    "name": "Denizli S",
     "renk": [
       "green",
       "black"
