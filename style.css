@@ -83,6 +83,7 @@ grid-area: positionInput;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin-bottom: 2em;
 }
 
 
@@ -106,7 +107,6 @@ grid-area: positionInput;
   padding:.3em;
 /* neumorphism*/
 background-color:#E0E5EC;
-  box-shadow: 6px 6px 16px rgb(163,177,198,0.8), -6px -6px 16px  rgba(255,255,255, 0.8);
 }
 
 
@@ -116,7 +116,11 @@ background-color:#E0E5EC;
 }
 
 .playerItem[selected]{
-  background-color: rgb(10, 59, 194);
+  background-color: rgb(2, 255, 234);
+}
+
+.playerItem[selected]:hover{
+  background-color: rgb(124, 255, 244);
 }
 
 .playerItem, .playerItem *{
@@ -133,5 +137,10 @@ font-size: 1.2em;
   padding-left: .5em;
   font-weight: 800;
   background-color: lawngreen;
+
+}
+
+.neu{
+  box-shadow: 6px 6px 16px rgb(163,177,198,0.8), -6px -6px 16px  rgba(255,255,255, 0.8);
 
 }

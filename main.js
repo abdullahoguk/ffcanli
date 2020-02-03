@@ -15,19 +15,20 @@ var players = Object.entries(allPlayers).sort(function (a, b) {
     return 0;})
 
 
-var userTeam={
+var userTeam = {
     "strategy":[],
     "players":{
-        "k": "null",
-        "d": [],
-        "os": [],
-        "f": [],
-        "y": []
+        "k": [[null],null],
+        "d": [[],null],
+        "os": [[],null],
+        "f": [[],null]
     },
-    "count":0
+    "count":0,
+    "teamCount":{},
+    "captain":"null"
 }
 
-var positions={
+var positions = {
     "k": {"name": "Kaleci"},
     "d": {"name": "Defans"},
     "os": {"name": "Orta Saha"},
@@ -123,28 +124,39 @@ function handlePlayerClick(e){
     e.stopPropagation();
 
     var player = e.currentTarget;
-    var playerId=player.dataset.id;
-    var position=player.dataset.position;
+    var playerId = player.dataset.id;
+    var position = player.dataset.position;
+    var team = player.dataset.team;
     //add player 
-    if(!player.hasAttribute("selected") && userTeam.count< 16){
-        if(position == "k") userTeam.players[position] = playerId;
-        else userTeam.players[position].push(playerId);
-        player.setAttribute("selected","");
-        userTeam.count++;
+    if(!player.hasAttribute("selected") && userTeam.count < 15){
+        //console.log(userTeam.count)
+        //control same team limit
+        if(userTeam.teamCount[team] ? userTeam.teamCount[team] < 4 : true ){
+            if(position == "k") userTeam.players[position][0] = playerId;
+            else userTeam.players[position][0].push(playerId);
+            player.setAttribute("selected","");
+            userTeam.count++;
+            userTeam.teamCount[team] ? userTeam.teamCount[team]++ : userTeam.teamCount[team]=1;
+        }
+        else{console.log("Max player limit reached for that team ")}
+       
+        
     }
 
     //remove player
     else if(player.hasAttribute("selected")){
-        if(position == "k") userTeam.players[position] = null;
-        else userTeam.players[position].splice(userTeam.players[position].indexOf(playerId), 1 );
-        userTeam.count--;
+        if(position == "k") userTeam.players[position][0] = null;
+        else userTeam.players[position][0].splice(userTeam.players[position].indexOf(playerId), 1 );
         player.removeAttribute("selected");
+        userTeam.count--;
+        userTeam.teamCount[team]==1 ? delete userTeam.teamCount[team] : userTeam.teamCount[team]--;;
+        
     }
 
     else{
         console.log("max player reached");
     }
-    console.log(userTeam.players,userTeam.count)
+    console.log(userTeam.players,userTeam)
     console.log(player.dataset.selected)
 
 };
@@ -154,7 +166,7 @@ HTML Content Generating Functions
 --------------------------------*/
 function createResultItem(id, team, name, position, point){
     return `
-    <div class="playerItem" data-id=${id} data-team=${team} data-position=${position} data-name=${name}>
+    <div class="neu playerItem" data-id=${id} data-team=${team} data-position=${position} data-name=${name}>
         <span class="team">${team.toUpperCase()}</span>
         <span class="name">${name}</span>
         <span class="position">${positions[position].name}</span>
