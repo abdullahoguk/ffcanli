@@ -8,6 +8,15 @@ secilen oyuncuya tıklandıgında popup cıkar > foto, sil, kaptan yap gibi şey
 secilen oyuncuyu tüm oyuncular listesinden bir daha tkladıgında secimi kaldır
 üstte toplam puanı göster
 aynı takımdan secilebilecek oyuncu sayısı limiti/limiti aştıgında toast bildirim
+yedek ve asilleri bir yere koy puana göre sırala sondakini(kucuk olan) yedek say ve yedekleri puana dahil etme
+iki kaleci secmeye calıstıgında toast uyar
+player iteme yanına iki buton ekle yedek asil
+secilen oyncuları listede filtreleme
+taktik dropdown
+error bar at bottom
+
+Malatyadan Guilerme'yi 》 Trabzonspora ekle
+
 
 -------- Mevkiiler
 

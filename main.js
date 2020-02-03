@@ -7,6 +7,7 @@ var resultsDOM = document.querySelector(".searchResults");
 var searchInput = document.querySelector("input#search");
 var teamInput = document.querySelector("select.team");
 var positionInput = document.querySelector("select.position");
+var infoBar = document.querySelector(".infoBar");
 
 //data elements
 var players = Object.entries(allPlayers).sort(function (a, b) {
@@ -138,7 +139,7 @@ function handlePlayerClick(e){
             userTeam.count++;
             userTeam.teamCount[team] ? userTeam.teamCount[team]++ : userTeam.teamCount[team]=1;
         }
-        else{console.log("Max player limit reached for that team ")}
+        else{displayInfo("Aynı takımdan en fazla 4 oyuncu seçebilirsin")}
        
         
     }
@@ -154,7 +155,7 @@ function handlePlayerClick(e){
     }
 
     else{
-        console.log("max player reached");
+        displayInfo("Takımın oluşturuldu. Boş yer yok");
     }
     console.log(userTeam.players,userTeam)
     console.log(player.dataset.selected)
@@ -176,4 +177,14 @@ function createResultItem(id, team, name, position, point){
 
 function createDropdownItem(val,name){
     return `<option value=${val}>${name}</option>`
+}
+
+function displayInfo(info){
+    infoBar.innerHTML=`<span class="infoText">${info}</span>`
+    infoBar.classList.remove("hidden");
+    $('.infoBar').transition('shake','.500ms');
+    setTimeout(function(){
+        infoBar.innerHTML="";
+        infoBar.classList.add("hidden");
+    },2000)
 }
