@@ -95,7 +95,7 @@ grid-area: positionInput;
   padding: .5em;
 }
 
-.playerItem{
+.playerItem, .playerItemTitle{
   width: 100%;
   height: 2.5em;
   display: grid;
@@ -130,7 +130,7 @@ font-size: 1.2em;
   font-weight: 800;
 }
 
-.playerItem.title{
+.playerItemTitle{
   padding-right: .5em;
   padding-left: .5em;
   font-weight: 800;

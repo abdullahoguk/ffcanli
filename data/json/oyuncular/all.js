@@ -75,6 +75,11 @@ var all = {
       "name": "Murathan Sütçü",
       "pozisyon": "d"
     },
+    "dnz30": {
+      "team": "dnz",
+      "name": "Ben Youssef",
+      "pozisyon": "d"
+    },
     "dnz16": {
       "team": "dnz",
       "name": "İsmail Aissati",
@@ -82,7 +87,7 @@ var all = {
     },
     "dnz17": {
       "team": "dnz",
-      "name": "Onazzi",
+      "name": "Onazi",
       "pozisyon": "os"
     },
     "dnz18": {
@@ -145,10 +150,10 @@ var all = {
       "name": "Rodallega",
       "pozisyon": "f"
     },
-    "dnz30": {
+    "dnz31": {
       "team": "dnz",
       "name": "Oscar Estupinan",
-      "pozisyon": "os"
+      "pozisyon": "f"
     }
   },
 
@@ -217,6 +222,21 @@ var all = {
       "team": "ts",
       "name": "Abdurrahim",
       "pozisyon": "d"
+    },
+    "ts31": {
+      "team": "ts",
+      "name": "Da Costa",
+      "pozisyon": "d"
+    },
+    "ts32": {
+      "team": "ts",
+      "name": "Manoel Messias",
+      "pozisyon": "d"
+    },
+    "ts33": {
+      "team": "ts",
+      "name": "Guilherme",
+      "pozisyon": "os"
     },
     "ts14": {
       "team": "ts",
@@ -303,7 +323,7 @@ var all = {
       "name": "Caleb Ekuban",
       "pozisyon": "f"
     },
-    "ts31": {
+    "ts34": {
       "team": "ts",
       "name": "Ahmet Hakan",
       "pozisyon": "f"
@@ -325,6 +345,11 @@ var all = {
       "team": "med",
       "name": "Ahmet Kıvanç",
       "pozisyon": "k"
+    },
+    "med30": {
+      "team": "med",
+      "name": "Attamah",
+      "pozisyon": "d"
     },
     "med04": {
       "team": "med",
@@ -371,6 +396,11 @@ var all = {
       "name": "Mert Çelik",
       "pozisyon": "d"
     },
+    "med30": {
+      "team": "med",
+      "name": "Azubuike",
+      "pozisyon": "os"
+    },
     "med13": {
       "team": "med",
       "name": "Visca",
@@ -404,11 +434,6 @@ var all = {
     "med19": {
       "team": "med",
       "name": "Mahmut Tekdemir",
-      "pozisyon": "os"
-    },
-    "med20": {
-      "team": "med",
-      "name": "Kerim Frei",
       "pozisyon": "os"
     },
     "med21": {
@@ -456,7 +481,7 @@ var all = {
       "name": "Muhammet A.",
       "pozisyon": "f"
     },
-    "med30": {
+    "med32": {
       "team": "med",
       "name": "Efecan Barlık",
       "pozisyon": "f"
@@ -487,11 +512,6 @@ var all = {
     "ksp05": {
       "team": "ksp",
       "name": "Karim Hafez",
-      "pozisyon": "d"
-    },
-    "ksp06": {
-      "team": "ksp",
-      "name": "Ben Youssef",
       "pozisyon": "d"
     },
     "ksp07": {
@@ -544,6 +564,11 @@ var all = {
       "name": "Emre Elmalı",
       "pozisyon": "d"
     },
+    "ksp35": {
+      "team": "ksp",
+      "name": "Gerard Gohou",
+      "pozisyon": "d"
+    },
     "ksp17": {
       "team": "ksp",
       "name": "Furkan Çetinkaya",
@@ -553,6 +578,21 @@ var all = {
       "team": "ksp",
       "name": "Uğurcan Yazğılı",
       "pozisyon": "d"
+    },
+    "ksp36": {
+      "team": "ksp",
+      "name": "Yassine Meriah",
+      "pozisyon": "d"
+    },
+    "ksp37": {
+      "team": "ksp",
+      "name": "Ahmet Demirli",
+      "pozisyon": "os"
+    },
+    "ksp38": {
+      "team": "ksp",
+      "name": "Anıl Koç",
+      "pozisyon": "os"
     },
     "ksp19": {
       "team": "ksp",
@@ -634,7 +674,7 @@ var all = {
       "name": "Mame Thiam",
       "pozisyon": "f"
     },
-    "ksp35": {
+    "ksp39": {
       "team": "ksp",
       "name": "Gerard Gohou",
       "pozisyon": "f"
@@ -777,6 +817,11 @@ var all = {
       "name": "Ali Karakaya",
       "pozisyon": "os"
     },
+    "kon31": {
+      "team": "kon",
+      "name": "Robert Mak",
+      "pozisyon": "os"
+    },
     "kon28": {
       "team": "kon",
       "name": "Bajic",
@@ -792,7 +837,7 @@ var all = {
       "name": "Mücahit Can Akçay",
       "pozisyon": "f"
     },
-    "kon31": {
+    "kon32": {
       "team": "kon",
       "name": "Erdon Daci",
       "pozisyon": "f"
@@ -807,7 +852,7 @@ var all = {
     },
     "kay02": {
       "team": "kay",
-      "name": "Hakan A",
+      "name": "Hakan Arıkan",
       "pozisyon": "k"
     },
     "kay03": {
@@ -875,14 +920,19 @@ var all = {
       "name": "Emirhan Civelek",
       "pozisyon": "d"
     },
+    "kay45": {
+      "team": "kay",
+      "name": "Diego Angelo",
+      "pozisyon": "f"
+    },
+    "kay46": {
+      "team": "kay",
+      "name": "Sapunaru",
+      "pozisyon": "f"
+    },
     "kay16": {
       "team": "kay",
       "name": "Yasir S.",
-      "pozisyon": "d"
-    },
-    "kay17": {
-      "team": "kay",
-      "name": "Adem",
       "pozisyon": "d"
     },
     "kay18": {
@@ -952,7 +1002,7 @@ var all = {
     },
     "kay31": {
       "team": "kay",
-      "name": "Hakan Çitak",
+      "name": "Hakan Çıtak",
       "pozisyon": "os"
     },
     "kay32": {
@@ -967,7 +1017,7 @@ var all = {
     },
     "kay34": {
       "team": "kay",
-      "name": "mustafa buğra ilter",
+      "name": "Mustafa Buğra İlter",
       "pozisyon": "os"
     },
     "kay35": {
@@ -1002,7 +1052,7 @@ var all = {
     },
     "kay41": {
       "team": "kay",
-      "name": "Muris Mesanoviç",
+      "name": "Muris Mesanovic",
       "pozisyon": "f"
     },
     "kay42": {
@@ -1020,7 +1070,7 @@ var all = {
       "name": "Selahattin Seyhun",
       "pozisyon": "f"
     },
-    "kay45": {
+    "kay47": {
       "team": "kay",
       "name": "Ümran Zambak",
       "pozisyon": "f"
@@ -1251,6 +1301,16 @@ var all = {
       "name": "Mehmet Erdem",
       "pozisyon": "d"
     },
+    "gfk27": {
+      "team": "gfk",
+      "name": "Andre Sousa",
+      "pozisyon": "f"
+    },
+    "gfk28": {
+      "team": "gfk",
+      "name": "Alexandru Maxim",
+      "pozisyon": "f"
+    },
     "gfk12": {
       "team": "gfk",
       "name": "Patrick Twusami",
@@ -1326,7 +1386,7 @@ var all = {
       "name": "Muğdat Çelik",
       "pozisyon": "f"
     },
-    "gfk27": {
+    "gfk29": {
       "team": "gfk",
       "name": "Chabbi",
       "pozisyon": "f"
@@ -1482,7 +1542,7 @@ var all = {
     "gb30": {
       "team": "gb",
       "name": "İlker Karakaş",
-      "pozisyon": "os"
+      "pozisyon": "f"
     }
   },
 
@@ -1557,11 +1617,6 @@ var all = {
       "name": "Bülent Cevahir",
       "pozisyon": "d"
     },
-    "mlt15": {
-      "team": "mlt",
-      "name": "Guilerme",
-      "pozisyon": "os"
-    },
     "mlt16": {
       "team": "mlt",
       "name": "Bifouma",
@@ -1631,6 +1686,11 @@ var all = {
       "team": "mlt",
       "name": "Eren Tozlu",
       "pozisyon": "f"
+    },
+    "mlt30": {
+      "team": "mlt",
+      "name": "Vidar Kjartansson",
+      "pozisyon": "f"
     }
   },
 
@@ -1668,11 +1728,6 @@ var all = {
     "crz07": {
       "team": "crz",
       "name": "Moroziuk",
-      "pozisyon": "d"
-    },
-    "crz08": {
-      "team": "crz",
-      "name": "Attamah",
       "pozisyon": "d"
     },
     "crz09": {
@@ -1800,6 +1855,11 @@ var all = {
       "name": "Eren Karadağ",
       "pozisyon": "os"
     },
+    "crz36": {
+      "team": "crz",
+      "name": "Tunay Torun",
+      "pozisyon": "os"
+    },
     "crz34": {
       "team": "crz",
       "name": "Milan Skoda",
@@ -1810,7 +1870,7 @@ var all = {
       "name": "Scepovic",
       "pozisyon": "f"
     },
-    "crz36": {
+    "crz37": {
       "team": "crz",
       "name": "Boriachuk",
       "pozisyon": "f"
@@ -1858,11 +1918,6 @@ var all = {
       "name": "Ziya Erdal",
       "pozisyon": "d"
     },
-    "svs09": {
-      "team": "svs",
-      "name": "Barış Erdal",
-      "pozisyon": "d"
-    },
     "svs10": {
       "team": "svs",
       "name": "Barış Yardımcı",
@@ -1878,6 +1933,16 @@ var all = {
       "name": "Paul Papp",
       "pozisyon": "d"
     },
+    "svs26": {
+      "team": "svs",
+      "name": "Samba Camara",
+      "pozisyon": "d"
+    },
+    "svs27": {
+      "team": "svs",
+      "name": "Claudemir",
+      "pozisyon": "os"
+    },
     "svs13": {
       "team": "svs",
       "name": "Emre Kılınç",
@@ -1891,11 +1956,6 @@ var all = {
     "svs15": {
       "team": "svs",
       "name": "Yasin Öztekin",
-      "pozisyon": "os"
-    },
-    "svs16": {
-      "team": "svs",
-      "name": "Traore",
       "pozisyon": "os"
     },
     "svs17": {
@@ -1930,12 +1990,7 @@ var all = {
     },
     "svs23": {
       "team": "svs",
-      "name": "Volkan Eğri",
-      "pozisyon": "os"
-    },
-    "svs24": {
-      "team": "svs",
-      "name": "Yasin Öztekin",
+      "name": "Volkan Egri",
       "pozisyon": "os"
     },
     "svs25": {
@@ -1943,7 +1998,17 @@ var all = {
       "name": "Arouna Kone",
       "pozisyon": "f"
     },
-    "svs26": {
+    "svs28": {
+      "team": "svs",
+      "name": "Hugo Vieria",
+      "pozisyon": "f"
+    },
+    "svs29": {
+      "team": "svs",
+      "name": "Skuletic",
+      "pozisyon": "f"
+    },
+    "svs30": {
       "team": "svs",
       "name": "Yatabare",
       "pozisyon": "f"
@@ -1979,11 +2044,6 @@ var all = {
     "fb06":{
       "team": "fb",
       "name": "Mauricio Isla",
-      "pozisyon": "d"
-    },
-    "fb07":{
-      "team": "fb",
-      "name": "Zanka",
       "pozisyon": "d"
     },
     "fb08":{
@@ -2034,6 +2094,11 @@ var all = {
     "fb17":{
       "team": "fb",
       "name": "Max Kruse",
+      "pozisyon": "os"
+    },
+    "fb34":{
+      "team": "fb",
+      "name": "Daniel Kolar",
       "pozisyon": "os"
     },
     "fb18":{
@@ -2116,7 +2181,7 @@ var all = {
       "name": "Mevlüt Erdinç",
       "pozisyon": "f"
     },
-    "fb34":{
+    "fb35":{
       "team": "fb",
       "name": "Yusuf Mert Tunç",
       "pozisyon": "f"
@@ -2209,11 +2274,6 @@ var all = {
       "name": "Mohamed Elneny",
       "pozisyon": "os"
     },
-    "bjk18": {
-      "team": "bjk",
-      "name": "Oğuzhan Özyakup",
-      "pozisyon": "os"
-    },
     "bjk19": {
       "team": "bjk",
       "name": "Tyler Boyd",
@@ -2222,11 +2282,6 @@ var all = {
     "bjk20": {
       "team": "bjk",
       "name": "Dorukhan Toköz",
-      "pozisyon": "os"
-    },
-    "bjk21": {
-      "team": "bjk",
-      "name": "Orkan Çınar",
       "pozisyon": "os"
     },
     "bjk22": {
@@ -2300,11 +2355,6 @@ var all = {
     "ant05":{
       "team": "ant",
       "name": "Kudryashov",
-      "pozisyon": "d"
-    },
-    "ant06":{
-      "team": "ant",
-      "name": "Diego Angelo",
       "pozisyon": "d"
     },
     "ant07":{
@@ -2653,11 +2703,6 @@ var all = {
       "name": "Yuto Nagatomo",
       "pozisyon": "d"
     },
-    "gs13": {
-      "team": "gs",
-      "name": "Seri",
-      "pozisyon": "d"
-    },
     "gs14": {
       "team": "gs",
       "name": "Emin Bayram",
@@ -2670,7 +2715,7 @@ var all = {
     },
     "gs16": {
       "team": "gs",
-      "name": "Adem Büyük",
+      "name": "Henry Onyekuru",
       "pozisyon": "os"
     },
     "gs17": {
@@ -2703,9 +2748,24 @@ var all = {
       "name": "Atalay Babacan",
       "pozisyon": "os"
     },
+    "gs32": {
+      "team": "gs",
+      "name": "Jesse Sekidika",
+      "pozisyon": "os"
+    },
+    "gs34": {
+      "team": "gs",
+      "name": "Emre Mor",
+      "pozisyon": "os"
+    },
     "gs23": {
       "team": "gs",
       "name": "Taylan Antalyalı",
+      "pozisyon": "os"
+    },
+    "gs13": {
+      "team": "gs",
+      "name": "Seri",
       "pozisyon": "os"
     },
     "gs24": {
@@ -2733,6 +2793,11 @@ var all = {
       "name": "Mustafa Kapı",
       "pozisyon": "os"
     },
+    "gs33": {
+      "team": "gs",
+      "name": "Adem Büyük",
+      "pozisyon": "f"
+    },
     "gs29": {
       "team": "gs",
       "name": "Falcao",
@@ -2746,21 +2811,6 @@ var all = {
     "gs31": {
       "team": "gs",
       "name": "Florin Andone",
-      "pozisyon": "f"
-    },
-    "gs32": {
-      "team": "gs",
-      "name": "Jesse Sekidika",
-      "pozisyon": "f"
-    },
-    "gs33": {
-      "team": "gs",
-      "name": "Henry Onyekuru",
-      "pozisyon": "f"
-    },
-    "gs34": {
-      "team": "gs",
-      "name": "Emre Mor",
       "pozisyon": "f"
     },
     "gs35": {
@@ -2868,7 +2918,7 @@ var all = {
     },
     "ag20":{
       "team": "ag",
-      "name": "Sedat Akçay",
+      "name": "Sedat Ağçay",
       "pozisyon": "os"
     },
     "ag21":{
@@ -2884,6 +2934,26 @@ var all = {
     "ag23":{
       "team": "ag",
       "name": "Oğuzhan Orhan",
+      "pozisyon": "os"
+    },
+    "ag33": {
+      "team": "ag",
+      "name": "Orkan Çınar",
+      "pozisyon": "os"
+    },
+    "ag34": {
+      "team": "ag",
+      "name": "Saba Lobzhanidze",
+      "pozisyon": "os"
+    },
+    "ag35": {
+      "team": "ag",
+      "name": "Konrad Michalak ",
+      "pozisyon": "os"
+    },
+    "ag36": {
+      "team": "ag",
+      "name": "Daniel Lukasic ",
       "pozisyon": "os"
     },
     "ag24":{
@@ -2931,9 +3001,9 @@ var all = {
       "name": "Zaur Sadaev",
       "pozisyon": "f"
     },
-    "ag33":{
+    "ag37":{
       "team": "ag",
-      "name": "Burak Evren",
+      "name": "Gerson Rodrigues",
       "pozisyon": "f"
     }
   }
@@ -2941,3 +3011,7 @@ var all = {
 
 export default all;
 
+/*generate points object
+b={}
+Object.values(all).forEach(function(el){Object.keys(el).forEach(key=> b[key]=null)})
+*/
