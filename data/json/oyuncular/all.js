@@ -396,7 +396,7 @@ var all = {
       "name": "Mert Çelik",
       "pozisyon": "d"
     },
-    "med30": {
+    "med31": {
       "team": "med",
       "name": "Azubuike",
       "pozisyon": "os"
@@ -444,11 +444,6 @@ var all = {
     "med22": {
       "team": "med",
       "name": "Mehmet Topal",
-      "pozisyon": "os"
-    },
-    "med23": {
-      "team": "med",
-      "name": "Tunay Torun",
       "pozisyon": "os"
     },
     "med24": {
@@ -566,7 +561,7 @@ var all = {
     },
     "ksp35": {
       "team": "ksp",
-      "name": "Gerard Gohou",
+      "name": "Florent Hadergjonaj",
       "pozisyon": "d"
     },
     "ksp17": {
@@ -923,12 +918,12 @@ var all = {
     "kay45": {
       "team": "kay",
       "name": "Diego Angelo",
-      "pozisyon": "f"
+      "pozisyon": "d"
     },
     "kay46": {
       "team": "kay",
       "name": "Sapunaru",
-      "pozisyon": "f"
+      "pozisyon": "d"
     },
     "kay16": {
       "team": "kay",
@@ -1304,12 +1299,12 @@ var all = {
     "gfk27": {
       "team": "gfk",
       "name": "Andre Sousa",
-      "pozisyon": "f"
+      "pozisyon": "os"
     },
     "gfk28": {
       "team": "gfk",
       "name": "Alexandru Maxim",
-      "pozisyon": "f"
+      "pozisyon": "os"
     },
     "gfk12": {
       "team": "gfk",
