@@ -131,6 +131,23 @@ flex-grow: 1;
   justify-content: space-between;
 }
 
+
+/*Modal*/
+
+.menu.team .colors{
+  display: inline-flex;
+  border:2px solid gray;
+}
+
+.menu.team .colors *{
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  
+}
+
+
+
 /*SEARCH RESULTS
 .searchSection{
   grid-area: searchSection;

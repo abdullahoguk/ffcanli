@@ -232,7 +232,7 @@ function openTeamMenu(position){
     teamPlayerSelectMenu.classList.add("hidden");
     playerSelectMenuHeader.innerHTML="Takım Seç..."
     //console.log(playerSelectMenuHeader)
-    $('.ui.modal.playerSelectMenu').modal('show');
+    $('.ui.modal.playerSelectMenu').modal({onHide : resetModalMenu}).modal('show');
 }
 
 function openPlayerMenu(team){
@@ -245,8 +245,19 @@ function openPlayerMenu(team){
     teamSelectMenu.classList.add("hidden");
     teamPlayerSelectMenu.classList.remove("hidden");
     //list players
-
+    var listablePlayers = Object.entries(players[team]).filter(function (player){return player[1].pozisyon==position})
+    console.log(listablePlayers);
+    //console.log( Object.entries(players[team]))
+    listablePlayers.forEach(function(player){
+        var [id,{team,name,pozisyon:position}]=player;
+        var element = createMenuPlayerItem(id,name,position,team);
+        teamPlayerSelectMenu.appendChild(element);
+    })
 };
+
+function resetModalMenu(){
+    teamPlayerSelectMenu.innerHTML="";
+}
 
 
 
@@ -300,12 +311,26 @@ function createMenuTeamItem(team){
     var element = document.createElement("a");
     element.classList.add("item");
     element.dataset.team=team.id;
-    element.innerHTML=`${team.name}`
+    element.innerHTML=`
+    <div class="colors">
+        <span class="color1" style=background-color:${team.renk[0]}></span>
+        <span class="color2" style=background-color:${team.renk[1]}></span>
+    </div>
+    ${team.name}`
+
     element.addEventListener("click",handleMenuTeamClick)
-return element;
+    return element;
 }
 
-function createMenuPlayerItem(){
-    return 
+function createMenuPlayerItem(id,name,position,team){
+    var element = document.createElement("a");
+    element.classList.add("item");
+    element.dataset.id=id;
+    element.dataset.team=team;
+    element.dataset.position=position
+    element.innerHTML=`${name}`
+
+    element.addEventListener("click",handleMenuPlayerClick)
+return element; 
 }
 
