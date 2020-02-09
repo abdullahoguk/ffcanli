@@ -3,21 +3,36 @@ import {default as points} from 'https://cdn.jsdelivr.net/gh/aoguk/data@master/p
 import {default as teams} from './data/json/takimlar.js';
 
 //DOM elements
+var userTeamDOM=document.querySelector(".userTeam");
+var positionContainers = userTeamDOM.querySelectorAll(".positionContainer")
+
 var resultsDOM = document.querySelector(".searchResults");
-var searchInput = document.querySelector("input#search");
-var teamInput = document.querySelector("select.team");
-var positionInput = document.querySelector("select.position");
+//var searchInput = document.querySelector("input#search");
+//var teamInput = document.querySelector("select.team");
+//var positionInput = document.querySelector("select.position");
 var infoBar = document.querySelector(".infoBar");
+var playerSelectMenu = document.querySelector(".ui.modal.playerSelectMenu");
+var playerSelectMenuHeader = playerSelectMenu.querySelector("div.header");
+var teamSelectMenu = playerSelectMenu.querySelector(".team.content.menu");
+var teamPlayerSelectMenu = playerSelectMenu.querySelector(".players.content.menu");
+
+
 
 //data elements
-var players = Object.entries(allPlayers).sort(function (a, b) {
+
+var players = allPlayers;
+
+/*Object.entries(allPlayers).sort(function (a, b) {
     if (teams[a[0]].name > teams[b[0]].name) {return 1;}
     if (teams[b[0]].name > teams[a[0]].name) {return -1;}
     return 0;})
+    */
+//sort teams
+//var teams = teams;
 
 
 var userTeam = {
-    "strategy":[],
+    "strategy":{"k":1, "d":4,"os":4, "f":2, "y":4},
     "players":{
         "k": [[null],null],
         "d": [[],null],
@@ -30,11 +45,11 @@ var userTeam = {
 }
 
 var positions = {
-    "k": {"name": "Kaleci"},
-    "d": {"name": "Defans"},
-    "os": {"name": "Orta Saha"},
-    "f": {"name": "Forvet"},
-    "y": {"name":"Yedek"}
+    "k": {"name": "Kaleci", "color":{"base":"#21ba45", "dark":"#1eab3f","fade":"#7dd892", "bg":"#b5f2c3"}},
+    "d": {"name": "Defans", "color":{"base":"#2185d0", "dark":"#1e7abf","fade":"#7db5df", "bg":"#b5d8f3"}},
+    "os": {"name": "Orta Saha", "color":{"base":"#6435c9", "dark":"#5c30b9","fade":"#a288da", "bg":"#cbbbed"}},
+    "f": {"name": "Forvet", "color":{"base":"#a5673f", "dark":"#985e3a","fade":"#caa68f", "bg":"#e7cfc1"}},
+    "y": {"name":"Yedek", "color":{"base":"#1a1a1a", "dark":"#1a1a1a","fade":"#b9b9b9", "bg":"#d4d4d4"}}
 }
 
 /*-------------------------------------------------------------------------------------------------
@@ -42,7 +57,10 @@ var positions = {
 -----------------------------*/
 
 //-------- Initial Render
-resultsDOM.innerHTML = renderAllPlayers();
+//resultsDOM.innerHTML = renderAllPlayers();
+initUserTeam();
+initTeamSelectMenu();
+/*
 //initialize and render dropdowns
 teamInput.innerHTML += renderDropdown(Object.entries(teams).
     sort(function (a, b) {
@@ -52,17 +70,16 @@ teamInput.innerHTML += renderDropdown(Object.entries(teams).
 );
 positionInput.innerHTML += renderDropdown(Object.entries(positions).slice(0,4));
 $('.ui.dropdown').dropdown();
-
+*/
 //---------- Binding Events
 //Filter Events
-searchInput.addEventListener("input",filterResults);
+//searchInput.addEventListener("input",filterResults);
 
-$('.team.dropdown').dropdown({onChange: filterResults});
-$('.position.dropdown').dropdown({onChange: filterResults});
+//$('.team.dropdown').dropdown({onChange: filterResults});
+//$('.position.dropdown').dropdown({onChange: filterResults});
 
 //Player chosing Events
-var playerItems = document.querySelectorAll(".playerItem");
-playerItems.forEach(player=> player.addEventListener("click", handlePlayerClick));
+userTeamDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
 
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
@@ -73,7 +90,7 @@ playerItems.forEach(player=> player.addEventListener("click", handlePlayerClick)
 /*--------------
 Initial render functions
 */
-
+/*
 function renderAllPlayers(){
     var resultHTML= ""; 
 
@@ -91,6 +108,8 @@ function renderAllPlayers(){
     return resultHTML;
 }
 
+
+
 function renderDropdown(arr){
     var resultHTML= "";
     arr.forEach(function(el){
@@ -99,32 +118,25 @@ function renderDropdown(arr){
     })
     return resultHTML;
 }
-
+*/
 /*--------------
 Event Functions 
 ----------------*/
-function filterResults(){
-    var re = new RegExp(searchInput.value,"gi");
-    var list = document.querySelectorAll(".searchResults > .playerItem");
-    var teamFilter = $('.team.dropdown').dropdown("get value");
-    var positionFilter = $('.position.dropdown').dropdown("get value");
-    list.forEach(function(player){
-        if( re.test(player.dataset.name) &&
-            (teamFilter.includes(player.dataset.team)|| teamFilter.length == 0) &&
-            (positionFilter.includes(player.dataset.position)|| positionFilter.length == 0)
-         ){
-            if(player.classList.contains("hidden")){ player.classList.remove("hidden")};
-        }
-        else{
-            if(!player.classList.contains("hidden")){ player.classList.add("hidden")};
-        }
-    })
-}
-
+//user team player in main screen
 function handlePlayerClick(e){
     e.stopPropagation();
 
     var player = e.currentTarget;
+
+    if(player.classList.contains("empty")){
+        
+        //console.log("aaaaaaaa");
+
+        openMenu(player.dataset.position);
+        
+
+    }
+    /*
     var playerId = player.dataset.id;
     var position = player.dataset.position;
     var team = player.dataset.team;
@@ -159,8 +171,85 @@ function handlePlayerClick(e){
     }
     console.log(userTeam.players,userTeam)
     console.log(player.dataset.selected)
+*/
+};
+
+function handleMenuTeamClick(e) {
+    var element = e.currentTarget;
+    var team = element.dataset.team
+    console.log(team);
+    openPlayerMenu(team,)
+}
+
+function handleMenuPlayerClick(e) {
+    var element = e.currentTarget;
+    //change user team data in backend;
+    //change player item in main screen at corresponding index to new player
+    //close modal    
+    //reset menu data
+}
+
+//Initializing Functions
+function initUserTeam(){
+    //do for each position container
+    positionContainers.forEach(function(pos){
+        var positionID=pos.dataset.position
+        var count = userTeam.strategy[positionID];
+        var name = positions[positionID].name;
+        pos.querySelector(".name").innerHTML=name;
+        //render players specified limit in strategy
+        [...Array(count)].forEach(function(_,i){
+            //if current container is yedek put positon
+            var position = positionID=="y" ? Object.keys(positions)[i] : positionID;
+            pos.querySelector(".players").innerHTML+= createUserPlayerItem("empty", i, position);
+        })        
+    })
+
+}
+
+function initTeamSelectMenu(){
+    var menu = playerSelectMenu.querySelector(".content.team");
+    
+    var teamsArray = Object.entries(teams).
+    sort(function (a, b) {
+        if (a[1].name > b[1].name) {return 1;}
+        if (b[1].name > a[1].name) {return -1;}
+        return 0;});
+
+    teamsArray.forEach(function(team){menu.appendChild(createMenuTeamItem(team[1]));})
+}
+
+
+
+//Helper functions
+function openMenu(position){
+    teamPlayerSelectMenu.dataset.position=position;
+    openTeamMenu();
+}
+
+function openTeamMenu(position){
+    teamSelectMenu.classList.remove("hidden");
+    teamPlayerSelectMenu.classList.add("hidden");
+    playerSelectMenuHeader.innerHTML="Takım Seç..."
+    //console.log(playerSelectMenuHeader)
+    $('.ui.modal.playerSelectMenu').modal('show');
+}
+
+function openPlayerMenu(team){
+    teamPlayerSelectMenu.dataset.team=team;
+    var position=teamPlayerSelectMenu.dataset.position;
+    playerSelectMenuHeader.innerHTML=`Oyuncu Seç... 
+    <a class="ui large label ${position}">${teams[team].name}
+        <div class="detail">${positions[position].name}</div>
+  </a>`
+    teamSelectMenu.classList.add("hidden");
+    teamPlayerSelectMenu.classList.remove("hidden");
+    //list players
 
 };
+
+
+
 
 /*-------------------------------
 HTML Content Generating Functions
@@ -188,3 +277,35 @@ function displayInfo(info){
         infoBar.classList.add("hidden");
     },2000)
 }
+
+function createUserPlayerItem(type, index, position, id, name, team, point){
+    if(type=="empty"){
+        return `<a class="player empty ${position} ui image label large" data-index="${index}" data-position="${position}">
+        <span class="name">Futbolcu Seç...</span>
+        <div class="detail">
+            <i class="plus icon"></i>
+        </div>
+    </a>`
+    }
+    else if(type=="selected"){
+
+    }
+
+    else{
+        console.error("Invalid type of user team player Item")
+    }
+}
+
+function createMenuTeamItem(team){
+    var element = document.createElement("a");
+    element.classList.add("item");
+    element.dataset.team=team.id;
+    element.innerHTML=`${team.name}`
+    element.addEventListener("click",handleMenuTeamClick)
+return element;
+}
+
+function createMenuPlayerItem(){
+    return 
+}
+

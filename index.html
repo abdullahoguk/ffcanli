@@ -9,35 +9,36 @@
     <title>FFCANLI</title>
 </head>
 <body>
-    <div class="searchSection">
-        <div class="userTeam">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, exercitationem sapiente! Minima aliquam ipsa harum distinctio, accusantium voluptatum consequuntur quod nulla soluta alias cum labore nam, optio possimus inventore non!
+    <div class="userTeam">
+        <div class="header">
+            <h1 class="ui">Takımın</h1>
+            <select name="strategy" class="strategy ui fluid dropdown">
+                <option value="">Taktik</option>
+            </select>
+        </div>
+        <div class="positions">
+            <div class="positionContainer k" data-position="k"> <h2 class="name"></h2> <div class="players"></div></div>
+            <div class="positionContainer d" data-position="d"><h2 class="name"></h2> <div class="players"></div></div>
+            <div class="positionContainer os" data-position="os"><h2 class="name"></h2> <div class="players"></div></div>
+            <div class="positionContainer f" data-position="f"><h2 class="name"></h2> <div class="players"></div></div>
+            <div class="positionContainer y" data-position="y"><h2 class="name"></h2> <div class="players"></div></div>
+        </div>
+     </div>
+    
+        
 
-        </div>
-        <div class="filterOperations">
-            <div class="neu search ui input" ><input type="text" name="search" id="search" placeholder="Futbolcu Ara"></div>
-            <select name="team" multiple="" class="team ui fluid dropdown">
-                <option value="">Tüm Takımlar</option>
-            </select>
-            <select name="position" multiple="" class="position ui fluid dropdown">
-                <option value="">Tüm Mevkiler</option>
-            </select>
-        </div>        
-        <div class="neu searchResultsContainer">
-            <div class="playerItemTitle">
-                <span class="team">Takım</span>
-                <span class="name">Futbolcu</span>
-                <span class="position">Mevki</span>
-                <span class="point">Puan</span>
-            </div>
-            <div class="searchResults"></div>
-        </div>
+
         <div class="infoBar hidden ui large red label"></div>
-    </div>
+        <div class="ui modal playerSelectMenu" data-menu="1">
+            <div class="header">Header</div>
+            <div class="team scrolling content ui vertical menu"></div>
+            <div class="players scrolling content ui vertical menu" data-team=""></div>
+        </div>
+    <div class="rek">REK</div>
 </body>
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+<script src="./jquery-3.4.1.min.js" ></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
 <script type="module" src="./main.js"></script>

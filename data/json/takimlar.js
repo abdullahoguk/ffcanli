@@ -137,7 +137,7 @@ var teams={
   },
   "dnz": {
     "id": "dnz",
-    "name": "Denizli S",
+    "name": "Denizlispor",
     "renk": [
       "green",
       "black"
