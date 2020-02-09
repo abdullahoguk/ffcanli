@@ -34,10 +34,11 @@ var players = allPlayers;
 var userTeam = {
     "strategy":{"k":1, "d":4,"os":4, "f":2, "y":4},
     "players":{
-        "k": [[null],null],
-        "d": [[],null],
-        "os": [[],null],
-        "f": [[],null]
+        "k": [],
+        "d": [],
+        "os": [],
+        "f": [],
+        "y": []
     },
     "count":0,
     "teamCount":{},
@@ -132,43 +133,19 @@ function handlePlayerClick(e){
         
         //console.log("aaaaaaaa");
 
-        openMenu(player.dataset.position);
+        openMenu(player.dataset.position,player.dataset.index);
         
 
     }
     /*
-    var playerId = player.dataset.id;
-    var position = player.dataset.position;
-    var team = player.dataset.team;
-    //add player 
-    if(!player.hasAttribute("selected") && userTeam.count < 15){
-        //console.log(userTeam.count)
-        //control same team limit
-        if(userTeam.teamCount[team] ? userTeam.teamCount[team] < 4 : true ){
-            if(position == "k") userTeam.players[position][0] = playerId;
-            else userTeam.players[position][0].push(playerId);
-            player.setAttribute("selected","");
-            userTeam.count++;
-            userTeam.teamCount[team] ? userTeam.teamCount[team]++ : userTeam.teamCount[team]=1;
-        }
-        else{displayInfo("Aynı takımdan en fazla 4 oyuncu seçebilirsin")}
-       
-        
-    }
-
-    //remove player
-    else if(player.hasAttribute("selected")){
-        if(position == "k") userTeam.players[position][0] = null;
-        else userTeam.players[position][0].splice(userTeam.players[position].indexOf(playerId), 1 );
-        player.removeAttribute("selected");
-        userTeam.count--;
-        userTeam.teamCount[team]==1 ? delete userTeam.teamCount[team] : userTeam.teamCount[team]--;;
-        
-    }
-
-    else{
-        displayInfo("Takımın oluşturuldu. Boş yer yok");
-    }
+    
+    //removeplayer
+if(position == "k") userTeam.players[position][0] = null;
+            else userTeam.players[position][0].splice(userTeam.players[position].indexOf(playerId), 1 );
+            player.removeAttribute("selected");
+            userTeam.count--;
+            userTeam.teamCount[team]==1 ? delete userTeam.teamCount[team] : userTeam.teamCount[team]--;; 
+    
     console.log(userTeam.players,userTeam)
     console.log(player.dataset.selected)
 */
@@ -177,16 +154,33 @@ function handlePlayerClick(e){
 function handleMenuTeamClick(e) {
     var element = e.currentTarget;
     var team = element.dataset.team
-    console.log(team);
-    openPlayerMenu(team,)
+    openPlayerMenu(team)
 }
 
 function handleMenuPlayerClick(e) {
     var element = e.currentTarget;
-    //change user team data in backend;
-    //change player item in main screen at corresponding index to new player
-    //close modal    
-    //reset menu data
+    var success="";
+    //console.log(element);
+    var {id, team, position, selectedposition, selectindex} = element.dataset;
+    if(selectedposition==position){
+        if(!element.hasAttribute("selected") && userTeam.count < 15){
+            //control same team limit
+            if(!userTeam.teamCount[team] || userTeam.teamCount[team] < 4 ){
+                //select player
+                success = selectPlayer(id, team, position, selectindex);
+            }
+            else{displayInfo("Aynı takımdan en fazla 4 oyuncu seçebilirsin")}  
+        }
+        else if(element.hasAttribute("selected")){displayInfo("Bu oyuncu zaten kadronda...")}
+        else{displayInfo("Takımın oluşturuldu. Boş yer yok");}
+    }
+    else{displayInfo("secilen mevki ile sectiğiniz oyuncu uyuşmuyor");}
+
+    
+    if(success){
+        closeMenu();
+        resetModalMenu();
+    }
 }
 
 //Initializing Functions
@@ -204,7 +198,6 @@ function initUserTeam(){
             pos.querySelector(".players").innerHTML+= createUserPlayerItem("empty", i, position);
         })        
     })
-
 }
 
 function initTeamSelectMenu(){
@@ -219,12 +212,15 @@ function initTeamSelectMenu(){
     teamsArray.forEach(function(team){menu.appendChild(createMenuTeamItem(team[1]));})
 }
 
-
-
 //Helper functions
-function openMenu(position){
+function openMenu(position,index){
     teamPlayerSelectMenu.dataset.position=position;
+    teamPlayerSelectMenu.dataset.index=index;
     openTeamMenu();
+}
+
+function closeMenu(){
+    $('.ui.modal.playerSelectMenu').modal('hide');
 }
 
 function openTeamMenu(position){
@@ -232,16 +228,21 @@ function openTeamMenu(position){
     teamPlayerSelectMenu.classList.add("hidden");
     playerSelectMenuHeader.innerHTML="Takım Seç..."
     //console.log(playerSelectMenuHeader)
-    $('.ui.modal.playerSelectMenu').modal({onHide : resetModalMenu}).modal('show');
+    $('.ui.modal.playerSelectMenu')
+        .modal({onHide : resetModalMenu})
+        .modal('setting', 'transition', 'fade up')
+        .modal('show');
 }
 
 function openPlayerMenu(team){
     teamPlayerSelectMenu.dataset.team=team;
     var position=teamPlayerSelectMenu.dataset.position;
+    var userTeamIndex=teamPlayerSelectMenu.dataset.index;
     playerSelectMenuHeader.innerHTML=`Oyuncu Seç... 
     <a class="ui large label ${position}">${teams[team].name}
+        <div class="detail">${userTeam.teamCount[team]||0}/4</div>
         <div class="detail">${positions[position].name}</div>
-  </a>`
+    </a>`
     teamSelectMenu.classList.add("hidden");
     teamPlayerSelectMenu.classList.remove("hidden");
     //list players
@@ -251,14 +252,42 @@ function openPlayerMenu(team){
     listablePlayers.forEach(function(player){
         var [id,{team,name,pozisyon:position}]=player;
         var element = createMenuPlayerItem(id,name,position,team);
+        element.dataset.selectedposition=position;
+        element.dataset.selectindex = userTeamIndex;
         teamPlayerSelectMenu.appendChild(element);
     })
 };
 
 function resetModalMenu(){
     teamPlayerSelectMenu.innerHTML="";
+    teamPlayerSelectMenu.dataset.position="";
+    teamPlayerSelectMenu.dataset.team="";
+    teamPlayerSelectMenu.dataset.index="";
 }
 
+
+function selectPlayer(id, team, position, index){
+    index=Number(index);
+    var element=document.querySelector(`.positionContainer.${position} .player[data-index="${index}"]`)
+
+    userTeam.players[position][index] = id;
+    
+    userTeam.count++;
+    userTeam.teamCount[team] ? userTeam.teamCount[team]++ : userTeam.teamCount[team]=1;
+    console.log(element)
+    element.querySelector(".name").innerHTML = `${players[team][id].name}`;
+    element.querySelector(".detail").innerHTML = `${points[id]}`
+
+    var teamDetail = document.createElement("div");
+    teamDetail.classList.add("detail");
+    teamDetail.innerHTML=team;
+    element.appendChild(teamDetail);
+    console.table(userTeam);
+    //remove empty class
+    element.classList.remove("empty");
+    element.classList.add("full");
+    return true;
+}
 
 
 
@@ -328,8 +357,11 @@ function createMenuPlayerItem(id,name,position,team){
     element.dataset.id=id;
     element.dataset.team=team;
     element.dataset.position=position
-    element.innerHTML=`${name}`
+    element.innerHTML=`${name} <a class="ui teal circular label">${points[id]}</a>`
 
+    if(userTeam.players[position].includes(id)||userTeam.players["y"].includes(id)){
+        element.setAttribute("selected","");
+    }
     element.addEventListener("click",handleMenuPlayerClick)
 return element; 
 }
