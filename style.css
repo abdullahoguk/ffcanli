@@ -84,6 +84,8 @@ flex-grow: 1;
   transform: rotate(180deg);*/
 }
 
+
+
 /*Colors*/
 .userTeam .positionContainer.k{
   background-color: #b5f2c3;
@@ -124,6 +126,13 @@ flex-grow: 1;
 .userTeam .positionContainer.y{
   background-color: #d4d4d4;
 }
+
+.positionContainer .player.empty{
+  opacity: .8;
+  background-color: rgba(109, 106, 106, 0.51)!important;
+}
+
+
 
 .modal.ui .header{
   display: flex !important;
