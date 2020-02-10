@@ -84,6 +84,18 @@ flex-grow: 1;
   transform: rotate(180deg);*/
 }
 
+.positionContainer .player .team{
+  display: inline-flex;
+  justify-content: center;
+  background-color: rgba(51, 50, 50, 0.335);
+  width: 3em;
+ margin: -.25em;
+ margin-right: .5em;
+ padding: .25em;
+
+  text-transform: uppercase;
+}
+
 
 
 /*Colors*/
@@ -128,8 +140,7 @@ flex-grow: 1;
 }
 
 .positionContainer .player.empty{
-  opacity: .8;
-  background-color: rgba(109, 106, 106, 0.51)!important;
+  opacity: .6;
 }
 
 
@@ -143,16 +154,16 @@ flex-grow: 1;
 
 /*Modal*/
 
-.menu.team .colors{
+.menu.team .colors, .positionContainer .player .colors{
   display: inline-flex;
   border:2px solid gray;
+  margin-right: .4em;
 }
 
-.menu.team .colors *{
+.menu.team .colors *, .positionContainer .player .colors *{
   width: 12px;
   height: 12px;
   display: inline-block;
-  
 }
 
 .menu.players [selected=""]{

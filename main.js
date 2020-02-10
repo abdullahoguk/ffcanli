@@ -42,7 +42,8 @@ var userTeam = {
     },
     "count":0,
     "teamCount":{},
-    "captain":"null"
+    "captain":"null",
+    "new":true
 }
 
 var positions = {
@@ -128,12 +129,14 @@ function handlePlayerClick(e){
     e.stopPropagation();
 
     var player = e.currentTarget;
+    var yedek = player.classList.contains("yedek")|| false;
+    
 
     if(player.classList.contains("empty")){
         
         //console.log("aaaaaaaa");
-
-        openMenu(player.dataset.position,player.dataset.index);
+        
+        openMenu(player.dataset.position, player.dataset.index, yedek);
         
 
     }
@@ -190,14 +193,19 @@ function initUserTeam(){
         var positionID=pos.dataset.position
         var count = userTeam.strategy[positionID];
         var name = positions[positionID].name;
+        var yedek = (positionID=="y") || false;
         pos.querySelector(".name").innerHTML=name;
         //render players specified limit in strategy
         [...Array(count)].forEach(function(_,i){
             //if current container is yedek put positon
-            var position = positionID=="y" ? Object.keys(positions)[i] : positionID;
-            pos.querySelector(".players").innerHTML+= createUserPlayerItem("empty", i, position);
+            var position = positionID == "y" ? Object.keys(positions)[i] : positionID;
+            pos.querySelector(".players").innerHTML+= createUserPlayerItem("empty", i, position, yedek);
         })        
     })
+}
+
+function loadUserTeam(){
+
 }
 
 function initTeamSelectMenu(){
@@ -213,9 +221,11 @@ function initTeamSelectMenu(){
 }
 
 //Helper functions
-function openMenu(position,index){
+function openMenu(position, index, yedek){
+    
     teamPlayerSelectMenu.dataset.position=position;
     teamPlayerSelectMenu.dataset.index=index;
+    if(yedek) teamPlayerSelectMenu.setAttribute("yedek","");
     openTeamMenu();
 }
 
@@ -224,6 +234,7 @@ function closeMenu(){
 }
 
 function openTeamMenu(position){
+    
     teamSelectMenu.classList.remove("hidden");
     teamPlayerSelectMenu.classList.add("hidden");
     playerSelectMenuHeader.innerHTML="Takım Seç..."
@@ -232,6 +243,7 @@ function openTeamMenu(position){
         .modal({onHide : resetModalMenu})
         .modal('setting', 'transition', 'fade up')
         .modal('show');
+       
 }
 
 function openPlayerMenu(team){
@@ -247,7 +259,6 @@ function openPlayerMenu(team){
     teamPlayerSelectMenu.classList.remove("hidden");
     //list players
     var listablePlayers = Object.entries(players[team]).filter(function (player){return player[1].pozisyon==position})
-    console.log(listablePlayers);
     //console.log( Object.entries(players[team]))
     listablePlayers.forEach(function(player){
         var [id,{team,name,pozisyon:position}]=player;
@@ -263,26 +274,36 @@ function resetModalMenu(){
     teamPlayerSelectMenu.dataset.position="";
     teamPlayerSelectMenu.dataset.team="";
     teamPlayerSelectMenu.dataset.index="";
+    teamPlayerSelectMenu.removeAttribute("yedek");
 }
 
 
 function selectPlayer(id, team, position, index){
-    index=Number(index);
-    var element=document.querySelector(`.positionContainer.${position} .player[data-index="${index}"]`)
-
-    userTeam.players[position][index] = id;
+    index = Number(index);
+    var parent = teamPlayerSelectMenu.hasAttribute("yedek") ? "y" :  position;
+    var element = document.querySelector(`.positionContainer.${parent} .player[data-index="${index}"]`)
+    userTeam.players[parent][index] = id;
     
     userTeam.count++;
     userTeam.teamCount[team] ? userTeam.teamCount[team]++ : userTeam.teamCount[team]=1;
     console.log(element)
-    element.querySelector(".name").innerHTML = `${players[team][id].name}`;
+    element.querySelector(".name").innerHTML = `  ${players[team][id].name}  `;
     element.querySelector(".detail").innerHTML = `${points[id]}`
 
     var teamDetail = document.createElement("div");
-    teamDetail.classList.add("detail");
+    teamDetail.classList.add("team");
     teamDetail.innerHTML=team;
-    element.appendChild(teamDetail);
-    console.table(userTeam);
+    element.prepend(teamDetail);
+    //console.table(userTeam);
+    /*
+    var colors=document.createElement("div");
+    colors.classList.add("colors");
+    colors.innerHTML=`
+    <span class="renk1" style="background-color:${teams[team].renk[0]}"></span>
+    <span class="renk2" style="background-color:${teams[team].renk[1]}"></span>  `
+    element.prepend(colors)
+*/
+
     //remove empty class
     element.classList.remove("empty");
     element.classList.add("full");
@@ -318,9 +339,10 @@ function displayInfo(info){
     },2000)
 }
 
-function createUserPlayerItem(type, index, position, id, name, team, point){
+function createUserPlayerItem(type, index, position, yedek, id, name, team, point){
+    var yedek = yedek ? "yedek": ""; 
     if(type=="empty"){
-        return `<a class="player empty ${position} ui image label large" data-index="${index}" data-position="${position}">
+        return `<a class="player empty ${yedek} ${position} ui image label large" data-index="${index}" data-position="${position}">
         <span class="name">Futbolcu Seç...</span>
         <div class="detail">
             <i class="plus icon"></i>
