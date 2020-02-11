@@ -89,13 +89,21 @@ flex-grow: 1;
   justify-content: center;
   background-color: rgba(51, 50, 50, 0.335);
   width: 3em;
- margin: -.25em;
- margin-right: .5em;
- padding: .25em;
+  margin: -.25em;
+  margin-right: .5em;
+  padding: .25em;
 
   text-transform: uppercase;
 }
 
+
+.positionContainer .player .teamPlayerOperations{
+  display: inline-flex;
+  justify-content: center;
+  background-color: rgba(51, 50, 50, 0.335);
+  opacity: 1!important;
+  margin-left: 1em!important;
+}
 
 
 /*Colors*/

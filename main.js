@@ -288,7 +288,7 @@ function selectPlayer(id, team, position, index){
     userTeam.teamCount[team] ? userTeam.teamCount[team]++ : userTeam.teamCount[team]=1;
     console.log(element)
     element.querySelector(".name").innerHTML = `  ${players[team][id].name}  `;
-    element.querySelector(".detail").innerHTML = `${points[id]}`
+    element.querySelector(".detail").innerHTML = `${points[id] == null ? "0" : points[id]}`
 
     var teamDetail = document.createElement("div");
     teamDetail.classList.add("team");
@@ -303,6 +303,22 @@ function selectPlayer(id, team, position, index){
     <span class="renk2" style="background-color:${teams[team].renk[1]}"></span>  `
     element.prepend(colors)
 */
+var operations = document.createElement("div");
+operations.classList.add(..."ui icon top left pointing dropdown detail teamPlayerOperations".split(" "));
+operations.innerHTML=
+`
+<i class="ellipsis vertical icon"></i>
+  <div class="menu">
+    <div class="header"> ${players[team][id].name}</div>
+    <div class="item"><i class="exchange icon"></i> Değiştir</div>
+    <div class="item"><i class="user secret icon"></i> Kaptan Yap</div>
+    <div class="item"><i class="trash alternate icon"></i> Sil</div>
+  </div>
+ `
+
+element.appendChild(operations);
+$(element).children(".ui.dropdown").dropdown();
+
 
     //remove empty class
     element.classList.remove("empty");
@@ -379,7 +395,7 @@ function createMenuPlayerItem(id,name,position,team){
     element.dataset.id=id;
     element.dataset.team=team;
     element.dataset.position=position
-    element.innerHTML=`${name} <a class="ui teal circular label">${points[id]}</a>`
+    element.innerHTML=`${name} <a class="ui teal circular label">${points[id] == null ? "0" : points[id] }</a>`
 
     if(userTeam.players[position].includes(id)||userTeam.players["y"].includes(id)){
         element.setAttribute("selected","");

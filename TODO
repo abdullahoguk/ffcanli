@@ -1,7 +1,12 @@
-yedek secim hatasını düzelt
+--yedek secim hatasını düzelt
 user teami lokale kaydet
-ekrandaki kadroyu userTeame bakarak olusturan fonksiyon
-pozisyon
+ekrandaki kadroyu userTeame bakarak olusturan fonksiyon loadUserTeam 
+    :yeni datadaki her oyuncuyu ekrana yazarken, ekrandaki eskisiyle  tek tek karşılastır aynıysa değiştirme
+    :loadUser teami her sayfa yenilemede, oyuncu secmede, oyuncu silmede değiştirmede çalıştır 
+taktik
+kadro güncel tiki
+üstte toplam puanı göster
+transport puanlar.js to google spreadsheet
 
 -----PWA
 manifest json icons 192 all generate
@@ -11,7 +16,6 @@ add to homescreen badge
 ---
 secilen oyuncuya tıklandıgında popup cıkar > foto, sil, kaptan yap gibi şeyer göster
 secilen oyuncuyu tüm oyuncular listesinden bir daha tkladıgında secimi kaldır
-üstte toplam puanı göster
 aynı takımdan secilebilecek oyuncu sayısı limiti/limiti aştıgında toast bildirim
 yedek ve asilleri bir yere koy puana göre sırala sondakini(kucuk olan) yedek say ve yedekleri puana dahil etme
 iki kaleci secmeye calıstıgında toast uyar
@@ -20,7 +24,6 @@ secilen oyncuları listede filtreleme
 taktik dropdown
 error bar at bottom
 
-kadro güncel tiki
 
 
 -------- Mevkiiler
