@@ -83,7 +83,7 @@ $('.ui.dropdown').dropdown();
 //Player chosing Events
 userTeamDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
 window.addEventListener("hashchange", function(e) {
-    if(e.oldURL.length > e.newURL.length){
+    if(e.oldURL.split("#")[1]=="futbolcusec"){
         closeMenu();
         resetModalMenu();
     }
@@ -280,7 +280,7 @@ function initTeamSelectMenu(){
 
 //Helper functions
 function openMenu(position, index, yedek){
-    
+    location.hash= "#futbolcusec";
     teamPlayerSelectMenu.dataset.position=position;
     teamPlayerSelectMenu.dataset.index=index;
     if(yedek) teamPlayerSelectMenu.setAttribute("yedek","");
@@ -327,6 +327,7 @@ function openPlayerMenu(team){
 };
 
 function resetModalMenu(){
+    history.pushState("", document.title, window.location.pathname + window.location.search);
     teamPlayerSelectMenu.innerHTML="";
     teamPlayerSelectMenu.dataset.position="";
     teamPlayerSelectMenu.dataset.team="";
@@ -423,7 +424,7 @@ function displayInfo(info){
 function createUserPlayerItem(type, index, position, yedek, id, name, team, point){
     var yedek = yedek ? "yedek": ""; 
     if(type=="empty"){
-        return `<a href="#futbolcusec" class="player empty ${yedek} ${position} ui image label large" data-index="${index}" data-position="${position}">
+        return `<a class="player empty ${yedek} ${position} ui image label large" data-index="${index}" data-position="${position}">
         <span class="name">Futbolcu Seç...</span>
         <div class="detail">
             <i class="plus icon"></i>
