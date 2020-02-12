@@ -329,9 +329,9 @@ function openPlayerMenu(team){
 function resetModalMenu(){
     history.pushState("", document.title, window.location.pathname + window.location.search);
     teamPlayerSelectMenu.innerHTML="";
-    teamPlayerSelectMenu.dataset.position="";
-    teamPlayerSelectMenu.dataset.team="";
-    teamPlayerSelectMenu.dataset.index="";
+    teamPlayerSelectMenu.removeAttribute("data-position");
+    teamPlayerSelectMenu.removeAttribute("data-team");
+    teamPlayerSelectMenu.removeAttribute("data-index");
     teamPlayerSelectMenu.removeAttribute("yedek");
 }
 
