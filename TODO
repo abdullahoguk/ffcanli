@@ -1,30 +1,43 @@
---yedek secim hatasını düzelt
 user teami lokale kaydet
-ekrandaki kadroyu userTeame bakarak olusturan fonksiyon loadUserTeam 
+
+lokale kaydetme fonksiyonu (save)
+    :her secim, silme, değistirme, kaptan yapma, thktik değiştirme, kadro güncel değiştirme işleminde cağırılacak
+
+oyuncu sil (deltePlayer): oyuncuyu, takım limitini arkada sil loadUserTeam çağır hack with event propagation
+oyuncu değiştir (switchPlayer): olan oyuncuyu metotla sil, menuyu sanki boş slot tıklanmıs gibi çağır 
+oyuncu secmeyi 
+
+(selectUserUI) metodu parametrede verilen oyuncuyu kadro arayüzünde ilgili yere koyan metot
+    :Hem kullanıcı oyuncu secerken(selectUser içinde) hem sayfaya yeni girildiğinde takım load edilirken(loadUserTeam içinde) kullanılacak
+
+(loadUserTeam) ekrandaki kadroyu userTeame bakarak olusturan fonksiyon  
     :yeni datadaki her oyuncuyu ekrana yazarken, ekrandaki eskisiyle  tek tek karşılastır aynıysa değiştirme
-    :loadUser teami her sayfa yenilemede, oyuncu secmede, oyuncu silmede değiştirmede çalıştır 
-taktik
+    :loadUser teami her sayfa yenilemede, oyuncu secmede, oyuncu silmede, taktik değiştirmede değiştirmede çalıştır 
+
+Kaptan yap metodu
+    :userTeam verisindeki kaptanı değiştir secilen kaptanın arayüzde başına renkli kapan iconu koy
+    :onceki kaptanın ekranda gözüken puanını kontrol et yarıya indir yenisini 2 katına cıkar
+
+puan hesapla metodu
+    :puanı hesaplarken kaptanı, kadro güncel ikini ve yedekleri hesaba katarak topla
+    :her secim, silme, değistirme, kaptan yapma işleminde cağırılacak ve ekrandaki puanı yenileyecek
+
+taktik değistirme fonksiyonu
+    :taktik değişince arkada taktik ve oyuncular dizisi, secilen oyuncu takım verilerini değiştir loadUserTeam metodunu cağır
+
 kadro güncel tiki
 üstte toplam puanı göster
 transport puanlar.js to google spreadsheet
+error bar seçim menusune
+
 
 -----PWA
 manifest json icons 192 all generate
 add to homescreen badge
 
-
 ---
 secilen oyuncuya tıklandıgında popup cıkar > foto, sil, kaptan yap gibi şeyer göster
-secilen oyuncuyu tüm oyuncular listesinden bir daha tkladıgında secimi kaldır
-aynı takımdan secilebilecek oyuncu sayısı limiti/limiti aştıgında toast bildirim
 yedek ve asilleri bir yere koy puana göre sırala sondakini(kucuk olan) yedek say ve yedekleri puana dahil etme
-iki kaleci secmeye calıstıgında toast uyar
-player iteme yanına iki buton ekle yedek asil
-secilen oyncuları listede filtreleme
-taktik dropdown
-error bar at bottom
-
-
 
 -------- Mevkiiler
 

@@ -163,7 +163,6 @@ function handleMenuTeamClick(e) {
 function handleMenuPlayerClick(e) {
     var element = e.currentTarget;
     var success="";
-    //console.log(element);
     var {id, team, position, selectedposition, selectindex} = element.dataset;
     if(selectedposition==position){
         if(!element.hasAttribute("selected") && userTeam.count < 15){
@@ -185,6 +184,59 @@ function handleMenuPlayerClick(e) {
         resetModalMenu();
     }
 }
+
+//User Team player operations events
+function deletePlayer(e){
+    //start propagating to hach switch player
+    if(e.currentTarget.classList.contains("delete")) e.stopPropagation();
+    var player = e.currentTarget.closest(".full.player");
+    var position = player.dataset.position;
+    var index = Number(player.dataset.index);
+    var parent = player.classList.contains("yedek") ? "y" : position;
+
+    var id = (player.dataset.id == userTeam.players[parent][index]) ? player.dataset.id : null;
+    var team = (player.dataset.team == players[player.dataset.team][id]["team"]) ? player.dataset.team : null;
+
+    var furtherCheck = ((player == document.querySelector(`.positionContainer.${parent} .player[data-index="${index}"]`)))
+
+    if(furtherCheck){
+        //delete user info and associated innfo from userTeam data
+        userTeam.players[parent][index] = null;
+        userTeam.count--;
+        userTeam.teamCount[team]--;
+
+        if(userTeam.captain==id) userTeam.captain=null;
+
+        //hide dropdown befor deleting from dom to prevent semantic ui transition errors
+        $(player).children(".ui.dropdown").dropdown('hide');
+
+        //empty content of html element
+        player.innerHTML=` 
+        <span class="name">Futbolcu Seç...</span>
+        <div class="detail">
+            <i class="plus icon"></i>
+        </div>`
+        
+        //remove selected player related attributes
+        player.removeAttribute("data-id","data-team");
+
+        //add empty class
+        player.classList.add("empty");
+        player.classList.remove("full");
+        return true;
+    }
+}
+
+function changePlayer(e){
+deletePlayer(e);
+}
+
+function makeCaptain(e){
+
+}
+
+
+//setInterval(() => {console.table(userTeam)}, 2000);
 
 //Initializing Functions
 function initUserTeam(){
@@ -238,7 +290,6 @@ function openTeamMenu(position){
     teamSelectMenu.classList.remove("hidden");
     teamPlayerSelectMenu.classList.add("hidden");
     playerSelectMenuHeader.innerHTML="Takım Seç..."
-    //console.log(playerSelectMenuHeader)
     $('.ui.modal.playerSelectMenu')
         .modal({onHide : resetModalMenu})
         .modal('setting', 'transition', 'fade up')
@@ -283,10 +334,11 @@ function selectPlayer(id, team, position, index){
     var parent = teamPlayerSelectMenu.hasAttribute("yedek") ? "y" :  position;
     var element = document.querySelector(`.positionContainer.${parent} .player[data-index="${index}"]`)
     userTeam.players[parent][index] = id;
+    element.dataset.id = id;
+    element.dataset.team = team;
     
     userTeam.count++;
     userTeam.teamCount[team] ? userTeam.teamCount[team]++ : userTeam.teamCount[team]=1;
-    console.log(element)
     element.querySelector(".name").innerHTML = `  ${players[team][id].name}  `;
     element.querySelector(".detail").innerHTML = `${points[id] == null ? "0" : points[id]}`
 
@@ -310,23 +362,30 @@ operations.innerHTML=
 <i class="ellipsis vertical icon"></i>
   <div class="menu">
     <div class="header"> ${players[team][id].name}</div>
-    <div class="item"><i class="exchange icon"></i> Değiştir</div>
-    <div class="item"><i class="user secret icon"></i> Kaptan Yap</div>
-    <div class="item"><i class="trash alternate icon"></i> Sil</div>
+    <div class="item change"><i class="exchange icon"></i> Değiştir</div>
+    <div class="item captain"><i class="user secret icon"></i> Kaptan Yap</div>
+    <div class="item delete"><i class="trash alternate icon"></i> Sil</div>
   </div>
  `
 
 element.appendChild(operations);
 $(element).children(".ui.dropdown").dropdown();
 
+var deleteButton = element.querySelector(".item.delete");
+deleteButton.addEventListener("click", deletePlayer);
 
-    //remove empty class
-    element.classList.remove("empty");
-    element.classList.add("full");
-    return true;
+var changeButton = element.querySelector(".item.change");
+changeButton.addEventListener("click", changePlayer);
+
+var captainButton = element.querySelector(".item.captain");
+captainButton.addEventListener("click", makeCaptain);
+
+
+//remove empty class
+element.classList.remove("empty");
+element.classList.add("full");
+return true;
 }
-
-
 
 /*-------------------------------
 HTML Content Generating Functions
