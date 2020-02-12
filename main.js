@@ -82,7 +82,13 @@ $('.ui.dropdown').dropdown();
 
 //Player chosing Events
 userTeamDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
-
+window.addEventListener("hashchange", function(e) {
+    if(e.oldURL.length > e.newURL.length){
+        closeMenu();
+        resetModalMenu();
+    }
+    
+});
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
 
@@ -228,7 +234,7 @@ function deletePlayer(e){
 }
 
 function changePlayer(e){
-deletePlayer(e);
+    deletePlayer(e);
 }
 
 function makeCaptain(e){
@@ -363,7 +369,7 @@ operations.innerHTML=
   <div class="menu">
     <div class="header"> ${players[team][id].name}</div>
     <div class="item change"><i class="exchange icon"></i> Değiştir</div>
-    <div class="item captain"><i class="user secret icon"></i> Kaptan Yap</div>
+    <div class="item captain ${parent=="y" ? "disabled":""}"><i class="user secret icon"></i> Kaptan Yap</div>
     <div class="item delete"><i class="trash alternate icon"></i> Sil</div>
   </div>
  `
@@ -417,7 +423,7 @@ function displayInfo(info){
 function createUserPlayerItem(type, index, position, yedek, id, name, team, point){
     var yedek = yedek ? "yedek": ""; 
     if(type=="empty"){
-        return `<a class="player empty ${yedek} ${position} ui image label large" data-index="${index}" data-position="${position}">
+        return `<a href="#futbolcusec" class="player empty ${yedek} ${position} ui image label large" data-index="${index}" data-position="${position}">
         <span class="name">Futbolcu Seç...</span>
         <div class="detail">
             <i class="plus icon"></i>
