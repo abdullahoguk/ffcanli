@@ -30,9 +30,9 @@ html body{
   align-items: center;
   justify-content: center;
   display: grid;
-  grid-gap: .5em;
+  grid-gap: .2em;
   grid-template-columns: 100%;
-  grid-template-rows: 9fr 1fr;
+  grid-template-rows: 8fr 1fr;
   grid-template-areas: 
     "userTeam"
     "rek";
@@ -66,10 +66,11 @@ html body{
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 0;
 }
 
 .positionContainer .players{
-  padding: 1em;
+  padding: .5em;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -94,7 +95,7 @@ html body{
     display: flex;
     flex-direction: row;
     flex-grow: 1;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
   }
 
@@ -102,7 +103,7 @@ html body{
     min-width: 10vw;
     margin: .5em!important;
     display: flex!important;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     font-size: .8em!important;
   }

@@ -82,6 +82,7 @@ $('.ui.dropdown').dropdown();
 
 //Player chosing Events
 userTeamDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
+//close and reset modal when user press back button when url has futbolcusec hash
 window.addEventListener("hashchange", function(e) {
     if(e.oldURL.split("#")[1]=="futbolcusec"){
         closeMenu();
@@ -89,6 +90,11 @@ window.addEventListener("hashchange", function(e) {
     }
     
 });
+
+//fix modal touch scroll bug 
+$('.ui.modal').on('touchmove', function(event) {
+    event.stopImmediatePropagation();
+  })
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
 
@@ -295,10 +301,11 @@ function openTeamMenu(position){
     
     teamSelectMenu.classList.remove("hidden");
     teamPlayerSelectMenu.classList.add("hidden");
-    playerSelectMenuHeader.innerHTML="Takım Seç..."
+    playerSelectMenuHeader.innerHTML="Takım..."
     $('.ui.modal.playerSelectMenu')
         .modal({onHide : resetModalMenu})
         .modal('setting', 'transition', 'fade up')
+        .modal('setting', 'duration', '50')
         .modal('show');
        
 }
@@ -307,8 +314,8 @@ function openPlayerMenu(team){
     teamPlayerSelectMenu.dataset.team=team;
     var position=teamPlayerSelectMenu.dataset.position;
     var userTeamIndex=teamPlayerSelectMenu.dataset.index;
-    playerSelectMenuHeader.innerHTML=`Oyuncu Seç... 
-    <a class="ui large label ${position}">${teams[team].name}
+    playerSelectMenuHeader.innerHTML=`Futbolcu... 
+    <a class="ui medium label ${position}">${teams[team].name}
         <div class="detail">${userTeam.teamCount[team]||0}/4</div>
         <div class="detail">${positions[position].name}</div>
     </a>`

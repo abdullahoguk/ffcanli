@@ -3,14 +3,12 @@ user teami lokale kaydet
 lokale kaydetme fonksiyonu (save)
     :her secim, silme, değistirme, kaptan yapma, thktik değiştirme, kadro güncel değiştirme işleminde cağırılacak
 
-oyuncu sil (deltePlayer): oyuncuyu, takım limitini arkada sil loadUserTeam çağır hack with event propagation
-oyuncu değiştir (switchPlayer): olan oyuncuyu metotla sil, menuyu sanki boş slot tıklanmıs gibi çağır 
-oyuncu secmeyi 
+oyuncu ismi karakter limiti
 
 (selectUserUI) metodu parametrede verilen oyuncuyu kadro arayüzünde ilgili yere koyan metot
     :Hem kullanıcı oyuncu secerken(selectUser içinde) hem sayfaya yeni girildiğinde takım load edilirken(loadUserTeam içinde) kullanılacak
 
-(loadUserTeam) ekrandaki kadroyu userTeame bakarak olusturan fonksiyon  
+(loadUserTeam) initUserTeam i forkla. ekrandaki kadroyu userTeame bakarak olusturan fonksiyon  
     :yeni datadaki her oyuncuyu ekrana yazarken, ekrandaki eskisiyle  tek tek karşılastır aynıysa değiştirme
     :loadUser teami her sayfa yenilemede, oyuncu secmede, oyuncu silmede, taktik değiştirmede değiştirmede çalıştır 
 
