@@ -16,10 +16,7 @@ var playerSelectMenuHeader = playerSelectMenu.querySelector("div.header");
 var teamSelectMenu = playerSelectMenu.querySelector(".team.content.menu");
 var teamPlayerSelectMenu = playerSelectMenu.querySelector(".players.content.menu");
 
-
-
 //data elements
-
 var players = allPlayers;
 
 /*Object.entries(allPlayers).sort(function (a, b) {
@@ -27,9 +24,6 @@ var players = allPlayers;
     if (teams[b[0]].name > teams[a[0]].name) {return -1;}
     return 0;})
     */
-//sort teams
-//var teams = teams;
-
 
 var userTeam = {
     "strategy":{"k":1, "d":4,"os":4, "f":2, "y":4},
@@ -59,26 +53,8 @@ var positions = {
 -----------------------------*/
 
 //-------- Initial Render
-//resultsDOM.innerHTML = renderAllPlayers();
 initUserTeam();
 initTeamSelectMenu();
-/*
-//initialize and render dropdowns
-teamInput.innerHTML += renderDropdown(Object.entries(teams).
-    sort(function (a, b) {
-        if (a[1].name > b[1].name) {return 1;}
-        if (b[1].name > a[1].name) {return -1;}
-        return 0;})
-);
-positionInput.innerHTML += renderDropdown(Object.entries(positions).slice(0,4));
-$('.ui.dropdown').dropdown();
-*/
-//---------- Binding Events
-//Filter Events
-//searchInput.addEventListener("input",filterResults);
-
-//$('.team.dropdown').dropdown({onChange: filterResults});
-//$('.position.dropdown').dropdown({onChange: filterResults});
 
 //Player chosing Events
 userTeamDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
@@ -88,7 +64,6 @@ window.addEventListener("hashchange", function(e) {
         closeMenu();
         resetModalMenu();
     }
-    
 });
 
 //fix modal touch scroll bug 
@@ -98,80 +73,37 @@ $('.ui.modal').on('touchmove', function(event) {
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
 
+
 /*-------------------------------------------------
                     FUNCTIONS
 -------------------------------------------------*/
 /*--------------
 Initial render functions
 */
-/*
-function renderAllPlayers(){
-    var resultHTML= ""; 
-
-    players.forEach(function (team){
-        var teamName=team[0];
-        var teamPlayers = Object.entries(team[1]);
-
-        teamPlayers.forEach(function(player){
-            var [id,team,name,position,point] = [player[0], teamName, player[1].name, player[1].pozisyon, points[player[0]]];
-            point = (point == null) ? 0 : points;
-            
-            resultHTML+=createResultItem(id,team,name,position,point);
-        })
-    })
-    return resultHTML;
-}
 
 
-
-function renderDropdown(arr){
-    var resultHTML= "";
-    arr.forEach(function(el){
-        var [value,name]=[el[0],el[1].name];
-        resultHTML+=createDropdownItem(value,name);
-    })
-    return resultHTML;
-}
-*/
 /*--------------
 Event Functions 
 ----------------*/
-//user team player in main screen
+//user team player in main screen event
 function handlePlayerClick(e){
     e.stopPropagation();
 
     var player = e.currentTarget;
     var yedek = player.classList.contains("yedek")|| false;
-    
-
     if(player.classList.contains("empty")){
-        
-        //console.log("aaaaaaaa");
-        
         openMenu(player.dataset.position, player.dataset.index, yedek);
-        
-
     }
-    /*
-    
-    //removeplayer
-if(position == "k") userTeam.players[position][0] = null;
-            else userTeam.players[position][0].splice(userTeam.players[position].indexOf(playerId), 1 );
-            player.removeAttribute("selected");
-            userTeam.count--;
-            userTeam.teamCount[team]==1 ? delete userTeam.teamCount[team] : userTeam.teamCount[team]--;; 
-    
-    console.log(userTeam.players,userTeam)
-    console.log(player.dataset.selected)
-*/
 };
 
+//Teams in first menu in modal event
 function handleMenuTeamClick(e) {
     var element = e.currentTarget;
     var team = element.dataset.team
     openPlayerMenu(team)
 }
 
+//players in second menu in modal event
 function handleMenuPlayerClick(e) {
     var element = e.currentTarget;
     var success="";
@@ -189,7 +121,6 @@ function handleMenuPlayerClick(e) {
         else{displayInfo("Takımın oluşturuldu. Boş yer yok");}
     }
     else{displayInfo("secilen mevki ile sectiğiniz oyuncu uyuşmuyor");}
-
     
     if(success){
         closeMenu();
@@ -199,7 +130,7 @@ function handleMenuPlayerClick(e) {
 
 //User Team player operations events
 function deletePlayer(e){
-    //start propagating to hach switch player
+    //start propagating to hack switch player
     if(e.currentTarget.classList.contains("delete")) e.stopPropagation();
     var player = e.currentTarget.closest(".full.player");
     var position = player.dataset.position;
@@ -210,28 +141,25 @@ function deletePlayer(e){
     var team = (player.dataset.team == players[player.dataset.team][id]["team"]) ? player.dataset.team : null;
 
     var furtherCheck = ((player == document.querySelector(`.positionContainer.${parent} .player[data-index="${index}"]`)))
-
     if(furtherCheck){
-        //delete user info and associated innfo from userTeam data
+        //delete user info and associated info from userTeam data
         userTeam.players[parent][index] = null;
         userTeam.count--;
         userTeam.teamCount[team]--;
-
         if(userTeam.captain==id) userTeam.captain=null;
 
-        //hide dropdown befor deleting from dom to prevent semantic ui transition errors
+        //hide dropdown before deleting from dom to prevent semantic ui transition errors
         $(player).children(".ui.dropdown").dropdown('hide');
 
-        //empty content of html element
+        //empty content of user player item
         player.innerHTML=` 
         <span class="name">Futbolcu Seç...</span>
         <div class="detail">
             <i class="plus icon"></i>
         </div>`
         
-        //remove selected player related attributes
+        //remove/change selected player related attributes/classses
         player.removeAttribute("data-id","data-team");
-
         //add empty class
         player.classList.add("empty");
         player.classList.remove("full");
@@ -246,9 +174,6 @@ function changePlayer(e){
 function makeCaptain(e){
 
 }
-
-
-//setInterval(() => {console.table(userTeam)}, 2000);
 
 //Initializing Functions
 function initUserTeam(){
@@ -280,7 +205,6 @@ function initTeamSelectMenu(){
         if (a[1].name > b[1].name) {return 1;}
         if (b[1].name > a[1].name) {return -1;}
         return 0;});
-
     teamsArray.forEach(function(team){menu.appendChild(createMenuTeamItem(team[1]));})
 }
 
@@ -298,7 +222,6 @@ function closeMenu(){
 }
 
 function openTeamMenu(position){
-    
     teamSelectMenu.classList.remove("hidden");
     teamPlayerSelectMenu.classList.add("hidden");
     playerSelectMenuHeader.innerHTML="Takım..."
@@ -307,7 +230,6 @@ function openTeamMenu(position){
         .modal('setting', 'transition', 'fade up')
         .modal('setting', 'duration', '50')
         .modal('show');
-       
 }
 
 function openPlayerMenu(team){
@@ -341,7 +263,6 @@ function resetModalMenu(){
     teamPlayerSelectMenu.removeAttribute("data-index");
     teamPlayerSelectMenu.removeAttribute("yedek");
 }
-
 
 function selectPlayer(id, team, position, index){
     index = Number(index);
@@ -473,6 +394,6 @@ function createMenuPlayerItem(id,name,position,team){
         element.setAttribute("selected","");
     }
     element.addEventListener("click",handleMenuPlayerClick)
-return element; 
+    return element; 
 }
 
