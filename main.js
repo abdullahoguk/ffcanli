@@ -345,60 +345,59 @@ function resetModalMenu(){
 
 function selectPlayer(id, team, position, index){
     index = Number(index);
+    //class of position container that lists user team player of that position
     var parent = teamPlayerSelectMenu.hasAttribute("yedek") ? "y" :  position;
     var element = document.querySelector(`.positionContainer.${parent} .player[data-index="${index}"]`)
+    //change/add player in data user team data object (position array, total selected players, same team limit)
     userTeam.players[parent][index] = id;
+    userTeam.count++;
+    userTeam.teamCount[team] ? userTeam.teamCount[team]++ : userTeam.teamCount[team]=1;
+        
+    //add data attributes to ui team player item
     element.dataset.id = id;
     element.dataset.team = team;
     
-    userTeam.count++;
-    userTeam.teamCount[team] ? userTeam.teamCount[team]++ : userTeam.teamCount[team]=1;
-    element.querySelector(".name").innerHTML = `  ${players[team][id].name}  `;
+    //truncate string for long player names
+    var name = players[team][id]["name"];
+    name = name.length < 14 ? name : name.substring(0,12)+"...";
+    element.querySelector(".name").innerHTML = ` ${name} `;
+
     element.querySelector(".detail").innerHTML = `${points[id] == null ? "0" : points[id]}`
 
+    //add team of selected player to left of player item
     var teamDetail = document.createElement("div");
     teamDetail.classList.add("team");
     teamDetail.innerHTML=team;
     element.prepend(teamDetail);
-    //console.table(userTeam);
-    /*
-    var colors=document.createElement("div");
-    colors.classList.add("colors");
-    colors.innerHTML=`
-    <span class="renk1" style="background-color:${teams[team].renk[0]}"></span>
-    <span class="renk2" style="background-color:${teams[team].renk[1]}"></span>  `
-    element.prepend(colors)
-*/
-var operations = document.createElement("div");
-operations.classList.add(..."ui icon top left pointing dropdown detail teamPlayerOperations".split(" "));
-operations.innerHTML=
-`
-<i class="ellipsis vertical icon"></i>
-  <div class="menu">
-    <div class="header"> ${players[team][id].name}</div>
-    <div class="item change"><i class="exchange icon"></i> Değiştir</div>
-    <div class="item captain ${parent=="y" ? "disabled":""}"><i class="user secret icon"></i> Kaptan Yap</div>
-    <div class="item delete"><i class="trash alternate icon"></i> Sil</div>
-  </div>
- `
 
-element.appendChild(operations);
-$(element).children(".ui.dropdown").dropdown();
+    //add dropdown button for player operations
+    var operations = document.createElement("div");
+    operations.classList.add(..."ui icon top left pointing dropdown detail teamPlayerOperations".split(" "));
+    operations.innerHTML=
+    `<i class="ellipsis vertical icon"></i>
+    <div class="menu">
+        <div class="header"> ${players[team][id].name}</div>
+        <div class="item change"><i class="exchange icon"></i> Değiştir</div>
+        <div class="item captain ${parent=="y" ? "disabled":""}"><i class="user secret icon"></i> Kaptan Yap</div>
+        <div class="item delete"><i class="trash alternate icon"></i> Sil</div>
+    </div>`
 
-var deleteButton = element.querySelector(".item.delete");
-deleteButton.addEventListener("click", deletePlayer);
+    element.appendChild(operations);
+    $(element).children(".ui.dropdown").dropdown();
+    //bind events of dropdown items
+    var deleteButton = element.querySelector(".item.delete");
+    deleteButton.addEventListener("click", deletePlayer);
 
-var changeButton = element.querySelector(".item.change");
-changeButton.addEventListener("click", changePlayer);
+    var changeButton = element.querySelector(".item.change");
+    changeButton.addEventListener("click", changePlayer);
 
-var captainButton = element.querySelector(".item.captain");
-captainButton.addEventListener("click", makeCaptain);
+    var captainButton = element.querySelector(".item.captain");
+    captainButton.addEventListener("click", makeCaptain);
 
-
-//remove empty class
-element.classList.remove("empty");
-element.classList.add("full");
-return true;
+    //remove empty class add full class
+    element.classList.remove("empty");
+    element.classList.add("full");
+    return true;
 }
 
 /*-------------------------------
