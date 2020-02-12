@@ -163,6 +163,7 @@ function deletePlayer(e){
         //add empty class
         player.classList.add("empty");
         player.classList.remove("full");
+        player.classList.remove("captain");
         return true;
     }
 }
@@ -172,7 +173,14 @@ function changePlayer(e){
 }
 
 function makeCaptain(e){
-
+    var player = e.currentTarget.closest(".full.player");
+    var id = player.dataset.id;
+    //add captain id to user team data object
+    userTeam.captain = id;
+    //remove classes of previous captains
+    document.querySelectorAll(".positionContainer .player.captain").forEach(player => player.classList.remove("captain"))
+    //add captain class to current captain
+    player.classList.add("captain");
 }
 
 //Initializing Functions
@@ -226,9 +234,7 @@ function openTeamMenu(position){
     teamPlayerSelectMenu.classList.add("hidden");
     playerSelectMenuHeader.innerHTML="Takım..."
     $('.ui.modal.playerSelectMenu')
-        .modal({onHide : resetModalMenu})
-        .modal('setting', 'transition', 'fade up')
-        .modal('setting', 'duration', '50')
+        .modal({onHide : resetModalMenu,transition:"fly up", duration:250})
         .modal('show');
 }
 
@@ -245,7 +251,6 @@ function openPlayerMenu(team){
     teamPlayerSelectMenu.classList.remove("hidden");
     //list players
     var listablePlayers = Object.entries(players[team]).filter(function (player){return player[1].pozisyon==position})
-    //console.log( Object.entries(players[team]))
     listablePlayers.forEach(function(player){
         var [id,{team,name,pozisyon:position}]=player;
         var element = createMenuPlayerItem(id,name,position,team);
@@ -293,7 +298,7 @@ function selectPlayer(id, team, position, index){
 
     //add dropdown button for player operations
     var operations = document.createElement("div");
-    operations.classList.add(..."ui icon top left pointing dropdown detail teamPlayerOperations".split(" "));
+    operations.classList.add(..."ui icon top left pointing dropdown detail button mini teamPlayerOperations".split(" "));
     operations.innerHTML=
     `<i class="ellipsis vertical icon"></i>
     <div class="menu">
