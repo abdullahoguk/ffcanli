@@ -50,6 +50,31 @@ html body{
   display: flex;
 }
 
+select.strategy{
+  font-family: lato, arial;
+  font-weight: 600;
+  padding: .5em;
+  margin: -.5em;
+  margin-left: 1em;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-radius: .5em;
+}
+
+select.strategy option{
+  font-family: lato, arial;
+  font-weight: 500;
+  margin-left: 1em;
+  background-color: rgba(200, 200, 200, 0.363);
+  border: none;
+  border-radius: .5em;
+}
+
+select.strategy::before{
+  content: "Taktik";
+  display: inline;
+}
+
 .positions{
   flex-grow: 1;
   display: flex;

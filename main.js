@@ -6,18 +6,23 @@ import {default as teams} from './data/json/takimlar.js';
 var userTeamDOM=document.querySelector(".userTeam");
 var positionContainers = userTeamDOM.querySelectorAll(".positionContainer")
 
-var resultsDOM = document.querySelector(".searchResults");
-//var searchInput = document.querySelector("input#search");
-//var teamInput = document.querySelector("select.team");
-//var positionInput = document.querySelector("select.position");
 var infoBar = document.querySelector(".infoBar");
 var playerSelectMenu = document.querySelector(".ui.modal.playerSelectMenu");
 var playerSelectMenuHeader = playerSelectMenu.querySelector("div.header");
 var teamSelectMenu = playerSelectMenu.querySelector(".team.content.menu");
 var teamPlayerSelectMenu = playerSelectMenu.querySelector(".players.content.menu");
+var strategyDropdown = document.querySelector("select.strategy");
 
 //data elements
 var players = allPlayers;
+//without team
+var players2 = {};
+Object.values(players).forEach(function(team){
+    Object.entries(team).forEach(function(player){
+        players2[player[0]] = player[1];
+    })    
+})
+
 
 /*Object.entries(allPlayers).sort(function (a, b) {
     if (teams[a[0]].name > teams[b[0]].name) {return 1;}
@@ -26,13 +31,13 @@ var players = allPlayers;
     */
 
 var userTeam = {
-    "strategy":{"k":1, "d":4,"os":4, "f":2, "y":4},
+    "strategy":"442",
     "players":{
-        "k": [],
-        "d": [],
-        "os": [],
-        "f": [],
-        "y": []
+        "k": [null],
+        "d": [null,null,null,null],
+        "os": [null,null,null,null],
+        "f": [null,null],
+        "y": [null,null,null,null]
     },
     "count":0,
     "teamCount":{},
@@ -48,16 +53,27 @@ var positions = {
     "y": {"name":"Yedek", "color":{"base":"#1a1a1a", "dark":"#1a1a1a","fade":"#b9b9b9", "bg":"#d4d4d4"}}
 }
 
+var strategies = {
+    "442":{"k":1, "d":4, "os":4, "f":2, "y":4 },
+    "451":{"k":1, "d":4, "os":5, "f":1, "y":4 },
+    "433":{"k":1, "d":4, "os":3, "f":3, "y":4 },
+    "532":{"k":1, "d":5, "os":3, "f":2, "y":4 },
+    "541":{"k":1, "d":5, "os":4, "f":1, "y":4 },
+    "343":{"k":1, "d":3, "os":4, "f":3, "y":4 },
+    "352":{"k":1, "d":3, "os":5, "f":2, "y":4 }
+}
+
 /*-------------------------------------------------------------------------------------------------
             MAIN WORKFLOW
 -----------------------------*/
 
 //-------- Initial Render
+initStrategyDropdown();
 initUserTeam();
 initTeamSelectMenu();
 
 //Player chosing Events
-userTeamDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
+//userTeamDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
 //close and reset modal when user press back button when url has futbolcusec hash
 window.addEventListener("hashchange", function(e) {
     if(e.oldURL.split("#")[1]=="futbolcusec"){
@@ -69,7 +85,9 @@ window.addEventListener("hashchange", function(e) {
 //fix modal touch scroll bug 
 $('.ui.modal').on('touchmove', function(event) {
     event.stopImmediatePropagation();
-  })
+  });
+
+strategyDropdown.addEventListener("change", changeStrategy)
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
 
@@ -85,6 +103,39 @@ Initial render functions
 /*--------------
 Event Functions 
 ----------------*/
+function changeStrategy(e){
+    e.stopPropagation();
+    var strategy = e.currentTarget.value;
+    userTeam.strategy = strategy;
+    var strategyDetail = strategies[strategy];
+    var count = 0;
+    var teamCount = {};
+    var team = Object.keys(userTeam.players);
+    var selectedPlayersArray = [];
+
+    team.forEach(function(position){
+        //set size of positon arrays according to new strategy
+        userTeam.players[position].length = strategyDetail[position];
+        var players = userTeam.players[position];
+        //count selected players and team limit for that positon array
+        players.forEach(function(player){
+            if(![undefined, null].includes(player)){
+                count++;
+                teamCount[team] ? teamCount[team]++ : teamCount[team]=1;
+                selectedPlayersArray.push(player);
+            }
+        })
+    })
+    if(selectedPlayersArray.length ==! count) console.error("taktik değiştirirken hata");
+    //remove captain if player removed
+    if(!selectedPlayersArray.includes(userTeam.captain)) userTeam.captain=null;
+    
+    //set new player count and team limit
+    userTeam.count = count;
+    userTeam.teamCount = teamCount;
+    loadUserTeam();
+}
+
 //user team player in main screen event
 function handlePlayerClick(e){
     e.stopPropagation();
@@ -184,11 +235,30 @@ function makeCaptain(e){
 }
 
 //Initializing Functions
+function initStrategyDropdown(){
+    var values = Object.keys(strategies);
+    values.forEach(function(item){
+        var value = item;
+        var name = value.split("").join(" ");
+        strategyDropdown.appendChild(createDropdownItem(value, name));
+    })
+    //$('.strategy.ui.dropdown').dropdown()
+;
+}
+
+//sayfaya ilk girildiğinge calısacak. lokali kontrol et yoksa bos default data olustur, varsa o datayı kullan 
+//strategy dropdownını ata
+//load user teamı calıştır
 function initUserTeam(){
+    // check local data and assign to userTeam if found, set to efault if not
+    var strategy = strategies[userTeam.strategy];
+    strategyDropdown.value = userTeam.strategy;
+    //run loadUserTeam
     //do for each position container
     positionContainers.forEach(function(pos){
+        pos.querySelector(".players").innerHTML="";
         var positionID=pos.dataset.position
-        var count = userTeam.strategy[positionID];
+        var count = strategy[positionID];
         var name = positions[positionID].name;
         var yedek = (positionID=="y") || false;
         pos.querySelector(".name").innerHTML=name;
@@ -196,12 +266,39 @@ function initUserTeam(){
         [...Array(count)].forEach(function(_,i){
             //if current container is yedek put positon
             var position = positionID == "y" ? Object.keys(positions)[i] : positionID;
-            pos.querySelector(".players").innerHTML+= createUserPlayerItem("empty", i, position, yedek);
+            pos.querySelector(".players").appendChild(createUserPlayerItem("empty", i, position, yedek));
         })        
     })
 }
 
+//objedeki her mevki arrayini arayüzdekiyle kontrol et ona göre doldur
 function loadUserTeam(){
+    var strategy = strategies[userTeam.strategy]
+    positionContainers.forEach(function(pos){
+        pos.querySelector(".players").innerHTML="";
+
+        var positionID=pos.dataset.position
+        var count = strategy[positionID];
+        var name = positions[positionID].name;
+        var yedek = (positionID == "y") || false;
+        pos.querySelector(".name").innerHTML=name;
+        //render players specified limit in strategy
+        [...Array(count)].forEach(function(_,i){
+            //if current container is yedek put positon
+            var position = positionID == "y" ? Object.keys(positions)[i] : positionID;
+            var playerID  = userTeam.players[position][i];
+            var player = players2[playerID];
+
+            if([undefined, null].includes(playerID)){
+                pos.querySelector(".players").appendChild(createUserPlayerItem("empty", i, position, yedek));
+            }
+            else {
+                pos.querySelector(".players").appendChild(createUserPlayerItem("full", i, position, yedek, playerID, player.name, player.team, points[playerID]  ));
+            }
+            
+        })        
+    })
+        
 
 }
 
@@ -283,7 +380,6 @@ function selectPlayer(id, team, position, index){
     element.dataset.id = id;
     element.dataset.team = team;
     
-    //truncate string for long player names
     var name = players[team][id]["name"];
     element.querySelector(".name").innerHTML = ` ${name} `;
 
@@ -328,18 +424,11 @@ function selectPlayer(id, team, position, index){
 /*-------------------------------
 HTML Content Generating Functions
 --------------------------------*/
-function createResultItem(id, team, name, position, point){
-    return `
-    <div class="neu playerItem" data-id=${id} data-team=${team} data-position=${position} data-name=${name}>
-        <span class="team">${team.toUpperCase()}</span>
-        <span class="name">${name}</span>
-        <span class="position">${positions[position].name}</span>
-        <span class="point">${point}</span>
-    </div>`
-}
-
-function createDropdownItem(val,name){
-    return `<option value=${val}>${name}</option>`
+function createDropdownItem(value, name){
+    var element = document.createElement("option");
+    element.setAttribute("value", value);
+    element.innerHTML = name;
+    return element
 }
 
 function displayInfo(info){
@@ -354,21 +443,63 @@ function displayInfo(info){
 
 function createUserPlayerItem(type, index, position, yedek, id, name, team, point){
     var yedek = yedek ? "yedek": ""; 
+    var element;
     if(type=="empty"){
-        return `<a class="player empty ${yedek} ${position} ui image label large" data-index="${index}" data-position="${position}">
+        var html = `<a class="player ${type} ${yedek} ${position} ui image label large" data-index="${index}" data-position="${position}">
         <span class="name">Futbolcu Seç...</span>
         <div class="detail">
             <i class="plus icon"></i>
         </div>
-    </a>`
+        </a>`
+        element = $(html)[0];
     }
-    else if(type=="selected"){
+    else if(type=="full"){
+        var captain = userTeam.captain == id ? "captain" : "";
+        var html = `<a class="player ${type} ${yedek} ${captain} ${position} ui image label large" 
+        data-index="${index}" data-position="${position}"  data-id="${id}" data-team="${team}" >
+        <span class="name">${name}</span>
+        <div class="detail">
+            ${points[id] == null ? "0" : points[id]}
+        </div>
+        </a>`
+        element = $(html)[0];
 
+        //add team of selected player to left of player item
+        var teamDetail = document.createElement("div");
+        teamDetail.classList.add("team");
+        teamDetail.innerHTML=team;
+        element.prepend(teamDetail);
+
+        //add dropdown button for player operations
+        var operations = document.createElement("div");
+        operations.classList.add(..."ui icon top left pointing dropdown button mini detail teamPlayerOperations".split(" "));
+        operations.innerHTML=
+        `<i class="ellipsis vertical icon"></i>
+        <div class="menu">
+            <div class="header"> ${players[team][id].name}</div>
+            <div class="item change"><i class="exchange icon"></i> Değiştir</div>
+            <div class="item captain ${parent=="y" ? "disabled":""}"><i class="user secret icon"></i> Kaptan Yap</div>
+            <div class="item delete"><i class="trash alternate icon"></i> Sil</div>
+        </div>`
+
+        element.appendChild(operations);
+        $(element).children(".ui.dropdown").dropdown();
+        //bind events of dropdown items
+        var deleteButton = element.querySelector(".item.delete");
+        deleteButton.addEventListener("click", deletePlayer);
+
+        var changeButton = element.querySelector(".item.change");
+        changeButton.addEventListener("click", changePlayer);
+
+        var captainButton = element.querySelector(".item.captain");
+        captainButton.addEventListener("click", makeCaptain);
     }
 
     else{
         console.error("Invalid type of user team player Item")
     }
+    element.addEventListener("click", handlePlayerClick);
+    return element
 }
 
 function createMenuTeamItem(team){
