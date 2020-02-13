@@ -1,7 +1,9 @@
 user teami lokale kaydet
+taktik değistirme fonksiyonu
+    :taktik değişince arkada taktik ve oyuncular dizisi, secilen oyuncu takım verilerini değiştir loadUserTeam metodunu cağır
 
 lokale kaydetme fonksiyonu (save)
-    :her secim, silme, değistirme, kaptan yapma, thktik değiştirme, kadro güncel değiştirme işleminde cağırılacak
+    :her secim, silme, değistirme, kaptan yapma, taktik değiştirme, kadro güncel değiştirme işleminde cağırılacak
 
 oyuncu ismi karakter limiti
 
@@ -20,14 +22,10 @@ puan hesapla metodu
     :puanı hesaplarken kaptanı, kadro güncel ikini ve yedekleri hesaba katarak topla
     :her secim, silme, değistirme, kaptan yapma işleminde cağırılacak ve ekrandaki puanı yenileyecek
 
-taktik değistirme fonksiyonu
-    :taktik değişince arkada taktik ve oyuncular dizisi, secilen oyuncu takım verilerini değiştir loadUserTeam metodunu cağır
-
+dropdown üst üste binme 
 kadro güncel tiki
 üstte toplam puanı göster
 transport puanlar.js to google spreadsheet
-error bar seçim menusune
-
 
 -----PWA
 manifest json icons 192 all generate

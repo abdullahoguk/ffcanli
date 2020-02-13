@@ -234,7 +234,7 @@ function openTeamMenu(position){
     teamPlayerSelectMenu.classList.add("hidden");
     playerSelectMenuHeader.innerHTML="Takım..."
     $('.ui.modal.playerSelectMenu')
-        .modal({onHide : resetModalMenu,transition:"fly up", duration:250})
+        .modal({onHide : resetModalMenu, duration:200})
         .modal('show');
 }
 
@@ -285,7 +285,6 @@ function selectPlayer(id, team, position, index){
     
     //truncate string for long player names
     var name = players[team][id]["name"];
-    name = name.length < 14 ? name : name.substring(0,12)+"...";
     element.querySelector(".name").innerHTML = ` ${name} `;
 
     element.querySelector(".detail").innerHTML = `${points[id] == null ? "0" : points[id]}`
@@ -298,7 +297,7 @@ function selectPlayer(id, team, position, index){
 
     //add dropdown button for player operations
     var operations = document.createElement("div");
-    operations.classList.add(..."ui icon top left pointing dropdown detail button mini teamPlayerOperations".split(" "));
+    operations.classList.add(..."ui icon top left pointing dropdown button mini detail teamPlayerOperations".split(" "));
     operations.innerHTML=
     `<i class="ellipsis vertical icon"></i>
     <div class="menu">
