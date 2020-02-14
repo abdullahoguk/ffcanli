@@ -2259,11 +2259,6 @@ var all = {
       "name": "Atiba Hutchinson",
       "pozisyon": "os"
     },
-    "bjk30": {
-      "team": "bjk",
-      "name": "Boateng",
-      "pozisyon": "os"
-    },
     "bjk16": {
       "team": "bjk",
       "name": "Jeremain Lens",
@@ -2272,6 +2267,11 @@ var all = {
     "bjk17": {
       "team": "bjk",
       "name": "Mohamed Elneny",
+      "pozisyon": "os"
+    },
+    "bjk18": {
+      "team": "bjk",
+      "name": "Boateng",
       "pozisyon": "os"
     },
     "bjk19": {
@@ -2284,7 +2284,7 @@ var all = {
       "name": "Dorukhan Toköz",
       "pozisyon": "os"
     },
-    "bjk31": {
+    "bjk21": {
       "team": "bjk",
       "name": "Boateng",
       "pozisyon": "os"
@@ -2329,7 +2329,7 @@ var all = {
       "name": "Güven Yalçın",
       "pozisyon": "f"
     },
-    "bjk31": {
+    "bjk30": {
       "team": "bjk",
       "name": "Oğuzhan Akgün",
       "pozisyon": "f"
