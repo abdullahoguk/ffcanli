@@ -1,0 +1,141 @@
+/* Border box declaration 
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+html {
+  box-sizing: border-box;
+}
+/* inherit border-box on all elements in the universe and before and after
+ */
+*, 
+*:before, 
+*:after {
+  box-sizing: inherit;
+  margin:0;
+  padding: 0;
+}
+
+
+*{
+  /*border: 2px solid black;*/
+}
+
+html,body{
+  width: 98vw;
+  height: 98vh;
+}
+
+body{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden{
+  display: none!important;
+}
+
+.searchSection{
+  width: 90%;
+  height: inherit;
+  display: grid;
+  grid-gap: .5em;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 18fr;
+  grid-template-areas: 
+    "filterOperations"
+    "searchResultsContainer";
+}
+
+
+.userTeam{
+  grid-area: userTeam;
+  width: 100%;
+}
+
+.filterOperations{
+  grid-area: filterOperations;
+  display: grid;
+  grid-gap: .3em;
+  max-height: 25vw;
+  grid-template-columns: 1fr  1fr 1fr;
+  grid-template-rows: 1fr 1fr; 
+  grid-template-areas: 
+  " searchInput  searchInput searchInput"
+  "teamInput teamInput  positionInput";
+}
+
+.filterOperations div.search{
+  grid-area:searchInput;
+  
+}
+
+.filterOperations div.team{
+  grid-area: teamInput;
+}
+
+.filterOperations div.position{
+grid-area: positionInput;
+}
+
+.searchResultsContainer{
+  position: relative;
+  grid-area: searchResultsContainer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+.searchResults{
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: .5em;
+}
+
+.playerItem{
+  width: 100%;
+  display: grid;
+  align-items: center;
+  align-content: center;
+  grid-template-columns: 1fr 8fr 3fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: .5em;
+  padding:.2em;
+/* neumorphism*/
+background-color:#E0E5EC;
+}
+
+.playerItem:nth-child(even){
+  background-color: rgb(255, 255, 255);
+}
+
+
+
+.playerItem:hover, .playerItem.selected {
+  background-color: rgb(96, 215, 255);
+}
+
+.playerItem .id{
+  color:rgb(104, 0, 0);
+}
+.playerItem, .playerItem *{
+  cursor: pointer;
+}
+
+.playerItem span.name{
+font-size: 1em;
+  font-weight: 800;
+}
+
+.playerItem.title{
+  padding-right: .5em;
+  padding-left: .5em;
+  font-weight: 800;
+  background-color: lawngreen;
+}
+
+.playerItem span.position{
+  text-transform: uppercase;
+}

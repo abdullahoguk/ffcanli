@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./style.css">
+    <title>FFCANLI</title>
+</head>
+<body>
+    <div class="searchSection">
+     
+        <div class="filterOperations">
+            <div class="search ui input" ><input type="text" name="search" id="search" placeholder="Futbolcu Ara"></div>
+            <select name="team" class="team ui fluid dropdown">
+                <option value="">Takım</option>
+            </select>
+            <select name="position" class="position ui fluid dropdown">
+                <option value="">Mevki</option>
+            </select>
+        </div>        
+        <div class="searchResultsContainer">
+            <div class="playerItem title">
+                <span class="id">ID</span>
+                <span class="name">Futbolcu</span>
+                <span class="position">Mevki</span>
+                <span class="takim">Takım</span>
+            </div>
+            <div class="searchResults"></div>
+        </div>
+    </div>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
+<script type="module" src="./main.js"></script>
+</html>
+
