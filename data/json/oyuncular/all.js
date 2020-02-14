@@ -2279,6 +2279,11 @@ var all = {
       "name": "Dorukhan Toköz",
       "pozisyon": "os"
     },
+    "bjk31": {
+      "team": "bjk",
+      "name": "Boateng",
+      "pozisyon": "os"
+    },
     "bjk22": {
       "team": "bjk",
       "name": "Muhayer Oktay",
