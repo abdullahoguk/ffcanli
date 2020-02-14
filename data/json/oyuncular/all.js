@@ -2269,11 +2269,6 @@ var all = {
       "name": "Mohamed Elneny",
       "pozisyon": "os"
     },
-    "bjk18": {
-      "team": "bjk",
-      "name": "Boateng",
-      "pozisyon": "os"
-    },
     "bjk19": {
       "team": "bjk",
       "name": "Tyler Boyd",
