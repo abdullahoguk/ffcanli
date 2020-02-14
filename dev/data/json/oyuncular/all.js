@@ -2224,6 +2224,11 @@ var all = {
       "name": "Dorukhan Toköz",
       "pozisyon": "os"
     },
+    "bjk31": {
+      "team": "bjk",
+      "name": "Boateng",
+      "pozisyon": "os"
+    },
     "bjk21": {
       "team": "bjk",
       "name": "Orkan Çınar",
