@@ -2,12 +2,14 @@ alta sayfa menüsü
 üste sosyalligli birseyler yaz
 
 üstte toplam puanı göster
-transport puanlar.js to google spreadsheet
-
 puan hesapla metodu
     :puanı hesaplarken kaptanı, kadro güncel ikini ve yedekleri hesaba katarak topla
     :her secim, silme, değistirme, kaptan yapma işleminde cağırılacak ve ekrandaki puanı yenileyecek
     :puan hesalarken kaptanın normal puanı yedekten düşükse yedektekini kadroya al kaptan yap iki katına çıkar
+
+transport puanlar.js to google spreadsheet
+
+
 
 dropdown üst üste binme 
 
