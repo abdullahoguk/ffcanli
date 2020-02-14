@@ -1,11 +1,10 @@
+puan dosyasını caslemeyi devre dışı bırak
 user teami lokale kaydet
-taktik değistirme fonksiyonu
-    :taktik değişince arkada taktik ve oyuncular dizisi, secilen oyuncu takım verilerini değiştir loadUserTeam metodunu cağır
+alta sayfa menüsü 
+üste sosyalligli birseyler yaz
 
 lokale kaydetme fonksiyonu (save)
     :her secim, silme, değistirme, kaptan yapma, taktik değiştirme, kadro güncel değiştirme işleminde cağırılacak
-
-oyuncu ismi karakter limiti
 
 (selectUserUI) metodu parametrede verilen oyuncuyu kadro arayüzünde ilgili yere koyan metot
     :Hem kullanıcı oyuncu secerken(selectUser içinde) hem sayfaya yeni girildiğinde takım load edilirken(loadUserTeam içinde) kullanılacak
@@ -15,7 +14,6 @@ oyuncu ismi karakter limiti
     :loadUser teami her sayfa yenilemede, oyuncu secmede, oyuncu silmede, taktik değiştirmede değiştirmede çalıştır 
 
 Kaptan yap metodu
-    :userTeam verisindeki kaptanı değiştir secilen kaptanın arayüzde başına renkli kapan iconu koy
     :onceki kaptanın ekranda gözüken puanını kontrol et yarıya indir yenisini 2 katına cıkar
 
 puan hesapla metodu

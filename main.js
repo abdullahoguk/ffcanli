@@ -77,10 +77,10 @@ async function main() {
     await loadJSONAsync("https://raw.githubusercontent.com/aoguk/data/master/puanlar.json"+ "?" + Math.random())
         .then(data => {points = data;})
         .catch(reason => console.log(`JSON okunurken hata: ${reason.message}`));
-        console.log(points)
     //-------- Initial Render
+    await initUserTeam();
     initStrategyDropdown();
-    initUserTeam();
+    
     initTeamSelectMenu();
 
     //Player chosing Events
@@ -145,6 +145,7 @@ function changeStrategy(e){
     //set new player count and team limit
     userTeam.count = count;
     userTeam.teamCount = teamCount;
+    saveUserTeam()
     loadUserTeam();
 }
 
@@ -186,6 +187,7 @@ function handleMenuPlayerClick(e) {
     else{displayInfo("secilen mevki ile sectiğiniz oyuncu uyuşmuyor");}
     
     if(success){
+        saveUserTeam()
         closeMenu();
         resetModalMenu();
     }
@@ -227,6 +229,8 @@ function deletePlayer(e){
         player.classList.add("empty");
         player.classList.remove("full");
         player.classList.remove("captain");
+
+        saveUserTeam();
         return true;
     }
 }
@@ -244,6 +248,11 @@ function makeCaptain(e){
     document.querySelectorAll(".positionContainer .player.captain").forEach(player => player.classList.remove("captain"))
     //add captain class to current captain
     player.classList.add("captain");
+    saveUserTeam();
+}
+
+function saveUserTeam(){
+    localStorage.setItem('userTeam', JSON.stringify(userTeam));
 }
 
 //Initializing Functions
@@ -258,29 +267,16 @@ function initStrategyDropdown(){
 ;
 }
 
-//sayfaya ilk girildiğinge calısacak. lokali kontrol et yoksa bos default data olustur, varsa o datayı kullan 
 //strategy dropdownını ata
 //load user teamı calıştır
 function initUserTeam(){
-    // check local data and assign to userTeam if found, set to efault if not
-    var strategy = strategies[userTeam.strategy];
+    // check local data and assign to userTeam if found, set to default if not
+    if(![null,undefined].includes(localStorage.getItem("userTeam"))){
+        userTeam = JSON.parse(localStorage.getItem('userTeam'));
+        console.log(userTeam)
+    }
     strategyDropdown.value = userTeam.strategy;
-    //run loadUserTeam
-    //do for each position container
-    positionContainers.forEach(function(pos){
-        pos.querySelector(".players").innerHTML="";
-        var positionID=pos.dataset.position
-        var count = strategy[positionID];
-        var name = positions[positionID].name;
-        var yedek = (positionID=="y") || false;
-        pos.querySelector(".name").innerHTML=name;
-        //render players specified limit in strategy
-        [...Array(count)].forEach(function(_,i){
-            //if current container is yedek put positon
-            var position = positionID == "y" ? Object.keys(positions)[i] : positionID;
-            pos.querySelector(".players").appendChild(createUserPlayerItem("empty", i, position, yedek));
-        })        
-    })
+loadUserTeam();
 }
 
 //objedeki her mevki arrayini arayüzdekiyle kontrol et ona göre doldur
