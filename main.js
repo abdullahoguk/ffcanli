@@ -286,18 +286,19 @@ function loadUserTeam(){
         [...Array(count)].forEach(function(_,i){
             //if current container is yedek put positon
             var position = positionID == "y" ? Object.keys(positions)[i] : positionID;
-            var playerID  = userTeam.players[position][i];
+            var playerID  = userTeam.players[positionID][i];
             var player = players2[playerID];
 
             if([undefined, null].includes(playerID)){
                 pos.querySelector(".players").appendChild(createUserPlayerItem("empty", i, position, yedek));
             }
             else {
-                pos.querySelector(".players").appendChild(createUserPlayerItem("full", i, position, yedek, playerID, player.name, player.team, points[playerID]  ));
+                pos.querySelector(".players").appendChild(createUserPlayerItem("full", i, position, yedek, playerID, player.name, player.team, points[playerID]));
             }
             
         })        
     })
+    console.log(userTeam.players)
         
 
 }
