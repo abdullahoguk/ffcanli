@@ -1,6 +1,10 @@
 import {default as allPlayers} from './data/json/oyuncular/all.js';
-import {default as points} from 'https://cdn.jsdelivr.net/gh/aoguk/data@master/puanlar.js';
+
+//var pointsURL = 'https://cdn.jsdelivr.net/gh/aoguk/data@master/puanlar.js' + "?" + Math.random();
+//console.log(pointsURL);
+//import {default as points} from pointsURL ;
 import {default as teams} from './data/json/takimlar.js';
+var points;
 
 //DOM elements
 var userTeamDOM=document.querySelector(".userTeam");
@@ -66,28 +70,36 @@ var strategies = {
 /*-------------------------------------------------------------------------------------------------
             MAIN WORKFLOW
 -----------------------------*/
+main();
 
-//-------- Initial Render
-initStrategyDropdown();
-initUserTeam();
-initTeamSelectMenu();
+async function main() {
+    //load points
+    await loadJSONAsync("https://raw.githubusercontent.com/aoguk/data/master/puanlar.json"+ "?" + Math.random())
+        .then(data => {points = data;})
+        .catch(reason => console.log(`JSON okunurken hata: ${reason.message}`));
+        console.log(points)
+    //-------- Initial Render
+    initStrategyDropdown();
+    initUserTeam();
+    initTeamSelectMenu();
 
-//Player chosing Events
-//userTeamDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
-//close and reset modal when user press back button when url has futbolcusec hash
-window.addEventListener("hashchange", function(e) {
-    if(e.oldURL.split("#")[1]=="futbolcusec"){
-        closeMenu();
-        resetModalMenu();
-    }
-});
+    //Player chosing Events
+    //userTeamDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
+    //close and reset modal when user press back button when url has futbolcusec hash
+    window.addEventListener("hashchange", function(e) {
+        if(e.oldURL.split("#")[1]=="futbolcusec"){
+            closeMenu();
+            resetModalMenu();
+        }
+    });
 
-//fix modal touch scroll bug 
-$('.ui.modal').on('touchmove', function(event) {
-    event.stopImmediatePropagation();
-  });
+    //fix modal touch scroll bug 
+    $('.ui.modal').on('touchmove', function(event) {
+        event.stopImmediatePropagation();
+    });
 
-strategyDropdown.addEventListener("change", changeStrategy)
+    strategyDropdown.addEventListener("change", changeStrategy)
+}
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
 
@@ -533,3 +545,11 @@ function createMenuPlayerItem(id,name,position,team){
     return element; 
 }
 
+
+
+/* Misc Functions */
+async function loadJSONAsync(url) {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+  }
