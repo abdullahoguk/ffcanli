@@ -2259,6 +2259,11 @@ var all = {
       "name": "Atiba Hutchinson",
       "pozisyon": "os"
     },
+    "bjk30": {
+      "team": "bjk",
+      "name": "Boateng",
+      "pozisyon": "os"
+    },
     "bjk16": {
       "team": "bjk",
       "name": "Jeremain Lens",
@@ -2319,7 +2324,7 @@ var all = {
       "name": "Güven Yalçın",
       "pozisyon": "f"
     },
-    "bjk30": {
+    "bjk31": {
       "team": "bjk",
       "name": "Oğuzhan Akgün",
       "pozisyon": "f"
