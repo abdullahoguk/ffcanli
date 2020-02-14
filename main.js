@@ -1,8 +1,4 @@
 import {default as allPlayers} from './data/json/oyuncular/all.js';
-
-//var pointsURL = 'https://cdn.jsdelivr.net/gh/aoguk/data@master/puanlar.js' + "?" + Math.random();
-//console.log(pointsURL);
-//import {default as points} from pointsURL ;
 import {default as teams} from './data/json/takimlar.js';
 var points;
 
@@ -16,7 +12,7 @@ var playerSelectMenuHeader = playerSelectMenu.querySelector("div.header");
 var teamSelectMenu = playerSelectMenu.querySelector(".team.content.menu");
 var teamPlayerSelectMenu = playerSelectMenu.querySelector(".players.content.menu");
 var strategyDropdown = document.querySelector("select.strategy");
-
+var updatedTeamCheckbox = document.querySelector("input.updatedTeam")
 //data elements
 var players = allPlayers;
 //without team
@@ -98,7 +94,8 @@ async function main() {
         event.stopImmediatePropagation();
     });
 
-    strategyDropdown.addEventListener("change", changeStrategy)
+    strategyDropdown.addEventListener("change", changeStrategy);
+    updatedTeamCheckbox.addEventListener("change", changeNew);
 }
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
@@ -147,6 +144,12 @@ function changeStrategy(e){
     userTeam.teamCount = teamCount;
     saveUserTeam()
     loadUserTeam();
+}
+
+function changeNew(e){
+    var value = e.currentTarget.checked;
+    userTeam.new = value;
+    saveUserTeam();
 }
 
 //user team player in main screen event
@@ -263,8 +266,6 @@ function initStrategyDropdown(){
         var name = value.split("").join(" ");
         strategyDropdown.appendChild(createDropdownItem(value, name));
     })
-    //$('.strategy.ui.dropdown').dropdown()
-;
 }
 
 //strategy dropdownını ata
@@ -276,6 +277,7 @@ function initUserTeam(){
         console.log(userTeam)
     }
     strategyDropdown.value = userTeam.strategy;
+    updatedTeamCheckbox.checked = userTeam.new;
 loadUserTeam();
 }
 
@@ -306,9 +308,6 @@ function loadUserTeam(){
             
         })        
     })
-    console.log(userTeam.players)
-        
-
 }
 
 function initTeamSelectMenu(){
