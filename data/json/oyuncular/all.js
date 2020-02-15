@@ -2841,6 +2841,11 @@ var all = {
       "name": "Yiğit Kafkasyalı",
       "pozisyon": "k"
     },
+    "ag38":{
+      "team": "ag",
+      "name": "Ricardo",
+      "pozisyon": "k"
+    },
     "ag04":{
       "team": "ag",
       "name": "Stelios Kitsiou",
