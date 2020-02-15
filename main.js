@@ -286,7 +286,6 @@ function calc(){
         //console.log(userTeam.players[pos[i]])
         userTeam.players[pos[i]].forEach(function(player){
             //check yedek
-            
             var point = getPoint(player);
             if(point < getPoint(yedek[i])){
                 point = getPoint(yedek[i]);
