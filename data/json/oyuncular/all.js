@@ -757,6 +757,11 @@ var all = {
       "name": "Ali Yaşar",
       "pozisyon": "d"
     },
+    "kon32": {
+      "team": "kon",
+      "name": "Uğur Demirok",
+      "pozisyon": "d"
+    },
     "kon17": {
       "team": "kon",
       "name": "Paolo Hurtado",
@@ -813,6 +818,11 @@ var all = {
       "pozisyon": "os"
     },
     "kon31": {
+      "team": "kon",
+      "name": "Robert Mak",
+      "pozisyon": "os"
+    },
+    "kon33": {
       "team": "kon",
       "name": "Robert Mak",
       "pozisyon": "os"

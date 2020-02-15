@@ -1,6 +1,8 @@
-import {default as allPlayers} from './data/json/oyuncular/all.js';
 import {default as teams} from './data/json/takimlar.js';
 var points;
+var allPlayers;
+var players;
+var players2 = {};
 
 //DOM elements
 var userTeamDOM=document.querySelector(".userTeam");
@@ -14,14 +16,7 @@ var teamPlayerSelectMenu = playerSelectMenu.querySelector(".players.content.menu
 var strategyDropdown = document.querySelector("select.strategy");
 var updatedTeamCheckbox = document.querySelector("input.updatedTeam")
 //data elements
-var players = allPlayers;
-//without team
-var players2 = {};
-Object.values(players).forEach(function(team){
-    Object.entries(team).forEach(function(player){
-        players2[player[0]] = player[1];
-    })    
-})
+
 
 
 /*Object.entries(allPlayers).sort(function (a, b) {
@@ -71,8 +66,20 @@ main();
 async function main() {
     //load points
     await loadJSONAsync("https://raw.githubusercontent.com/aoguk/data/master/puanlar.json"+ "?" + Math.random())
-        .then(data => {points = data;})
-        .catch(reason => console.log(`JSON okunurken hata: ${reason.message}`));
+        .then(data => {points = data;}).catch(reason => console.log(`JSON okunurken hata: points ${reason.message}`));
+    //load allplayers
+    await loadJSONAsync("https://raw.githubusercontent.com/aoguk/data/master/all.json"+ "?" + Math.random())
+        .then(data => {allPlayers = data;}).catch(reason => console.log(`JSON okunurken hata: allplayers ${reason.message}`));
+
+players = await allPlayers;
+//without team
+
+Object.values(players).forEach(function(team){
+    Object.entries(team).forEach(function(player){
+        players2[player[0]] = player[1];
+    })    
+})
+
     //-------- Initial Render
     await initUserTeam();
     initStrategyDropdown();
