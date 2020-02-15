@@ -14,7 +14,9 @@ var playerSelectMenuHeader = playerSelectMenu.querySelector("div.header");
 var teamSelectMenu = playerSelectMenu.querySelector(".team.content.menu");
 var teamPlayerSelectMenu = playerSelectMenu.querySelector(".players.content.menu");
 var strategyDropdown = document.querySelector("select.strategy");
-var updatedTeamCheckbox = document.querySelector("input.updatedTeam")
+var updatedTeamCheckbox = document.querySelector("input.updatedTeam");
+var calcButton = document.querySelector("button.calc");
+var pointDOM = document.querySelector(".totalPoint .value");
 //data elements
 
 
@@ -24,6 +26,7 @@ var updatedTeamCheckbox = document.querySelector("input.updatedTeam")
     if (teams[b[0]].name > teams[a[0]].name) {return -1;}
     return 0;})
     */
+var negative = [undefined, null, 0, false];
 
 var userTeam = {
     "strategy":"442",
@@ -103,6 +106,8 @@ Object.values(players).forEach(function(team){
 
     strategyDropdown.addEventListener("change", changeStrategy);
     updatedTeamCheckbox.addEventListener("change", changeNew);
+
+    calcButton.addEventListener("click", function(e){pointDOM.innerHTML = calc();})
 }
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
@@ -265,6 +270,56 @@ function saveUserTeam(){
     localStorage.setItem('userTeam', JSON.stringify(userTeam));
 }
 
+function calc(){
+    var pos = ["k", "d", "os", "f", "y"];
+
+    var captain = !negative.includes(userTeam.captain) ? userTeam.captain:null  ;
+    var captainPositon = !negative.includes(captain) ? players2[captain]["pozisyon"]:"y";
+    var captainPoint = 0;
+
+    var includedPlayers = [];
+    var yedek = [...userTeam.players.y];
+    var total= 0;
+    
+    
+    for(var i=0;i<4;i++){
+        //console.log(userTeam.players[pos[i]])
+        userTeam.players[pos[i]].forEach(function(player){
+            //check yedek
+            
+            var point = getPoint(player);
+            if(point < getPoint(yedek[i])){
+                point = getPoint(yedek[i]);
+                //eğer kaptansa değişen captanı ata
+                if((captainPositon == pos[i]) && (player==captain)){
+                    captain = yedek[i];
+                }
+                // add to included players and switch and increment total
+                includedPlayers.push(yedek[i]);
+                yedek[i] = player;
+                total += point;
+            }
+            else{
+                includedPlayers.push(player);
+                total += point;
+            }
+        })
+    }
+
+    //check total and finalize
+ includedPlayers.reduce((tot,curr) => {return Number(tot) + getPoint(curr)},0)
+
+    if(total == (includedPlayers.reduce((tot,curr) => {return Number(tot) + getPoint(curr)},0) ) ){
+        captainPoint = getPoint(captain);
+        var isNew = userTeam.new ? 5 : 0;
+        total += captainPoint + isNew;
+        return total
+    }
+    else {console.error("yedekler ve asiller arası puan hesaplama hatası")}
+    
+
+}
+
 //Initializing Functions
 function initStrategyDropdown(){
     var values = Object.keys(strategies);
@@ -281,7 +336,6 @@ function initUserTeam(){
     // check local data and assign to userTeam if found, set to default if not
     if(![null,undefined].includes(localStorage.getItem("userTeam"))){
         userTeam = JSON.parse(localStorage.getItem('userTeam'));
-        console.log(userTeam)
     }
     strategyDropdown.value = userTeam.strategy;
     updatedTeamCheckbox.checked = userTeam.new;
@@ -493,7 +547,7 @@ function createUserPlayerItem(type, index, position, yedek, id, name, team, poin
         <div class="menu">
             <div class="header"> ${players[team][id].name}</div>
             <div class="item change"><i class="exchange icon"></i> Değiştir</div>
-            <div class="item captain ${parent=="y" ? "disabled":""}"><i class="user secret icon"></i> Kaptan Yap</div>
+            <div class="item captain ${yedek=="yedek" ? "disabled":""}"><i class="user secret icon"></i> Kaptan Yap</div>
             <div class="item delete"><i class="trash alternate icon"></i> Sil</div>
         </div>`
 
@@ -554,4 +608,9 @@ async function loadJSONAsync(url) {
     let response = await fetch(url);
     let data = await response.json();
     return data;
-  }
+}
+
+
+function getPoint(id){
+    return negative.includes(points[id]) ? 0 : Number(points[id]);
+}

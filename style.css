@@ -87,6 +87,12 @@ select.strategy::before{
   display: inline;
 }
 
+.totalPoint{
+  display:flex;
+  height: 1em;
+  align-items: center;
+}
+
 .positions{
   flex-grow: 1;
   display: flex;
