@@ -757,6 +757,11 @@ var all = {
       "name": "Ali Yaşar",
       "pozisyon": "d"
     },
+    "kon33": {
+      "team": "kon",
+      "name": "Uğur Demirok",
+      "pozisyon": "d"
+    },
     "kon17": {
       "team": "kon",
       "name": "Paolo Hurtado",
