@@ -757,7 +757,11 @@ var all = {
       "name": "Ali Yaşar",
       "pozisyon": "d"
     },
+<<<<<<< HEAD
     "kon32": {
+=======
+    "kon33": {
+>>>>>>> 290581f9f165717a71a23a0f6f089be80e920e96
       "team": "kon",
       "name": "Uğur Demirok",
       "pozisyon": "d"
@@ -2844,6 +2848,11 @@ var all = {
     "ag03":{
       "team": "ag",
       "name": "Yiğit Kafkasyalı",
+      "pozisyon": "k"
+    },
+    "ag38":{
+      "team": "ag",
+      "name": "Ricardo",
       "pozisyon": "k"
     },
     "ag04":{
