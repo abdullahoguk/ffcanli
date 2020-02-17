@@ -1,70 +1,82 @@
-import {default as teams} from './data/json/takimlar.js';
-var points;
-var allPlayers;
-var players;
-var players2 = {};
-
-//DOM elements
-var userTeamDOM=document.querySelector(".userTeam");
-var positionContainers = userTeamDOM.querySelectorAll(".positionContainer")
-
-var infoBar = document.querySelector(".infoBar");
-var playerSelectMenu = document.querySelector(".ui.modal.playerSelectMenu");
-var playerSelectMenuHeader = playerSelectMenu.querySelector("div.header");
-var teamSelectMenu = playerSelectMenu.querySelector(".team.content.menu");
-var teamPlayerSelectMenu = playerSelectMenu.querySelector(".players.content.menu");
-var strategyDropdown = document.querySelector("select.strategy");
-var updatedTeamCheckbox = document.querySelector("input.updatedTeam");
-var calcButton = document.querySelector("button.calc");
-var pointDOM = document.querySelector(".totalPoint .value");
-//data elements
-
-
-
-/*Object.entries(allPlayers).sort(function (a, b) {
-    if (teams[a[0]].name > teams[b[0]].name) {return 1;}
-    if (teams[b[0]].name > teams[a[0]].name) {return -1;}
-    return 0;})
-    */
-var negative = [undefined, null, 0, false];
-
-var userTeam = {
-    "strategy":"442",
-    "players":{
-        "k": [null],
-        "d": [null,null,null,null],
-        "os": [null,null,null,null],
-        "f": [null,null],
-        "y": [null,null,null,null]
-    },
-    "count":0,
-    "teamCount":{},
-    "captain":"null",
-    "new":true
-}
-
-var positions = {
-    "k": {"name": "Kaleci", "color":{"base":"#21ba45", "dark":"#1eab3f","fade":"#7dd892", "bg":"#b5f2c3"}},
-    "d": {"name": "Defans", "color":{"base":"#2185d0", "dark":"#1e7abf","fade":"#7db5df", "bg":"#b5d8f3"}},
-    "os": {"name": "Orta Saha", "color":{"base":"#6435c9", "dark":"#5c30b9","fade":"#a288da", "bg":"#cbbbed"}},
-    "f": {"name": "Forvet", "color":{"base":"#a5673f", "dark":"#985e3a","fade":"#caa68f", "bg":"#e7cfc1"}},
-    "y": {"name":"Yedek", "color":{"base":"#1a1a1a", "dark":"#1a1a1a","fade":"#b9b9b9", "bg":"#d4d4d4"}}
-}
-
-var strategies = {
-    "442":{"k":1, "d":4, "os":4, "f":2, "y":4 },
-    "451":{"k":1, "d":4, "os":5, "f":1, "y":4 },
-    "433":{"k":1, "d":4, "os":3, "f":3, "y":4 },
-    "532":{"k":1, "d":5, "os":3, "f":2, "y":4 },
-    "541":{"k":1, "d":5, "os":4, "f":1, "y":4 },
-    "343":{"k":1, "d":3, "os":4, "f":3, "y":4 },
-    "352":{"k":1, "d":3, "os":5, "f":2, "y":4 }
-}
 
 /*-------------------------------------------------------------------------------------------------
             MAIN WORKFLOW
 -----------------------------*/
-main();
+if(window.location.hash=="#kadro"){kadroPage()}
+
+//--------------------------  END OF WORKFLOW     -------------------------------------------------
+
+
+async function kadroPage(){
+   
+    
+
+    var points;
+    var allPlayers;
+    var players;
+    var players2 = {};
+
+    //DOM elements
+    var userTeamDOM=document.querySelector(".userTeam");
+    var positionContainers = userTeamDOM.querySelectorAll(".positionContainer")
+
+    var infoBar = document.querySelector(".infoBar");
+    var playerSelectMenu = document.querySelector(".ui.modal.playerSelectMenu");
+    var playerSelectMenuHeader = playerSelectMenu.querySelector("div.header");
+    var teamSelectMenu = playerSelectMenu.querySelector(".team.content.menu");
+    var teamPlayerSelectMenu = playerSelectMenu.querySelector(".players.content.menu");
+    var strategyDropdown = document.querySelector("select.strategy");
+    var updatedTeamCheckbox = document.querySelector("input.updatedTeam");
+    var calcButton = document.querySelector("button.calc");
+    var pointDOM = document.querySelector(".totalPoint .value");
+    //data elements
+    /*Object.entries(allPlayers).sort(function (a, b) {
+        if (teams[a[0]].name > teams[b[0]].name) {return 1;}
+        if (teams[b[0]].name > teams[a[0]].name) {return -1;}
+        return 0;})
+        */
+    var negative = [undefined, null, 0, false];
+
+    var userTeam = {
+        "strategy":"442",
+        "players":{
+            "k": [null],
+            "d": [null,null,null,null],
+            "os": [null,null,null,null],
+            "f": [null,null],
+            "y": [null,null,null,null]
+        },
+        "count":0,
+        "teamCount":{},
+        "captain":"null",
+        "new":true
+    }
+
+    var positions = {
+        "k": {"name": "Kaleci", "color":{"base":"#21ba45", "dark":"#1eab3f","fade":"#7dd892", "bg":"#b5f2c3"}},
+        "d": {"name": "Defans", "color":{"base":"#2185d0", "dark":"#1e7abf","fade":"#7db5df", "bg":"#b5d8f3"}},
+        "os": {"name": "Orta Saha", "color":{"base":"#6435c9", "dark":"#5c30b9","fade":"#a288da", "bg":"#cbbbed"}},
+        "f": {"name": "Forvet", "color":{"base":"#a5673f", "dark":"#985e3a","fade":"#caa68f", "bg":"#e7cfc1"}},
+        "y": {"name":"Yedek", "color":{"base":"#1a1a1a", "dark":"#1a1a1a","fade":"#b9b9b9", "bg":"#d4d4d4"}}
+    }
+
+    var strategies = {
+        "442":{"k":1, "d":4, "os":4, "f":2, "y":4 },
+        "451":{"k":1, "d":4, "os":5, "f":1, "y":4 },
+        "433":{"k":1, "d":4, "os":3, "f":3, "y":4 },
+        "532":{"k":1, "d":5, "os":3, "f":2, "y":4 },
+        "541":{"k":1, "d":5, "os":4, "f":1, "y":4 },
+        "343":{"k":1, "d":3, "os":4, "f":3, "y":4 },
+        "352":{"k":1, "d":3, "os":5, "f":2, "y":4 }
+    }
+
+    //initial empty load placeholder before imports
+    loadUserTeam();
+    userTeamDOM.classList.add("placeholder");
+    var teams = await import('./data/json/takimlar.js') ;
+    teams = teams.default;
+    main();
+
 
 async function main() {
     //load points
@@ -84,8 +96,9 @@ Object.values(players).forEach(function(team){
 })
 
     //-------- Initial Render
-    await initUserTeam();
+    initUserTeam();
     initStrategyDropdown();
+    userTeamDOM.classList.remove("placeholder");
     
     initTeamSelectMenu();
 
@@ -109,7 +122,6 @@ Object.values(players).forEach(function(team){
 
     calcButton.addEventListener("click", function(e){pointDOM.innerHTML = calc();})
 }
-//--------------------------  END OF WORKFLOW     -------------------------------------------------
 
 
 
@@ -299,25 +311,33 @@ function calc(){
                 total += point;
             }
             else{
-                includedPlayers.push(player);
-                total += point;
+                negative.includes(player) ? "" : includedPlayers.push(player); 
+                total += point; 
             }
         })
     }
 
-    //check total and finalize
+//check total and finalize
  includedPlayers.reduce((tot,curr) => {return Number(tot) + getPoint(curr)},0)
 
     if(total == (includedPlayers.reduce((tot,curr) => {return Number(tot) + getPoint(curr)},0) ) ){
         captainPoint = getPoint(captain);
         var isNew = userTeam.new ? 5 : 0;
         total += captainPoint + isNew;
-        return total
+        if(includedPlayers.length==11){
+            console.log(includedPlayers)
+            document.querySelectorAll(".player.full .detail.hidden").forEach(el => el.classList.remove("hidden"));
+            return total;
+        }
+        else{
+            displayInfo("İlk onbiri tamamla...");
+            return `<i style = "margin: 3px; display:inline" class="times icon inline red"></i>`;
+        }
+        
     }
     else {console.error("yedekler ve asiller arası puan hesaplama hatası")}
-    
-
 }
+
 
 //Initializing Functions
 function initStrategyDropdown(){
@@ -343,11 +363,12 @@ loadUserTeam();
 
 //objedeki her mevki arrayini arayüzdekiyle kontrol et ona göre doldur
 function loadUserTeam(){
-    var strategy = strategies[userTeam.strategy]
+    var strategy = strategies[userTeam.strategy];
+    console.log(userTeam)
     positionContainers.forEach(function(pos){
         pos.querySelector(".players").innerHTML="";
 
-        var positionID=pos.dataset.position
+        var positionID = pos.dataset.position
         var count = strategy[positionID];
         var name = positions[positionID].name;
         var yedek = (positionID == "y") || false;
@@ -426,7 +447,7 @@ function openPlayerMenu(team){
 };
 
 function resetModalMenu(){
-    history.pushState("", document.title, window.location.pathname + window.location.search);
+    history.pushState("", document.title, window.location.pathname + window.location.search + "#kadro");
     teamPlayerSelectMenu.innerHTML="";
     teamPlayerSelectMenu.removeAttribute("data-position");
     teamPlayerSelectMenu.removeAttribute("data-team");
@@ -452,6 +473,7 @@ function selectPlayer(id, team, position, index){
     element.querySelector(".name").innerHTML = ` ${name} `;
 
     element.querySelector(".detail").innerHTML = `${points[id] == null ? "0" : points[id]}`
+    element.querySelector(".detail").classList.add("hidden");
 
     //add team of selected player to left of player item
     var teamDetail = document.createElement("div");
@@ -526,7 +548,7 @@ function createUserPlayerItem(type, index, position, yedek, id, name, team, poin
         var html = `<a class="player ${type} ${yedek} ${captain} ${position} ui image label large" 
         data-index="${index}" data-position="${position}"  data-id="${id}" data-team="${team}" >
         <span class="name">${name}</span>
-        <div class="detail">
+        <div class="detail hidden">
             ${points[id] == null ? "0" : points[id]}
         </div>
         </a>`
@@ -600,8 +622,6 @@ function createMenuPlayerItem(id,name,position,team){
     return element; 
 }
 
-
-
 /* Misc Functions */
 async function loadJSONAsync(url) {
     let response = await fetch(url);
@@ -609,7 +629,8 @@ async function loadJSONAsync(url) {
     return data;
 }
 
-
 function getPoint(id){
     return negative.includes(points[id]) ? 0 : Number(points[id]);
 }
+}
+

@@ -18,7 +18,7 @@ html,body{
   height: 99vh;
 }
 
-html body{
+html body {
   background-color: rgb(167, 167, 167)!important;
   padding: 1em;
   height: inherit;
@@ -29,18 +29,46 @@ html body{
   grid-template-columns: 100%;
   grid-template-rows: 8fr 1fr;
   grid-template-areas: 
-    "userTeam"
+    "page"
     "rek";
+}
+
+main{
+  height: inherit;
+  display: flex!important;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page{
+  grid-area: page;
+  width: 100%;
+  height: inherit;
+}
+
+
+#home.page{
+background-image:url("/static/assets/splash.png");
+background-repeat: no-repeat;
+  background-size: 100vw;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+  
 }
 
 .hidden{
   display: none!important;
 }
 
+a.devler:target{
+color: red;
+}
+
 /*USER TEAM*/
 .userTeam{
   grid-area: userTeam;
-  width: 100%;
+  width: inherit;
   height: inherit;
   display: flex;
   flex-direction: column;
@@ -53,6 +81,36 @@ html body{
   align-items: center;
   justify-content: space-between;
 }
+
+.placeholder.userTeam .player::before{
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  width: 300%;
+  margin-left: -150%;
+  -webkit-animation: phAnimation .8s linear infinite;
+  animation: phAnimation .8s linear infinite;
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
+}
+
+.placeholder.userTeam .player{
+  width: 60em!important;
+  
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
+}
+
+.placeholder.userTeam .name{
+  opacity: 50;
+  
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
+}
+
+
+
 
 h2.kadro{
   flex-grow: 2;
@@ -135,6 +193,18 @@ select.strategy::before{
 }
 
 @media only screen and (min-width: 600px) {
+  main{
+    height: inherit;
+    display: flex!important;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userTeam{
+    width: 50%;
+  }
+
+
   .positionContainer .players{
     padding: 1em;
     display: flex;
@@ -421,4 +491,22 @@ font-size: 1.2em;
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@-webkit-keyframes phAnimation {
+  0% {
+      transform: translate3d(-30%, 0, 0)
+  }
+  to {
+      transform: translate3d(30%, 0, 0)
+  }
+}
+
+@keyframes phAnimation {
+  0% {
+      transform: translate3d(-30%, 0, 0)
+  }
+  to {
+      transform: translate3d(30%, 0, 0)
+  }
 }
