@@ -61,10 +61,6 @@ justify-content: space-between;
   display: none!important;
 }
 
-a.devler:target{
-color: red;
-}
-
 /*USER TEAM*/
 .userTeam{
   grid-area: userTeam;
@@ -81,36 +77,6 @@ color: red;
   align-items: center;
   justify-content: space-between;
 }
-
-.placeholder.userTeam .player::before{
-  content: " ";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 50%;
-  z-index: 1;
-  width: 300%;
-  margin-left: -150%;
-  -webkit-animation: phAnimation .8s linear infinite;
-  animation: phAnimation .8s linear infinite;
-  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
-}
-
-.placeholder.userTeam .player{
-  width: 60em!important;
-  
-  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
-}
-
-.placeholder.userTeam .name{
-  opacity: 50;
-  
-  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
-}
-
-
-
 
 h2.kadro{
   flex-grow: 2;
@@ -211,13 +177,13 @@ select.strategy::before{
     flex-direction: row;
     flex-grow: 1;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   .positions div.positionContainer .player{
     min-width: 10vw;
     max-width: 25vw!important;
-    width: auto!important;
+    width: 50em!important;
     margin: .5em!important;
     display: flex!important;
     align-items: center;
@@ -493,20 +459,45 @@ font-size: 1.2em;
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-@-webkit-keyframes phAnimation {
-  0% {
-      transform: translate3d(-30%, 0, 0)
-  }
-  to {
-      transform: translate3d(30%, 0, 0)
-  }
-}
 
-@keyframes phAnimation {
-  0% {
-      transform: translate3d(-30%, 0, 0)
+.placeholder{
+  position: relative;  
   }
-  to {
-      transform: translate3d(30%, 0, 0)
+  
+  .placeholder.userTeam .player{
+    width: 50em!important;
+    background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
   }
-}
+  
+  .placeholder .player::after {
+    content: "";
+      display: block;
+      background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 500%;
+      height: 100%;
+      transform: translateX(0);
+      animation: .5s loadingplaceholder ease-in-out infinite;
+  }
+  .placeholder .player > .name{
+    width: 100%;
+      background-color: rgb(0, 0, 0);
+      opacity: .5;
+  }
+  
+  .placeholder .player > .team {
+    background-color: rgb(0, 0, 0)!important;
+    opacity: .3;
+  }
+  
+  
+  @keyframes loadingplaceholder {
+    0% {
+      transform: translateX(-8%);
+    }
+    100% {
+      transform: translateX(5%);
+    }
+  }

@@ -1,72 +1,296 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Fantezi futbol sosyal lig puanları canlı: Kadronu oluştur, canlı puanınını öğren!">
-    <meta name="keyword" content="futbol, lig, petrol ofisi, Türkiye, sportoto, süperlig, süper lig, sosyal lig, fantezi futbol">
-    <meta name="author" content="abdullaho.gq">
-    <script data-ad-client="ca-pub-4920114187770016" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="stylesheet" href="./style.css">
-    <title>Sosyal Futbol Puan</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=no"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta
+			name="description"
+			content="Fantezi futbol sosyal lig puanları canlı: Kadronu oluştur, canlı puanınını öğren!"
+		/>
+		<meta
+			name="keyword"
+			content="futbol, lig, petrol ofisi, Türkiye, sportoto, süperlig, süper lig, sosyal lig, fantezi futbol"
+		/>
+		<meta name="author" content="abdullaho.gq" />
+		<script
+			data-ad-client="ca-pub-4920114187770016"
+			async
+			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+		></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+			integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q="
+			crossorigin="anonymous"
+		/>
+		<script src="./jquery-3.4.1.min.js"></script>
 
-    <main>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+			integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI="
+			crossorigin="anonymous"
+		></script>
+		<link rel="manifest" href="./manifest.webmanifest" />
+		<link rel="stylesheet" href="./style.css" />
+		<title>Sosyal Futbol Puan</title>
+	</head>
 
-        <div id="kadro" class="userTeam page" >
-            <div class="header">
-                <a class="ui button basic icon mini" href="/"><i class="chevron circle large left icon"></i></a>
-                <h3 class="ui kadro">Kadro</h3>
-                <select name="strategy" class="strategy ui dropdown"></select>
-                <div class="ui checkbox"><input type="checkbox" name="updatedTeam" class="updatedTeam">
-                    <label>Güncel</label>
-                </div>
-                
-                <div class="totalPoint">
-                    <button class="ui black mini button calc">Hesapla</button>
-                    <h3 class="ui large label circular green value">0</h3>
-                </div>
-    
-            </div>
-            <div class="positions">
-                <div class="positionContainer k" data-position="k"> <h3 class="name"></h2> <div class="players"></div></div>
-                <div class="positionContainer d" data-position="d"><h3 class="name"></h2> <div class="players"></div></div>
-                <div class="positionContainer os" data-position="os"><h3 class="name"></h2> <div class="players"></div></div>
-                <div class="positionContainer f" data-position="f"><h3 class="name"></h2> <div class="players"></div></div>
-                <div class="positionContainer y" data-position="y"><h3 class="name"></h2> <div class="players"></div></div>
-            </div>
-        </div>
+	<body>
+		<main>
+			<div id="kadro" class="userTeam placeholder page">
+				<div class="header">
+					<a class="ui button basic icon mini" href="/"
+						><i class="chevron circle large left icon"></i
+					></a>
+					<h3 class="ui kadro">Kadro</h3>
+					<select name="strategy" class="strategy ui dropdown"></select>
+					<div class="ui checkbox">
+						<input type="checkbox" name="updatedTeam" class="updatedTeam" />
+						<label>Güncel</label>
+					</div>
 
-        <div class="page" id="fikstur">
-            <header>Fixtur</header>
-        </div>
+					<div class="totalPoint">
+						<button class="ui black mini button calc">Hesapla</button>
+						<h3 class="ui large label circular green value">0</h3>
+					</div>
+				</div>
+				<div class="positions">
+					<div class="positionContainer k" data-position="k">
+						<h3 class="name">Kaleci</h3>
+						<div class="players">
+							<a class="player full k ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="positionContainer d" data-position="d">
+						<h3 class="name">Defans</h3>
+						<div class="players">
+							<a class="player full d ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a class="player full d ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a class="player full d ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a class="player full d ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="positionContainer os" data-position="os">
+						<h3 class="name">Orta Saha</h3>
+						<div class="players">
+							<a class="player full os ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a class="player full os ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a class="player full os ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a class="player full os ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="positionContainer f" data-position="f">
+						<h3 class="name">Forvet</h3>
+						<div class="players">
+							<a class="player full f ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a class="player full f ui image label large" data-index="0">
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="positionContainer y" data-position="y">
+						<h3 class="name">Yedek</h3>
+						<div class="players">
+							<a
+								class="player full yedek k ui image label large"
+								data-index="0"
+							>
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a
+								class="player full yedek d ui image label large"
+								data-index="0"
+							>
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a
+								class="player full yedek os ui image label large"
+								data-index="0"
+							>
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+							<a
+								class="player full yedek f ui image label large"
+								data-index="0"
+							>
+								<div class="team">xxx</div>
+								<span class="name">xxxxxxxxxxxx</span>
+								<div class="detail">0</div>
+								<div
+									class="ui icon top left pointing dropdown button mini detail teamPlayerOperations"
+									tabindex="0"
+								>
+									<i class="ellipsis vertical icon"></i>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-        <div class="page" id="oyundisi">
-            <header>Oyun Dışı Sakat ve Cezalı yuncular</header>
-        </div>
+			<div class="page" id="fikstur">
+				<header>Fixtur</header>
+			</div>
 
-        <div class="page" id="devler">
-            <header>Devler Ligi</header>
-        </div>
-    </main>
-    
-    
-        <div class="infoBar hidden ui large red label"></div>
-        <div class="ui modal playerSelectMenu" data-menu="1">
-            <div class="header">Header</div>
-            <div class="team scrolling content ui vertical menu"></div>
-            <div class="players scrolling content ui vertical menu" data-team=""></div>
-        </div>
-    <div class="rek">REK <div>_____</div></div>
-</body>
+			<div class="page" id="oyundisi">
+				<header>Oyun Dışı Sakat ve Cezalı yuncular</header>
+			</div>
 
+			<div class="page" id="devler">
+				<header>Devler Ligi</header>
+			</div>
+		</main>
 
-<script src="./jquery-3.4.1.min.js" ></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
-<script type="module" src="./main.js"></script>
+		<div class="infoBar hidden ui large red label"></div>
+		<div class="ui modal playerSelectMenu" data-menu="1">
+			<div class="header">Header</div>
+			<div class="team scrolling content ui vertical menu"></div>
+			<div
+				class="players scrolling content ui vertical menu"
+				data-team=""
+			></div>
+		</div>
+		<div class="rek">
+			REK
+			<div>_____</div>
+		</div>
+	</body>
+
+	<script type="module" src="./main.js"></script>
 </html>
-

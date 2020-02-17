@@ -71,8 +71,8 @@ async function kadroPage(){
     }
 
     //initial empty load placeholder before imports
-    loadUserTeam();
-    userTeamDOM.classList.add("placeholder");
+    //loadUserTeam();
+    //userTeamDOM.classList.add("placeholder");
     var teams = await import('./data/json/takimlar.js') ;
     teams = teams.default;
     main();
@@ -364,7 +364,6 @@ loadUserTeam();
 //objedeki her mevki arrayini arayüzdekiyle kontrol et ona göre doldur
 function loadUserTeam(){
     var strategy = strategies[userTeam.strategy];
-    console.log(userTeam)
     positionContainers.forEach(function(pos){
         pos.querySelector(".players").innerHTML="";
 
