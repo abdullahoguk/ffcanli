@@ -32,6 +32,9 @@ main {
 	display: flex !important;
 	flex-direction: column;
 	align-items: center;
+
+	background: linear-gradient(139deg, rgba(37,39,47,1) 0%, rgba(16,16,31,1) 48%, rgba(5,10,8,1) 100%);
+
 }
 
 .page {
@@ -120,7 +123,7 @@ main {
   padding: 1em 0 .2em 0;
   /*background-image: url("https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=582&q=80");
     background-size: cover;
-    background-repeat: no-repeat;*/
+	background-repeat: no-repeat;*/
 }
 
 .userTeam > .header {
@@ -128,7 +131,10 @@ main {
 	flex-direction: row;
 	align-items: center;
   	justify-content: space-between;
-  	padding-top: .5em;
+	  padding-top: .5em;
+	  background-color: hsla(0, 1%, 83%, 0.787);
+	border-radius: .5em;
+	padding: .2em 1em;
 }
 
 .userTeam > .header * {
@@ -260,8 +266,7 @@ select.strategy::before {
 	.userTeam {
     display: flex;
     flex-direction: row;
-    padding:1em;
-    
+	padding:1em;
 	}
   .userTeam > .header{
     display: flex;
@@ -276,8 +281,6 @@ select.strategy::before {
     0px -1px 20px 0px rgba(15, 15, 15, 0.8);
     
   }
-
-  
 
 	.positionContainer .players {
 		display: flex;
