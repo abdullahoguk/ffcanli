@@ -1,310 +1,416 @@
 /* Border box declaration 
 https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
 html {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 /* inherit border-box on all elements in the universe and before and after
  */
-*, 
-*:before, 
+*,
+*:before,
 *:after {
-  box-sizing: inherit;
-  margin:0;
-  padding: 0;
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
 }
 
-html,body{
-  width: 99vw;
-  height: 99vh;
+html,
+body {
+	width: 99vw;
+	height: 99vh;
 }
 
 html body {
-  background-color: rgb(167, 167, 167)!important;
   height: 99vh;
+  background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
 }
 
-main{
-  width: inherit;
-  height: inherit;
-  display: flex!important;
-  flex-direction: column;
-  align-items: center;
+main {
+	width: inherit;
+	height: inherit;
+	display: flex !important;
+	flex-direction: column;
+	align-items: center;
 }
 
-.page{
-  width: 95%;
-  height: inherit;
+.page {
+	width: 95%;
+	height: inherit;
 }
 
-#home.page{
-  width: inherit;
-background-image:url("/static/assets/splash.png");
-background-repeat: no-repeat;
-  background-size: cover;
-  background-position:center;
-  display: flex;
-flex-direction: column;
-justify-content: space-between;
+#home .appLogo{
+  width: 100%;
   
 }
 
-.hidden{
-  display: none!important;
+#home .appLogo img{
+  width: 50vw;
+  position: fixed;
+  margin-left: 25%;
+  top: 5%;
+}
+
+#home .navigation{
+  background-color: hsla(0, 0%, 100%, 0);
+  width: 60vh!important;
+  position: absolute;
+  bottom: 10%;
+  padding-left: 10%!important;
+  padding-right: 20%!important;
+}
+
+#home .navigation a{
+  margin-left: .5em!important;
+  margin-right: .5em!important;
+  background-color: rgb(29, 29, 29)!important ;
+  color:white!important;
+  border-radius: .5em;
+}
+
+#home.page {
+	width: inherit;
+	background-image: url("/static/assets/splash.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.hidden {
+	display: none !important;
+}
+
+
+.rek{
+  display: block;
+  width: 20%;
+  height: 100%;
+  background-color: hsla(0, 0%, 100%, 0.35);
+}
+
+.rek{
+  display: block;
+  width: 100vw;
+  height: 10vw;
+  background-color: hsla(0, 0%, 100%, 0.35);
 }
 
 /*USER TEAM*/
-.userTeam{
-  height: inherit;
-  display: flex;
+.userTeam {
+	height: inherit;
+	display: flex;
   flex-direction: column;
+  padding: 1em 0 .2em 0;
+  /*background-image: url("https://images.unsplash.com/photo-1546608235-3310a2494cdf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=582&q=80");
+    background-size: cover;
+    background-repeat: no-repeat;*/
 }
 
-.userTeam .header{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.userTeam .header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
   justify-content: space-between;
+  padding-top: .5em;
 }
 
-.userTeam .header *{
-margin: .1em;
+.userTeam .header * {
+	margin: 0.1em;
 }
 
-select.strategy{
-  font-family: lato, arial;
-  font-weight: 600;
-  padding: .5em;
-  margin: -.5em;
-  margin-left: 1em;
-  background-color: rgba(255, 255, 255, 0);
-  border: none;
-  border-radius: .5em;
+select.strategy {
+	font-family: lato, arial;
+	font-weight: 600;
+	padding: 0.5em;
+	margin: -0.5em;
+	margin-left: 1em;
+	background-color: rgba(255, 255, 255, 0);
+	border: none;
+	border-radius: 0.5em;
 }
 
-select.strategy option{
-  font-family: lato, arial;
-  font-weight: 500;
-  margin-left: 1em;
-  background-color: rgba(200, 200, 200, 0.363);
-  border: none;
-  border-radius: .5em;
+select.strategy option {
+	font-family: lato, arial;
+	font-weight: 500;
+	margin-left: 1em;
+	background-color: rgba(200, 200, 200, 0.363);
+	border: none;
+	border-radius: 0.5em;
 }
 
-select.strategy::before{
-  content: "Taktik";
-  display: inline;
+select.strategy::before {
+	content: "Taktik";
+	display: inline;
 }
 
-.totalPoint{
-  display:flex;
-  height: 1em;
-  align-items: center;
+.totalPoint {
+	display: flex;
+	height: 1em;
+	align-items: center;
 }
 
-.positions{
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
+.positions {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
 }
 .positionContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border-radius: .5em;
-  box-shadow: 0px 0px 0px 0px rgba(45, 46, 47, 0.8), 0px -1px 20px 0px rgba(15, 15, 15, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	border-radius: 0.5em;
+	box-shadow: 0px 0px 0px 0px rgba(45, 46, 47, 0.8),
+		0px -1px 20px 0px rgba(15, 15, 15, 0.8);
 }
 
-.positionContainer .players{
-  padding: .5em;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  align-items: flex-end;
-  justify-content: center;
-  flex-wrap: wrap;
+.positionContainer .players {
+	padding: 0.5em;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	align-items: flex-end;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
-.positions div.positionContainer .player{
-  width: 50em!important;
-  min-width: 10vw;
-  max-width: 60vw!important;
-  margin: .1em!important;
-  display: flex!important;
-  align-items: stretch;
-  justify-content: center;
-  font-size: .8em!important;
+.positions div.positionContainer .player {
+	width: 50em !important;
+	min-width: 10vw;
+	max-width: 60vw !important;
+	margin: 0.1em !important;
+	display: flex !important;
+	align-items: stretch;
+	justify-content: center;
+	font-size: 0.8em !important;
 }
-.positions div.positionContainer .player:hover{
-  box-shadow: 0px 0px 0px 0px rgba(45, 46, 47, 0.8), 0px -1px 20px 0px rgba(15, 15, 15, 0.8);
-
+.positions div.positionContainer .player:hover {
+	box-shadow: 0px 0px 0px 0px rgba(45, 46, 47, 0.8),
+		0px -1px 20px 0px rgba(15, 15, 15, 0.8);
 }
 
 @media only screen and (min-width: 600px) {
-  main{
-    height: inherit;
-    display: flex!important;
-    flex-direction: row;
+	main {
+		height: inherit;
+		display: flex !important;
+		flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+  }
+  
+  .rek{
+    display: block;
+    width: 20%;
+    height: 100%;
+    background-color: hsla(0, 0%, 100%, 0.35);
   }
 
-  .page{
-    width: 50vw;
-  }
+	.page {
+		width: 50vw;
+	}
 
-  #home.page{
-    
-    background-image:url("/static/assets/splash.png");   
-  }
-
-  .userTeam{
-    width: 60%;
-  }
-
-
-  .positionContainer .players{
+	#home.page {
+    background-image: url("/static/assets/bg.jpg");
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-  .positions div.positionContainer .player{
-    min-width: 10vw;
-    max-width: 25vw!important;
-    width: 50em!important;
-    margin: .2em!important;
-    display: flex!important;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: .8em!important;
   }
+  #home .appLogo img{
+    width: 30vh;
+    margin-left: 25%;
+    position: absolute;
+    top: 5%;
+  }
+
+  #home .navigation{
+    background-color: hsla(0, 0%, 100%, 0);
+    width: 45vh!important;
+    position: absolute;
+    bottom: 5%;
+    padding-left: 0%!important;
+  padding-right: 0%!important;
+  }
+
+  #home .navigation a{
+    margin-left: .5em!important;
+    margin-right: .5em!important;
+    background-color: rgb(29, 29, 29)!important ;
+    color:white!important;
+    border-radius: .5em;
+  }
+  
+	.userTeam {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    padding:5em;
+    
+	}
+  .userTeam .header{
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
+    height: 55vh; 
+    background-color: hsl(0, 1%, 83%);
+    padding: 1em;
+    border-radius: 1em;
+    justify-content: space-around;
+    box-shadow: 0px 0px 0px 0px rgba(45, 46, 47, 0.8),
+    0px -1px 20px 0px rgba(15, 15, 15, 0.8);
+    
+  }
+
+  
+
+	.positionContainer .players {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	.positions div.positionContainer .player {
+		min-width: 10vw;
+		max-width: 25vw !important;
+		width: 40em !important;
+		margin: 0.2em !important;
+		display: flex !important;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.8em !important;
+	}
 }
 
-.positionContainer .player .name{
-flex-grow: 1;
-white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.positionContainer .player .name {
+	flex-grow: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
-.positionContainer .player.captain::before{
-  content: "C";
-  text-align: center;
-  vertical-align: middle;
-  position: absolute;
-  width: 1em;
-  height: 1em;
-  left:-3px;
-  top:-3px;
-  font-size: 1.3em;
-  color:gold;
-  background-color: rgb(75, 75, 73);
-  border-radius: 10em;
-  box-shadow: 0px 0px 0px 0px rgba(45, 46, 47, 0.8), 0px -1px 20px 0px rgba(15, 15, 15, 0.8);
-
+.positionContainer .player.captain::before {
+	content: "C";
+	text-align: center;
+	vertical-align: middle;
+	position: absolute;
+	width: 1em;
+	height: 1em;
+	left: -3px;
+	top: -3px;
+	font-size: 1.3em;
+	color: gold;
+	background-color: rgb(75, 75, 73);
+	border-radius: 10em;
+	box-shadow: 0px 0px 0px 0px rgba(45, 46, 47, 0.8),
+		0px -1px 20px 0px rgba(15, 15, 15, 0.8);
 }
 
-.positionContainer h3.name{
-  /*writing-mode: vertical-rl;
+.positionContainer h3.name {
+	/*writing-mode: vertical-rl;
   transform: rotate(180deg);*/
-  margin-left: .5em;
+	margin-left: 0.5em;
 }
 
-.positionContainer .player .team{
-  display: inline-flex;
-  justify-content: center;
-  background-color: rgba(51, 50, 50, 0.335);
-  width: 3em;
-  margin: -.25em;
-  margin-right: .5em;
-  padding: .25em;
+.positionContainer .player .team {
+	display: inline-flex;
+	justify-content: center;
+	background-color: rgba(51, 50, 50, 0.335);
+	width: 3em;
+	margin: -0.25em;
+	margin-right: 0.5em;
+	padding: 0.25em;
 
-  text-transform: uppercase;
+	text-transform: uppercase;
 }
 
-.positionContainer .player .teamPlayerOperations{
-  display: inline-flex;
-  justify-content: center;
-  background-color: rgba(51, 50, 50, 0.335);
-  opacity: 1!important;
-  margin-left: 1em!important;
+.positionContainer .player .teamPlayerOperations {
+	display: inline-flex;
+	justify-content: center;
+	background-color: rgba(51, 50, 50, 0.335);
+	opacity: 1 !important;
+	margin-left: 1em !important;
 }
 
 /*Colors*/
-.userTeam .positionContainer.k{
-  background-color: #b5f2c3;
-  color: #21ba45;
+.userTeam .positionContainer.k {
+	background-color: #b5f2c3;
+	color: #21ba45;
 }
 
-.userTeam a.player.k, .modal .header .label.k{
-  background-color: #21ba45;
+.userTeam a.player.k,
+.modal .header .label.k {
+	background-color: #21ba45;
 }
 
-.userTeam .positionContainer.d{
-  background-color: #b5d8f3;
-  color: #2185d0;
+.userTeam .positionContainer.d {
+	background-color: #b5d8f3;
+	color: #2185d0;
 }
 
-.userTeam a.player.d, .modal .header .label.d{
-  background-color: #2185d0;
+.userTeam a.player.d,
+.modal .header .label.d {
+	background-color: #2185d0;
 }
 
-.userTeam .positionContainer.os{
-  background-color: #cbbbed;
-  color: #6435c9;
+.userTeam .positionContainer.os {
+	background-color: #cbbbed;
+	color: #6435c9;
 }
 
-.userTeam a.player.os, .modal .header .label.os{
-  background-color: #6435c9;
+.userTeam a.player.os,
+.modal .header .label.os {
+	background-color: #6435c9;
 }
 
-.userTeam .positionContainer.f{
-  background-color: #e7cfc1;
-  color: #a5673f;
+.userTeam .positionContainer.f {
+	background-color: #e7cfc1;
+	color: #a5673f;
 }
 
-.userTeam a.player.f, .modal .header .label.f{
-  background-color: #a5673f;
+.userTeam a.player.f,
+.modal .header .label.f {
+	background-color: #a5673f;
 }
 
-.userTeam .positionContainer.y{
-  background-color: #d4d4d4;
+.userTeam .positionContainer.y {
+	background-color: #d4d4d4;
 }
 
-.positionContainer .player.empty{
-  opacity: .6;
+.positionContainer .player.empty {
+	opacity: 0.6;
 }
 
-
-
-.modal.ui .header{
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
+.modal.ui .header {
+	display: flex !important;
+	align-items: center;
+	justify-content: space-between;
 }
-
 
 /*Modal*/
 
-.menu.team .colors, .positionContainer .player .colors{
-  display: inline-flex;
-  border:2px solid gray;
-  margin-right: .4em;
+.menu.team .colors,
+.positionContainer .player .colors {
+	display: inline-flex;
+	border: 2px solid gray;
+	margin-right: 0.4em;
 }
 
-.menu.team .colors *, .positionContainer .player .colors *{
-  width: 12px;
-  height: 12px;
-  display: inline-block;
+.menu.team .colors *,
+.positionContainer .player .colors * {
+	width: 12px;
+	height: 12px;
+	display: inline-block;
 }
 
-.menu.players [selected=""]{
-  background-color: rgba(174, 185, 174, 0.685)!important;
-  color:grey!important;
+.menu.players [selected=""] {
+	background-color: rgba(174, 185, 174, 0.685) !important;
+	color: grey !important;
 }
-
-
 
 /*SEARCH RESULTS
 .searchSection{
@@ -319,10 +425,6 @@ white-space: nowrap;
     "filterOperations"
     "searchResultsContainer";
 }
-
-
-
-
 .filterOperations{
   grid-area: filterOperations;
   display: grid;
@@ -333,20 +435,16 @@ white-space: nowrap;
   ". searchInput searchInput ."
   "teamInput teamInput teamInput positionInput";
 }
-
 .filterOperations div.search{
   grid-area:searchInput;
   
 }
-
 .filterOperations div.team{
   grid-area: teamInput;
 }
-
 .filterOperations div.position{
 grid-area: positionInput;
 }
-
 .searchResultsContainer{
   position: relative;
   grid-area: searchResultsContainer;
@@ -355,8 +453,6 @@ grid-area: positionInput;
   overflow: hidden;
   margin-bottom: 2em;
 }
-
-
 .searchResults{
   overflow-y: scroll;
   display: flex;
@@ -364,7 +460,6 @@ grid-area: positionInput;
   align-items: stretch;
   padding: .5em;
 }
-
 .playerItem, .playerItemTitle{
   width: 100%;
   height: 2.5em;
@@ -377,116 +472,142 @@ grid-area: positionInput;
   padding:.3em;
 background-color:#E0E5EC;
 }
-
 .playerItem:hover{
   background-color: lightblue;
 }
-
 .playerItem[selected]{
   background-color: rgb(2, 255, 234);
 }
-
 .playerItem[selected]:hover{
   background-color: rgb(124, 255, 244);
 }
-
 .playerItem, .playerItem *{
   cursor: pointer;
 }
-
 .playerItem span.name{
 font-size: 1.2em;
   font-weight: 800;
 }
-
 .playerItemTitle{
   padding-right: .5em;
   padding-left: .5em;
   font-weight: 800;
   background-color: lawngreen;
-
 }
 */
-.infoBar{
-  text-align: center;
-  font-size: 2em;
-  width: 50%;
-  position: absolute;
-  margin-left: auto!important;
-  margin-right: auto!important;
-  left: 0;
-  right: 0;
-  bottom: 1em;
-  z-index: 10000;
+.infoBar {
+	text-align: center;
+	font-size: 2em;
+	width: 50%;
+	position: absolute;
+	margin-left: auto !important;
+	margin-right: auto !important;
+	left: 0;
+	right: 0;
+	bottom: 1em;
+	z-index: 10000;
 }
 
-.neu{
-  box-shadow: 6px 6px 16px rgb(163,177,198,0.8), -6px -6px 16px  rgba(255,255,255, 0.8);
+.neu {
+	box-shadow: 6px 6px 16px rgb(163, 177, 198, 0.8),
+		-6px -6px 16px rgba(255, 255, 255, 0.8);
 }
 
-.rek{
-  grid-area: rek;
-  background-color: cadetblue;
+.rek {
+	grid-area: rek;
+	background-color: cadetblue;
 }
 
 /*Animations*/
-.infoBar.shake{
-  animation: shake 500;
+.infoBar.shake {
+	animation: shake 500;
 }
 
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+	0% {
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+	10% {
+		transform: translate(-1px, -2px) rotate(-1deg);
+	}
+	20% {
+		transform: translate(-3px, 0px) rotate(1deg);
+	}
+	30% {
+		transform: translate(3px, 2px) rotate(0deg);
+	}
+	40% {
+		transform: translate(1px, -1px) rotate(1deg);
+	}
+	50% {
+		transform: translate(-1px, 2px) rotate(-1deg);
+	}
+	60% {
+		transform: translate(-3px, 1px) rotate(0deg);
+	}
+	70% {
+		transform: translate(3px, 1px) rotate(-1deg);
+	}
+	80% {
+		transform: translate(-1px, -1px) rotate(1deg);
+	}
+	90% {
+		transform: translate(1px, 2px) rotate(0deg);
+	}
+	100% {
+		transform: translate(1px, -2px) rotate(-1deg);
+	}
 }
 
+.placeholder {
+	position: relative;
+}
 
-.placeholder{
-  position: relative;  
-  }
-  
-  .placeholder.userTeam .player{
-    width: 50em!important;
-    background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
-  }
-  
-  .placeholder .player::after {
-    content: "";
-      display: block;
-      background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 46%, hsla(0, 0%, 100%, .35) 50%, hsla(0, 0%, 100%, 0) 54%) 50% 50%!important;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 500%;
-      height: 100%;
-      transform: translateX(0);
-      animation: .5s loadingplaceholder ease-in-out infinite;
-  }
-  .placeholder .player > .name{
-    width: 100%;
-      background-color: rgb(0, 0, 0);
-      opacity: .5;
-  }
-  
-  .placeholder .player > .team {
-    background-color: rgb(0, 0, 0)!important;
-    opacity: .3;
-  }
-  
-  
-  @keyframes loadingplaceholder {
-    0% {
-      transform: translateX(-8%);
-    }
-    100% {
-      transform: translateX(5%);
-    }
-  }
+.placeholder.userTeam .player {
+	width: 50em !important;
+	background: linear-gradient(
+			90deg,
+			hsla(0, 0%, 100%, 0) 46%,
+			hsla(0, 0%, 100%, 0.35) 50%,
+			hsla(0, 0%, 100%, 0) 54%
+		)
+		50% 50% !important;
+}
+
+.placeholder .player::after {
+	content: "";
+	display: block;
+	background: linear-gradient(
+			90deg,
+			hsla(0, 0%, 100%, 0) 46%,
+			hsla(0, 0%, 100%, 0.35) 50%,
+			hsla(0, 0%, 100%, 0) 54%
+		)
+		50% 50% !important;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 500%;
+	height: 100%;
+	transform: translateX(0);
+	animation: 0.5s loadingplaceholder ease-in-out infinite;
+}
+.placeholder .player > .name {
+	width: 100%;
+	background-color: rgb(0, 0, 0);
+	opacity: 0.5;
+}
+
+.placeholder .player > .team {
+	background-color: rgb(0, 0, 0) !important;
+	opacity: 0.3;
+}
+
+@keyframes loadingplaceholder {
+	0% {
+		transform: translateX(-8%);
+	}
+	100% {
+		transform: translateX(5%);
+	}
+}
