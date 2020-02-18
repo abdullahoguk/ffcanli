@@ -21,19 +21,10 @@
 			async
 			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
 		></script>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-			integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q="
-			crossorigin="anonymous"
-		/>
 		<script src="./jquery-3.4.1.min.js"></script>
 
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
-			integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI="
-			crossorigin="anonymous"
-		></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.js"></script>
 		<link rel="manifest" href="./manifest.webmanifest" />
 		<link rel="stylesheet" href="./style.css" />
 		<title>Sosyal Futbol Puan</title>
@@ -42,8 +33,23 @@
 	<body>
 		<main>
 			<div class="ui  test ad rek"></div>
-
 			<div id="kadro" class="userTeam placeholder page">
+				<div class="header">
+					<a class="ui button basic icon mini" href="/"
+						><i class="chevron circle large left icon"></i
+					></a>
+					
+					<select name="strategy" class="strategy ui dropdown"></select>
+					<div class="ui checkbox">
+						<input type="checkbox" name="updatedTeam" class="updatedTeam" />
+						<label>Güncel</label>
+					</div>
+
+					<div class="totalPoint">
+						<h3 class="ui large label circular green value">0</h3>
+					</div>
+				</div>
+			
 				<div class="positions">
 					<div class="positionContainer k" data-position="k">
 						<h3 class="name">Kaleci</h3>
@@ -247,23 +253,10 @@
 							</a>
 						</div>
 					</div>
-				</div>
-				<div class="header">
-					<a class="ui button basic icon mini" href="/"
-						><i class="chevron circle large left icon"></i
-					></a>
-					
-					<select name="strategy" class="strategy ui dropdown"></select>
-					<div class="ui checkbox">
-						<input type="checkbox" name="updatedTeam" class="updatedTeam" />
-						<label>Güncel</label>
-					</div>
+					<button class="ui black mini button calc">Hesapla</button>
 
-					<div class="totalPoint">
-						<button class="ui black mini button calc">Hesapla</button>
-						<h3 class="ui large label circular green value">0</h3>
-					</div>
 				</div>
+				
 			</div>
 
 			<div class="page hidden" id="fikstur">

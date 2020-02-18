@@ -15,12 +15,12 @@ html {
 
 html,
 body {
-	width: 99vw;
-	height: 99vh;
+	width: 100%;
+	height: 100%;
 }
 
 html body {
-  height: 99vh;
+  height: 99%;
   background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
@@ -39,25 +39,42 @@ main {
 	height: inherit;
 }
 
-#home .appLogo{
-  width: 100%;
-  
+#home.page{
+	width: 100vh;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
-#home .appLogo img{
-  width: 50vw;
-  position: fixed;
-  margin-left: 25%;
-  top: 5%;
+#home.page>.left{
+	grid-area: left;
+	background-image: url("/static/assets/bg.jpg");
+	display: none;
 }
+#home.page>.right{
+	grid-area: right;
+	display: none;
+}
+
+#home.page>.middle{
+	grid-area: middle;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	justify-content: stretch;
+}
+
+#home.page>.middle .splash img{
+	height: 100vh;
+}
+
 
 #home .navigation{
   background-color: hsla(0, 0%, 100%, 0);
-  width: 60vh!important;
-  position: absolute;
-  bottom: 10%;
-  padding-left: 10%!important;
-  padding-right: 20%!important;
+  width: 80%!important;
+  padding: 1em;
+  border: none!important;
+  margin-top: -25vh;
 }
 
 #home .navigation a{
@@ -70,10 +87,6 @@ main {
 
 #home.page {
 	width: inherit;
-	background-image: url("/static/assets/splash.png");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -109,15 +122,15 @@ main {
     background-repeat: no-repeat;*/
 }
 
-.userTeam .header {
+.userTeam > .header {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-  justify-content: space-between;
-  padding-top: .5em;
+  	justify-content: space-between;
+  	padding-top: .5em;
 }
 
-.userTeam .header * {
+.userTeam > .header * {
 	margin: 0.1em;
 }
 
@@ -212,46 +225,41 @@ select.strategy::before {
 		width: 50vw;
 	}
 
-	#home.page {
-    background-image: url("/static/assets/bg.jpg");
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  #home .appLogo img{
-    width: 30vh;
-    margin-left: 25%;
-    position: absolute;
-    top: 5%;
-  }
+	#home.page{
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		grid-template-rows: 1fr;
+		grid-template-areas: "left middle right";
+	}
+	
+	#home.page>.left{
+		grid-area: left;
+		background-image: url("/static/assets/bg.jpg");
+		background-size: cover;
+		transform: scaleX(-1);
+		display: block;
+	}
+	#home.page>.right{
+		grid-area: right;
+		background-image: url("/static/assets/bg.jpg");
+		background-size: cover;
+		display: block;
+	}
+	
+	#home.page>.middle{
+		grid-area: middle;
+		height: 100%;
+		height: inherit;
+	}
 
-  #home .navigation{
-    background-color: hsla(0, 0%, 100%, 0);
-    width: 45vh!important;
-    position: absolute;
-    bottom: 5%;
-    padding-left: 0%!important;
-  padding-right: 0%!important;
-  }
-
-  #home .navigation a{
-    margin-left: .5em!important;
-    margin-right: .5em!important;
-    background-color: rgb(29, 29, 29)!important ;
-    color:white!important;
-    border-radius: .5em;
-  }
-  
 	.userTeam {
     width: 60%;
     display: flex;
     flex-direction: row;
-    padding:5em;
+    padding:1em;
     
 	}
-  .userTeam .header{
+  .userTeam > .header{
     display: flex;
     flex-direction: column;
     justify-self: end;

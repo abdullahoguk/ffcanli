@@ -1,11 +1,11 @@
 {
-    "name":"Fantezi Futbol Canlı",
-    "short_name":"FFCanlı",
+    "name":"Sosyal Futbol Canlı Puan",
+    "short_name":"SF Canlı Puan",
     "start_url":"./index.html",
     "display":"standalone",
     "orientation": "portrait",
-    "background_color":"#0ca15e",
-    "theme_color":"#0ca15e",
+    "background_color":"#9fecb3",
+    "theme_color":"#9fecb3",
     "description": "Canlı Fantezi Futbol sonuçları",
     "icons":[
         {

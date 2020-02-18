@@ -325,7 +325,6 @@ function calc(){
         var isNew = userTeam.new ? 5 : 0;
         total += captainPoint + isNew;
         if(includedPlayers.length==11){
-            console.log(includedPlayers)
             document.querySelectorAll(".player.full .detail.hidden").forEach(el => el.classList.remove("hidden"));
             return total;
         }
@@ -333,7 +332,6 @@ function calc(){
             displayInfo("İlk onbiri tamamla...");
             return `<i style = "margin: 3px; display:inline" class="times icon inline red"></i>`;
         }
-        
     }
     else {console.error("yedekler ve asiller arası puan hesaplama hatası")}
 }
