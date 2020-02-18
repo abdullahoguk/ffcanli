@@ -66,6 +66,7 @@ main {
 
 #home.page>.middle .splash img{
 	height: 100vh;
+	width: inherit;
 }
 
 
@@ -205,7 +206,7 @@ select.strategy::before {
 		0px -1px 20px 0px rgba(15, 15, 15, 0.8);
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 350px) {
 	main {
 		height: inherit;
 		display: flex !important;
@@ -599,6 +600,7 @@ font-size: 1.2em;
 	height: 100%;
 	transform: translateX(0);
 	animation: 0.5s loadingplaceholder ease-in-out infinite;
+	pointer-events: none;
 }
 .placeholder .player > .name {
 	width: 100%;
