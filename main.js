@@ -628,7 +628,7 @@ function createMenuPlayerItem(id,name,position,team){
     element.dataset.id=id;
     element.dataset.team=team;
     element.dataset.position=position
-    element.innerHTML=`${name} <a class="ui teal circular label">${points[id] == null ? "0" : points[id] }</a>`
+    element.innerHTML=`${name} ` //<a class="ui teal circular label">${points[id] == null ? "0" : points[id] }</a>
 
     if(userTeam.players[position].includes(id)||userTeam.players["y"].includes(id)){
         element.setAttribute("selected","");
@@ -650,7 +650,20 @@ function getPoint(id){
 }
 
 function fiksturPage(){
-    console.log(window.location.hash + " sayfasındasın ")
+    console.log(window.location.hash + " sayfasındasın ");
+    var url = "https://www.fanatik.com.tr/super-lig/puan-durumu"
+    $.ajax({
+        url:url,
+        type:'GET',
+        success: function(data){
+           $('.page#fikstur .content .puan').html($(data).find('.league-matches.scoreboard__field .standing__detail').html());
+           $('.page#fikstur .content .fikstur').html($(data).find('.league-matches.fixture__field .matches__list').html());
+           $('.page#fikstur .content a').removeAttr("href");
+           $('.page#fikstur .content table').addClass("ui small celled unstackable table")
+        }
+    });
+
+    //$('.page#fikstur .content').load(url + " .league-matches.scoreboard__field")
 }
 
 function oyundisiPage(){

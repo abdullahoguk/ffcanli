@@ -42,9 +42,41 @@ main {
 	height: inherit;
 }
 
-.page > header h1{
-	color: blanchedalmond;
+.page > header{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+  	justify-content: space-between;
+	background-color: hsla(0, 1%, 83%, 0.787);
+	border-radius: .5em;
+	padding: .2em 1em;
 }
+
+.page > header h1{
+	flex-grow: 1;
+	margin:.2em;
+}
+
+.page#fikstur > .content{
+	height: inherit;
+	background-color: lavender;
+	overflow-x: scroll;
+	height: 85vh;
+}
+.page#fikstur > .content img{
+	height: 1.5em;
+}
+
+.page#fikstur > .content .fikstur div.row{
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+}
+.page#fikstur > .content td ,.page#fikstur > .content th{
+	padding:0!important;
+	width: 1em;
+}
+
 
 #home.page{
 	width: 100vh;
@@ -135,8 +167,7 @@ main {
 	flex-direction: row;
 	align-items: center;
   	justify-content: space-between;
-	  padding-top: .5em;
-	  background-color: hsla(0, 1%, 83%, 0.787);
+	background-color: hsla(0, 1%, 83%, 0.787);
 	border-radius: .5em;
 	padding: .2em 1em;
 }
@@ -270,8 +301,9 @@ select.strategy::before {
 	.userTeam {
     display: flex;
     flex-direction: row;
-	padding:1em;
+	padding: 1em 0 .2em 0;
 	}
+
   .userTeam > .header{
     display: flex;
     flex-direction: column;
