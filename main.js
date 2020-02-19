@@ -2,8 +2,26 @@
 /*-------------------------------------------------------------------------------------------------
             MAIN WORKFLOW
 -----------------------------*/
-if(window.location.hash=="#kadro"){kadroPage()}
+var pages = document.querySelectorAll(".page");
+var pagesHash = ["#kadro", "#fikstur" , "#oyundisi" , "#devler"]
+var pageFuncions = {
+    "#kadro": kadroPage,
+    "#fikstur": fiksturPage,
+    "#oyundisi": oyundisiPage,
+    "#devler":devlerPage
+}
 
+if(pagesHash.includes(window.location.hash)){
+    routeTo(window.location.hash);
+    pageFuncions[window.location.hash]();
+}
+
+function routeTo(route){
+    //history.pushState("", document.title, window.location.pathname + window.location.search + "#" + route);
+    pages.forEach(function(page){
+        ("#"+page.id) == route ? page.classList.remove("hidden") : page.classList.add("hidden");
+    })
+}
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
 
@@ -629,5 +647,17 @@ async function loadJSONAsync(url) {
 function getPoint(id){
     return negative.includes(points[id]) ? 0 : Number(points[id]);
 }
+}
+
+function fiksturPage(){
+    console.log(window.location.hash + " sayfasındasın ")
+}
+
+function oyundisiPage(){
+    console.log(window.location.hash + " sayfasındasın ")
+}
+
+function devlerPage(){
+    console.log(window.location.hash + " sayfasındasın ")
 }
 
