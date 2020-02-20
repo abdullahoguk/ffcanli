@@ -52,16 +52,16 @@ main {
 	padding: .2em 1em;
 }
 
-.page > header h1{
+.page > header h1,.page > header h2{
 	flex-grow: 1;
 	margin:.2em;
 }
 
-.page#fikstur > .content{
+.page > .content{
 	height: inherit;
 	background-color: lavender;
 	overflow-x: scroll;
-	height: 85vh;
+	height: 80vh;
 }
 .page#fikstur > .content img{
 	height: 1.5em;
@@ -75,6 +75,10 @@ main {
 .page#fikstur > .content td ,.page#fikstur > .content th{
 	padding:0!important;
 	width: 1em;
+}
+
+.page#oyundisi > .content .list{
+padding:2em;
 }
 
 

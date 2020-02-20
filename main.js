@@ -689,8 +689,22 @@ function fiksturPage(){
     //$('.page#fikstur .content').load(url + " .league-matches.scoreboard__field")
 }
 
-function oyundisiPage(){
-    console.log(window.location.hash + " sayfasındasın ")
+async function oyundisiPage(){
+    var page = document.querySelector(".page#oyundisi")
+    console.log(window.location.hash + " sayfasındasın ");
+    var url = "https://raw.githubusercontent.com/aoguk/data/master/oyundisi"+"?" + Math.random();
+    var data  = await fetch(url);
+    
+    data = await data.text();
+    var html = `<div class="ui list"></div>`
+    html=$(html)[0];
+
+    data.split("\n").forEach(function(entry){
+        html.appendChild($(`<div class="item">${entry}</div>`)[0])
+    });
+    page.querySelector(".content").appendChild(html);
+
+
 }
 
 function devlerPage(){
