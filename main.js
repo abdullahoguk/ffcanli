@@ -22,15 +22,15 @@ function routeTo(route){
         ("#"+page.id) == route ? page.classList.remove("hidden") : page.classList.add("hidden");
     })
 }
+
+
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
 
 
 async function kadroPage(){
-   
-    
 
-    var points;
-    var allPlayers;
+    var points = {};
+    var allPlayers = {};
     var players;
     var players2 = {};
 
@@ -47,6 +47,8 @@ async function kadroPage(){
     var updatedTeamCheckbox = document.querySelector("input.updatedTeam");
     var calcButton = document.querySelector("button.calc");
     var pointDOM = document.querySelector(".totalPoint .value");
+    var clearTeamButton = document.querySelector("a.clearTeam");
+
     //data elements
     /*Object.entries(allPlayers).sort(function (a, b) {
         if (teams[a[0]].name > teams[b[0]].name) {return 1;}
@@ -99,7 +101,9 @@ async function kadroPage(){
 async function main() {
     //load points
     await loadJSONAsync("https://raw.githubusercontent.com/aoguk/data/master/puanlar.json"+ "?" + Math.random())
-        .then(data => {points = data;}).catch(reason => console.log(`JSON okunurken hata: points ${reason.message}`));
+        .then(function(data) {
+            Object.entries(data).forEach(function(player){points[player[0]] = player[1][2]});
+        }).catch(reason => console.log(`JSON okunurken hata: points ${reason.message}`));
     //load allplayers
     await loadJSONAsync("https://raw.githubusercontent.com/aoguk/data/master/all.json"+ "?" + Math.random())
         .then(data => {allPlayers = data;}).catch(reason => console.log(`JSON okunurken hata: allplayers ${reason.message}`));
@@ -140,6 +144,26 @@ Object.values(players).forEach(function(team){
 
     calcButton.addEventListener("click", function(e){pointDOM.innerHTML = calc();})
 }
+
+clearTeamButton.addEventListener("click",function(){
+    userTeam = {
+        "strategy":"442",
+        "players":{
+            "k": [null],
+            "d": [null,null,null,null],
+            "os": [null,null,null,null],
+            "f": [null,null],
+            "y": [null,null,null,null]
+        },
+        "count":0,
+        "teamCount":{},
+        "captain":"null",
+        "new":true
+    };
+
+    window.localStorage.setItem("userTeam",JSON.stringify(userTeam))
+    loadUserTeam();
+})
 
 
 

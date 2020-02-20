@@ -21,12 +21,23 @@
 			async
 			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
 		></script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111583366-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111583366-2');
+</script>
+
 		<script src="./jquery-3.4.1.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.js"></script>
 		<link rel="stylesheet" href="./style.css" />
-		<title>Sosyal Futbol Puan</title>
+		<title>Sosyal Futbol Canlı Puan</title>
 	</head>
 
 	<body>
@@ -35,7 +46,7 @@
 			<div id="kadro" class="userTeam placeholder page">
 				<div class="header">
 					<a class="ui button basic icon mini" href="/"
-						><i class="chevron circle large left icon"></i
+						><i class="chevron circle left icon"></i
 					></a>
 					
 					<select name="strategy" class="strategy ui dropdown"></select>
@@ -43,6 +54,11 @@
 						<input type="checkbox" name="updatedTeam" class="updatedTeam" />
 						<label>Güncel</label>
 					</div>
+
+					<a class="ui button basic icon mini clearTeam"
+						><i class="trash alternate
+						 icon"></i
+					>Temizle</a>
 
 					<div class="totalPoint">
 						<h3 class="ui large label circular green value">0</h3>

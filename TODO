@@ -72,3 +72,18 @@ y: yedek
             "y":["gs17","gs12","gs07","gs01"]
             }
 }
+
+
+
+Object.entries(players).forEach(function(team){
+newPlayers[team[0]] = {};
+Object.entries(team[1]).forEach(function(player){     
+    var oldid = player[0];
+    var newid = count.toString().padStart(3, "0");
+    var obj = player[1];
+console.log(player)
+    obj.id = newid;
+    obj.oldid= oldid;
+    newPlayers[obj.team][newid] = obj;
+    count++;}
+)})
