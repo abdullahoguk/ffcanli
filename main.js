@@ -38,7 +38,6 @@ async function kadroPage(){
     var userTeamDOM=document.querySelector(".userTeam");
     var positionContainers = userTeamDOM.querySelectorAll(".positionContainer")
 
-    var infoBar = document.querySelector(".infoBar");
     var playerSelectMenu = document.querySelector(".ui.modal.playerSelectMenu");
     var playerSelectMenuHeader = playerSelectMenu.querySelector("div.header");
     var teamSelectMenu = playerSelectMenu.querySelector(".team.content.menu");
@@ -561,13 +560,13 @@ function createDropdownItem(value, name){
 }
 
 function displayInfo(info){
-    infoBar.innerHTML=`<span class="infoText">${info}</span>`
-    infoBar.classList.remove("hidden");
-    $('.infoBar').transition('shake','.500ms');
-    setTimeout(function(){
-        infoBar.innerHTML="";
-        infoBar.classList.add("hidden");
-    },2000)
+    $('body')
+  .toast({
+    title: info,
+    showProgress: 'bottom',
+    class: 'inverted red',
+    classProgress: 'white'
+  });
 }
 
 function createUserPlayerItem(type, index, position, yedek, id, name, team, point){
