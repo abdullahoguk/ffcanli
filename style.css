@@ -40,6 +40,10 @@ main {
 .page {
 	width: 95%;
 	height: inherit;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
 }
 
 .page > header{
@@ -79,7 +83,19 @@ main {
 
 .page#oyundisi > .content .list{
 padding:2em;
+display: flex;
+flex-direction: column;
 }
+
+.page#oyundisi > .content .list > a{
+	width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+	
+
+
 
 
 #home.page{
@@ -141,18 +157,14 @@ padding:2em;
 }
 
 
-.rek{
-  display: block;
-  width: 20%;
-  height: 100%;
-  background-color: hsla(0, 0%, 100%, 0.35);
-}
+
 
 .rek{
   display: block;
   width: 100vw;
   height: 10vw;
   background-color: hsla(0, 0%, 100%, 0.35);
+  display: none!important;
 }
 
 /*USER TEAM*/
@@ -261,7 +273,7 @@ select.strategy::before {
 		display: flex !important;
 		flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   
   .rek{

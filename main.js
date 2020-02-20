@@ -700,7 +700,9 @@ async function oyundisiPage(){
     html=$(html)[0];
 
     data.split("\n").forEach(function(entry){
-        html.appendChild($(`<div class="item">${entry}</div>`)[0])
+        entry = entry.split(",")
+        entry[1] == undefined ? "": html.appendChild($(`
+        <a class="ui image label">${entry[0]} <div class="detail">${entry[1]}</div></a>`)[0]);
     });
     page.querySelector(".content").appendChild(html);
 
