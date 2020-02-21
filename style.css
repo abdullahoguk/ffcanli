@@ -146,6 +146,7 @@ div#gizlilik.page{
   padding: 1em;
   border: none!important;
   margin-top: -25vh;
+  
 }
 
 #home .navigation a{
@@ -154,7 +155,14 @@ div#gizlilik.page{
   background-color: rgb(29, 29, 29)!important ;
   color:white!important;
   border-radius: .5em;
+  padding-top: 1.25em;
 }
+
+#home .navigation a > div.label{
+	position: absolute;
+	top:0;
+	
+  }
 
 #home.page {
 	width: inherit;
