@@ -93,6 +93,12 @@ flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
+
+div#gizlilik.page{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 	
 
 
@@ -190,14 +196,14 @@ flex-direction: column;
   	justify-content: space-between;
 	background-color: hsla(0, 1%, 83%, 0.787);
 	border-radius: .5em;
-	padding: .2em 1em;
+	padding: .2em .3em;
 }
 
 .userTeam > .header * {
 	margin: 0.1em;
 }
 
-select.strategy {
+select.strategy, select.week {
 	font-family: lato, arial;
 	font-weight: 600;
 	padding: 0.5em;
@@ -208,7 +214,7 @@ select.strategy {
 	border-radius: 0.5em;
 }
 
-select.strategy option {
+select.strategy option, select.week option  {
 	font-family: lato, arial;
 	font-weight: 500;
 	margin-left: 1em;
@@ -217,9 +223,9 @@ select.strategy option {
 	border-radius: 0.5em;
 }
 
-select.strategy::before {
-	content: "Taktik";
-	display: inline;
+.toggle.updatedTeam{
+	display: flex;
+	flex-direction: column;
 }
 
 .totalPoint {

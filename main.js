@@ -23,16 +23,15 @@ function routeTo(route){
     })
 }
 
-
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
-
-
 async function kadroPage(){
 
     var points = {};
     var allPlayers = {};
     var players;
     var players2 = {};
+    var availableWeeklyPoints = [];
+    var fetchedWeeklyPoints = {};
 
     //DOM elements
     var userTeamDOM=document.querySelector(".userTeam");
@@ -43,6 +42,7 @@ async function kadroPage(){
     var teamSelectMenu = playerSelectMenu.querySelector(".team.content.menu");
     var teamPlayerSelectMenu = playerSelectMenu.querySelector(".players.content.menu");
     var strategyDropdown = document.querySelector("select.strategy");
+    var weekDropdown = document.querySelector("select.week");
     var updatedTeamCheckbox = document.querySelector("input.updatedTeam");
     var calcButton = document.querySelector("button.calc");
     var pointDOM = document.querySelector(".totalPoint .value");
@@ -96,10 +96,12 @@ async function kadroPage(){
     teams = teams.default;
     main();
 
-
 async function main() {
+    initStrategyDropdown();
+    await initWeekDropdown();
+
     //load points
-    await loadJSONAsync("https://raw.githubusercontent.com/aoguk/data/master/puanlar/puanlar.json"+ "?" + Math.random())
+    await loadJSONAsync(`https://raw.githubusercontent.com/aoguk/data/master/puanlar/${availableWeeklyPoints[0]}.json?${Math.random()}`)
         .then(function(data) {
             Object.entries(data).forEach(function(player){points[player[0]] = player[1][2]});
         }).catch(reason => console.log(`JSON okunurken hata: points ${reason.message}`));
@@ -109,7 +111,6 @@ async function main() {
 
 players = await allPlayers;
 //without team
-
 Object.values(players).forEach(function(team){
     Object.entries(team).forEach(function(player){
         players2[player[0]] = player[1];
@@ -118,7 +119,7 @@ Object.values(players).forEach(function(team){
 
     //-------- Initial Render
     initUserTeam();
-    initStrategyDropdown();
+    
     userTeamDOM.classList.remove("placeholder");
     
     initTeamSelectMenu();
@@ -139,6 +140,7 @@ Object.values(players).forEach(function(team){
     });
 
     strategyDropdown.addEventListener("change", changeStrategy);
+    weekDropdown.addEventListener("change", changeWeek);
     updatedTeamCheckbox.addEventListener("change", changeNew);
 
     calcButton.addEventListener("click", function(e){pointDOM.innerHTML = calc();})
@@ -207,7 +209,25 @@ function changeStrategy(e){
     //set new player count and team limit
     userTeam.count = count;
     userTeam.teamCount = teamCount;
-    saveUserTeam()
+    saveUserTeam();
+    loadUserTeam();
+}
+
+async function changeWeek(e){
+    userTeamDOM.classList.add("placeholder");
+    e.stopPropagation();
+    var week = e.currentTarget.value;
+    if (!fetchedWeeklyPoints [week]){
+        await loadJSONAsync(`https://raw.githubusercontent.com/aoguk/data/master/puanlar/${week}.json?${Math.random()}`)
+        .then(function(data) {
+            fetchedWeeklyPoints[week] = {};
+            Object.entries(data).forEach(function(player){
+                fetchedWeeklyPoints[week][player[0]] = player[1][2];
+            });
+        }).catch(reason => console.log(`JSON okunurken hata: points ${reason.message}`));
+    }
+
+    points = fetchedWeeklyPoints[week];
     loadUserTeam();
 }
 
@@ -388,6 +408,28 @@ function initStrategyDropdown(){
     })
 }
 
+async function initWeekDropdown(){
+    availableWeeklyPoints = [];
+    //fetch available week points file names
+    await loadJSONAsync(`https://api.github.com/repos/aoguk/data/contents/puanlar?${Math.random()}`)
+        .then(function(data) {
+            availableWeeklyPoints = data.map(function(week){
+                return Number(week.name.split(".")[0]);
+            });
+        }).catch(reason => console.log(`JSON okunurken hata: points ${reason.message}`));
+        //sort
+        availableWeeklyPoints.sort(function(a,b){
+            if(a<b) return 1;
+            else return -1
+        });
+        //render items to dropdown
+    availableWeeklyPoints.forEach(function(item){
+        var value = item;
+        weekDropdown.appendChild(createDropdownItem(value, value+ ". Hafta"));
+    })
+    weekDropdown.value = availableWeeklyPoints[0];
+}
+
 //strategy dropdownını ata
 //load user teamı calıştır
 function initUserTeam(){
@@ -397,7 +439,7 @@ function initUserTeam(){
     }
     strategyDropdown.value = userTeam.strategy;
     updatedTeamCheckbox.checked = userTeam.new;
-loadUserTeam();
+    loadUserTeam();
 }
 
 //objedeki her mevki arrayini arayüzdekiyle kontrol et ona göre doldur
@@ -427,6 +469,8 @@ function loadUserTeam(){
             
         })        
     })
+    userTeamDOM.classList.remove("placeholder");
+
 }
 
 function initTeamSelectMenu(){
