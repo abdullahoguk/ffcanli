@@ -357,6 +357,11 @@ function calc(){
     
     for(var i=0;i<4;i++){
         //console.log(userTeam.players[pos[i]])
+        if(userTeam.captain==null){
+            displayInfo("Kaptan Seçmelisin...");
+            break;
+        }
+
         userTeam.players[pos[i]].forEach(function(player){
             //check yedek
             var point = getPoint(player);
