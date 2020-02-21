@@ -99,7 +99,7 @@ async function kadroPage(){
 
 async function main() {
     //load points
-    await loadJSONAsync("https://raw.githubusercontent.com/aoguk/data/master/puanlar.json"+ "?" + Math.random())
+    await loadJSONAsync("https://raw.githubusercontent.com/aoguk/data/master/puanlar/puanlar.json"+ "?" + Math.random())
         .then(function(data) {
             Object.entries(data).forEach(function(player){points[player[0]] = player[1][2]});
         }).catch(reason => console.log(`JSON okunurken hata: points ${reason.message}`));
@@ -700,9 +700,10 @@ async function oyundisiPage(){
     html=$(html)[0];
 
     data.split("\n").forEach(function(entry){
-        entry = entry.split(",")
-        entry[1] == undefined ? "": html.appendChild($(`
-        <a class="ui image label">${entry[0]} <div class="detail">${entry[1]}</div></a>`)[0]);
+        entry = entry.split(",");
+        var el = "";
+        el = entry[1] == undefined ? `<div class="ui section divider"></div>` : `<a class="ui image label">${entry[0]} <div class="detail">${entry[1]}</div></a>`;
+        html.appendChild($(el)[0])
     });
     page.querySelector(".content").appendChild(html);
 
