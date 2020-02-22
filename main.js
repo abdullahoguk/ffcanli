@@ -3,9 +3,10 @@
             MAIN WORKFLOW
 -----------------------------*/
 var pages = document.querySelectorAll(".page");
-var pagesHash = ["#kadro", "#fikstur" , "#oyundisi" , "#devler"]
+var pagesHash = ["#kadro", "#fikstur" , "#oyundisi" , "#devler", "#hesapla"]
 var pageFuncions = {
     "#kadro": kadroPage,
+    "#hesapla": hesaplaPage,
     "#fikstur": fiksturPage,
     "#oyundisi": oyundisiPage,
     "#devler":devlerPage
@@ -24,7 +25,8 @@ function routeTo(route){
 }
 
 //--------------------------  END OF WORKFLOW     -------------------------------------------------
-async function kadroPage(){
+async function kadroPage(hesapla){
+    var hesapla = hesapla || false;
 
     var points = {};
     var allPlayers = {};
@@ -144,6 +146,11 @@ Object.values(players).forEach(function(team){
     updatedTeamCheckbox.addEventListener("change", changeNew);
 
     calcButton.addEventListener("click", function(e){pointDOM.innerHTML = calc();})
+
+    if(window.location.hash == "#hesapla" && hesapla == true){
+        history.pushState("", document.title, window.location.pathname + window.location.search + "#kadro");
+        pointDOM.innerHTML = calc();
+    }
 }
 
 clearTeamButton.addEventListener("click",function(){
@@ -719,6 +726,12 @@ async function loadJSONAsync(url) {
 function getPoint(id){
     return negative.includes(points[id]) ? 0 : Number(points[id]);
 }
+}
+
+function hesaplaPage(){
+    var page = document.querySelector("#kadro.page");
+        page.classList.remove("hidden");
+    kadroPage(true);
 }
 
 function fiksturPage(){
