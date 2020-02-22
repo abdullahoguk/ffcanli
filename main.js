@@ -134,6 +134,11 @@ Object.values(players).forEach(function(team){
             closeMenu();
             resetModalMenu();
         }
+
+        else if(window.location.hash == "#hesapla" ){
+            history.pushState("", document.title, window.location.pathname + window.location.search + "#kadro");
+            pointDOM.innerHTML = calc();
+        }
     });
 
     //fix modal touch scroll bug 
@@ -146,11 +151,11 @@ Object.values(players).forEach(function(team){
     updatedTeamCheckbox.addEventListener("change", changeNew);
 
     calcButton.addEventListener("click", function(e){pointDOM.innerHTML = calc();})
-
+/*
     if(window.location.hash == "#hesapla" && hesapla == true){
         history.pushState("", document.title, window.location.pathname + window.location.search + "#kadro");
         pointDOM.innerHTML = calc();
-    }
+    }*/
 }
 
 clearTeamButton.addEventListener("click",function(){
