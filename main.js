@@ -99,11 +99,12 @@ async function kadroPage(hesapla){
     main();
 
 async function main() {
+
     initStrategyDropdown();
     await initWeekDropdown();
 
     //load points
-    await loadJSONAsync(`https://raw.githubusercontent.com/aoguk/data/master/puanlar/${availableWeeklyPoints[0]}.json?${Math.random()}`)
+    await loadJSONAsync(`https://raw.githubusercontent.com/aoguk/data/master/puanlar/${userTeam.week}.json?${Math.random()}`)
         .then(function(data) {
             Object.entries(data).forEach(function(player){points[player[0]] = player[1][2]});
         }).catch(reason => console.log(`JSON okunurken hata: points ${reason.message}`));
@@ -121,7 +122,7 @@ Object.values(players).forEach(function(team){
 
     //-------- Initial Render
     initUserTeam();
-    
+
     userTeamDOM.classList.remove("placeholder");
     
     initTeamSelectMenu();
@@ -136,8 +137,7 @@ Object.values(players).forEach(function(team){
         }
 
         else if(window.location.hash == "#hesapla" ){
-            history.pushState("", document.title, window.location.pathname + window.location.search + "#kadro");
-            pointDOM.innerHTML = calc();
+            hesaplaPage()
         }
     });
 
@@ -151,11 +151,12 @@ Object.values(players).forEach(function(team){
     updatedTeamCheckbox.addEventListener("change", changeNew);
 
     calcButton.addEventListener("click", function(e){pointDOM.innerHTML = calc();})
-/*
+
+
     if(window.location.hash == "#hesapla" && hesapla == true){
         history.pushState("", document.title, window.location.pathname + window.location.search + "#kadro");
         pointDOM.innerHTML = calc();
-    }*/
+    }
 }
 
 clearTeamButton.addEventListener("click",function(){
@@ -229,6 +230,8 @@ async function changeWeek(e){
     userTeamDOM.classList.add("placeholder");
     e.stopPropagation();
     var week = e.currentTarget.value;
+    userTeam.week = week;
+    saveUserTeam();
     if (!fetchedWeeklyPoints [week]){
         await loadJSONAsync(`https://raw.githubusercontent.com/aoguk/data/master/puanlar/${week}.json?${Math.random()}`)
         .then(function(data) {
@@ -444,7 +447,6 @@ async function initWeekDropdown(){
         var value = item;
         weekDropdown.appendChild(createDropdownItem(value, value+ ". Hafta"));
     })
-    weekDropdown.value = availableWeeklyPoints[0];
 }
 
 //strategy dropdownını ata
@@ -456,6 +458,8 @@ function initUserTeam(){
     }
     strategyDropdown.value = userTeam.strategy;
     updatedTeamCheckbox.checked = userTeam.new;
+    userTeam.week = negative.includes(userTeam.week) ? availableWeeklyPoints[0] : userTeam.week;
+    weekDropdown.value = userTeam.week;
     loadUserTeam();
 }
 
