@@ -102,6 +102,7 @@ async function main() {
 
     initStrategyDropdown();
     await initWeekDropdown();
+    initUserTeam();
 
     //load points
     await loadJSONAsync(`https://raw.githubusercontent.com/aoguk/data/master/puanlar/${userTeam.week}.json?${Math.random()}`)
@@ -121,8 +122,7 @@ Object.values(players).forEach(function(team){
 })
 
     //-------- Initial Render
-    initUserTeam();
-
+    loadUserTeam();
     userTeamDOM.classList.remove("placeholder");
     
     initTeamSelectMenu();
@@ -460,7 +460,6 @@ function initUserTeam(){
     updatedTeamCheckbox.checked = userTeam.new;
     userTeam.week = negative.includes(userTeam.week) ? availableWeeklyPoints[0] : userTeam.week;
     weekDropdown.value = userTeam.week;
-    loadUserTeam();
 }
 
 //objedeki her mevki arrayini arayüzdekiyle kontrol et ona göre doldur
