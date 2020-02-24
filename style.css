@@ -66,19 +66,63 @@ main {
 	background-color: lavender;
 	overflow-x: scroll;
 	height: 80vh;
+	border-radius: .5em;
 }
-.page#fikstur > .content img{
-	height: 1.5em;
+.page#fikstur .fikstur{
+display: flex;
+flex-direction: column;
+align-items: stretch;
+padding: .5em;
 }
 
-.page#fikstur > .content .fikstur div.row{
+
+.page#fikstur > .content .fikstur div.match{
 	display: flex;
 	align-items: stretch;
 	justify-content: space-between;
+	background-color: rgb(145, 246, 255);
+	margin-top: .75em;
+	padding: .5em;
+	border-radius: .25em;
 }
-.page#fikstur > .content td ,.page#fikstur > .content th{
-	padding:0!important;
-	width: 1em;
+
+.page#fikstur .fikstur .takim1, .page#fikstur .fikstur .takim2{
+	flex-grow: 2;
+	margin: 0;
+}
+.page#fikstur .fikstur .takim2{
+	text-align: right;
+}
+
+.fikstur.placeholder .match{
+	width: 50em !important;
+	background: linear-gradient(
+			90deg,
+			hsla(0, 0%, 100%, 0.164) 46%,
+			hsla(0, 0%, 100%, 0.164) 50%,
+			hsla(0, 0%, 100%, 0.055) 54%
+		)
+		50% 50% !important;
+}
+
+.fikstur.placeholder .match h3::after {
+	content: "";
+	display: block;
+	background: linear-gradient(
+			90deg,
+			hsla(0, 0%, 100%, 0) 46%,
+			hsla(0, 0%, 100%, 0.35) 50%,
+			hsla(0, 0%, 100%, 0) 54%
+		)
+		50% 50% !important;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	transform: translateX(0);
+	animation: 0.5s loadingplaceholder ease-in-out infinite;
+	pointer-events: none;
 }
 
 .page#oyundisi > .content .list{

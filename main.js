@@ -882,12 +882,7 @@ HTML Content Generating Functions
 		return element;
 	}
 
-	/* Misc Functions */
-	async function loadJSONAsync(url) {
-		let response = await fetch(url);
-		let data = await response.json();
-		return data;
-	}
+	
 
 	function getPoint(id) {
 		return negative.includes(points[id]) ? 0 : Number(points[id]);
@@ -900,32 +895,58 @@ function hesaplaPage() {
 	kadroPage(true);
 }
 
-function fiksturPage() {
-	console.log(window.location.hash + " sayfasındasın ");
-	var url = "https://www.fanatik.com.tr/super-lig/puan-durumu";
-	$.ajax({
-		url: url,
-		type: "GET",
-		success: function(data) {
-			$(".page#fikstur .content .puan").html(
-				$(data)
-					.find(".league-matches.scoreboard__field .standing__detail")
-					.html()
-			);
-			$(".page#fikstur .content .fikstur").html(
-				$(data)
-					.find(".league-matches.fixture__field .matches__list")
-					.html()
-			);
-			$(".page#fikstur .content a").removeAttr("href");
-			$(".page#fikstur .content table").addClass(
-				"ui small celled unstackable table"
-			);
-		}
-	});
+async function fiksturPage() {
+    var fiksturData = {};
+    var weekDropdown = document.querySelector("#fikstur .dropdown.week");
+    var currentWeek = "";
+    var matchItems = document.querySelectorAll("#fikstur .content div.match");
 
-	//$('.page#fikstur .content').load(url + " .league-matches.scoreboard__field")
-}
+    console.log(window.location.hash + " sayfasındasın ");
+    
+    await loadJSONAsync(
+        "https://raw.githubusercontent.com/aoguk/data/master/fikstur.json" +
+            "?" +
+            Math.random()
+    )
+        .then(data => {
+            fiksturData = data;
+        })
+        .catch(reason =>
+            console.log(`JSON okunurken hata: allplayers ${reason.message}`)
+        );
+        //init week dropdown
+        Object.keys(fiksturData).reverse().forEach(function(week) {
+            var value = week;
+			weekDropdown.appendChild(createDropdownItem(value, value + ". Hafta"));
+        });
+        currentWeek = Object.keys(fiksturData).reverse()[0];
+
+        //render week
+        await renderWeek(currentWeek);
+        
+        weekDropdown.addEventListener("change",function(e){
+            var week = e.currentTarget.value;
+            currentWeek = week;
+            renderWeek(currentWeek);
+        })
+
+        function renderWeek(week){
+            matchItems.forEach(function(match,index){
+                var data = fiksturData[week][index];
+                console.log(currentWeek, fiksturData)
+                match.querySelector(".takim1").innerHTML = data.takim1;
+                match.querySelector(".takim2").innerHTML = data.takim2;
+                match.querySelector(".skor1").innerHTML = data.skor1 == null ? "-": data.skor1 ;
+                match.querySelector(".skor2").innerHTML = data.skor2 == null ? "-": data.skor2;
+            })
+        }
+        
+
+
+
+        
+	
+}   
 
 async function oyundisiPage() {
 	var page = document.querySelector(".page#oyundisi");
@@ -954,4 +975,18 @@ async function oyundisiPage() {
 
 function devlerPage() {
 	console.log(window.location.hash + " sayfasındasın ");
+}
+
+/* Misc Functions */
+async function loadJSONAsync(url) {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+}
+
+function createDropdownItem(value, name) {
+    var element = document.createElement("option");
+    element.setAttribute("value", value);
+    element.innerHTML = name;
+    return element;
 }
