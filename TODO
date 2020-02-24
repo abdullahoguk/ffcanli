@@ -1,26 +1,8 @@
-alta sayfa menüsü 
-üste sosyalligli birseyler yaz
-
-üstte toplam puanı göster
-puan hesapla metodu
-    :puanı hesaplarken kaptanı, kadro güncel ikini ve yedekleri hesaba katarak topla
-    :her secim, silme, değistirme, kaptan yapma işleminde cağırılacak ve ekrandaki puanı yenileyecek
-    :puan hesalarken kaptanın normal puanı yedekten düşükse yedektekini kadroya al kaptan yap iki katına çıkar
-
-transport puanlar.js to google spreadsheet
-transport allplayers.js to google spreadsheet
-
-
-
-dropdown üst üste binme 
 
 ------------
 (selectUserUI) metodu parametrede verilen oyuncuyu kadro arayüzünde ilgili yere koyan metot
     :Hem kullanıcı oyuncu secerken(selectUser içinde) hem sayfaya yeni girildiğinde takım load edilirken(loadUserTeam içinde) kullanılacak
 
-(loadUserTeam) initUserTeam i forkla. ekrandaki kadroyu userTeame bakarak olusturan fonksiyon  
-    :yeni datadaki her oyuncuyu ekrana yazarken, ekrandaki eskisiyle  tek tek karşılastır aynıysa değiştirme
-    :loadUser teami her sayfa yenilemede, oyuncu secmede, oyuncu silmede, taktik değiştirmede değiştirmede çalıştır 
 
 -----PWA
 manifest json icons 192 all generate
@@ -86,4 +68,16 @@ console.log(player)
     obj.oldid= oldid;
     newPlayers[obj.team][newid] = obj;
     count++;}
+)})
+
+
+
+
+Object.values(newPlayers).forEach(function(team){
+Object.values(team).forEach(function(player){     
+    var oldid=player.oldid
+    var id = player.id;
+    var obj = player;
+    puanlar[id] = [obj.name, obj.pozisyon, oldp[oldid]]  
+}
 )})
