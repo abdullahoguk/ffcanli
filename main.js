@@ -967,7 +967,7 @@ async function oyundisiPage() {
 		el =
 			entry[1] == undefined
 				? `<div class="ui section divider"></div>`
-				: `<a class="ui image label">${entry[0]} <div class="detail">${entry[1]}</div></a>`;
+				: `<a class="ui image black label">${entry[0]} <div class="detail">${entry[1]}</div></a>`;
 		html.appendChild($(el)[0]);
 	});
 	page.querySelector(".content").appendChild(html);

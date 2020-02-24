@@ -51,7 +51,8 @@ main {
 	flex-direction: row;
 	align-items: center;
   	justify-content: space-between;
-	background-color: hsla(0, 1%, 83%, 0.787);
+	background-color: hsla(0, 0%, 36%, 0.76);
+	color:rgb(179, 179, 179);
 	border-radius: .5em;
 	padding: .2em 1em;
 }
@@ -63,11 +64,12 @@ main {
 
 .page > .content{
 	height: inherit;
-	background-color: lavender;
+	background-color: rgb(30, 30, 36);
 	overflow-x: scroll;
 	height: 80vh;
 	border-radius: .5em;
 }
+
 .page#fikstur .fikstur{
 display: flex;
 flex-direction: column;
@@ -75,20 +77,26 @@ align-items: stretch;
 padding: .5em;
 }
 
-
 .page#fikstur > .content .fikstur div.match{
-	display: flex;
-	align-items: stretch;
-	justify-content: space-between;
-	background-color: rgb(145, 246, 255);
-	margin-top: .75em;
-	padding: .5em;
+	display: grid;
+	grid-template-columns: 5fr 1fr 1fr 5fr;
+	align-items: center;
+	background-color: rgb(10, 10, 10);
+	margin-top: .25em;
+	padding: .5em 1.25em;
+	border-radius: .5em;
+	color:white;
+}
+.page#fikstur .label{
+	background-color: rgb(30, 30, 36);
+	color: white;
 	border-radius: .25em;
 }
 
 .page#fikstur .fikstur .takim1, .page#fikstur .fikstur .takim2{
 	flex-grow: 2;
 	margin: 0;
+	font-size: 1em;
 }
 .page#fikstur .fikstur .takim2{
 	text-align: right;
@@ -194,11 +202,11 @@ div#gizlilik.page{
 }
 
 #home .navigation a{
-  margin-left: .5em!important;
+  margin-left: .25em!important;
   margin-right: .5em!important;
   background-color: rgb(29, 29, 29)!important ;
   color:white!important;
-  border-radius: .5em;
+  border-radius: .25em;
   padding-top: 1.25em;
 }
 
