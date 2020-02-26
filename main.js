@@ -987,17 +987,18 @@ async function devlerPage() {
 
 	//DOM elements
 	var devlerDOM = document.querySelector(".devler");
-	var devTeamDom = devlerDOM.querySelector(".devTeam")
+	var devTeamDom = devlerDOM.querySelector("#devler .devTeam")
 	var positionContainers = devlerDOM.querySelectorAll(".positionContainer");
-	var devListDom = document.querySelector(".devList");
+	var devListDom = document.querySelector("#devler .devList");
 	var devlerButtons = devListDom.querySelectorAll(".dev");
-	var allDevsButton = document.querySelector(".allDevsButton");
-	var strategyDom = devTeamDom.querySelector(".strategy span");
+	var allDevsButton = document.querySelector("#devler .allDevsButton");
+	var strategyDom = devTeamDom.querySelector("#devler .strategy span");
 
-	var weekDropdown = document.querySelector("select.week");
-	var updatedTeamCheckbox = document.querySelector("input.updatedTeam");
-	var calcButton = document.querySelector("button.calc");
-	var pointDOM = document.querySelector(".totalPoint .value");
+	var weekDropdown = document.querySelector("#devler select.week");
+	var updatedTeamCheckbox = document.querySelector("#devler input.updatedTeam");
+	var calcButton = document.querySelector("#devler button.calc");
+	console.log(calcButton)
+	var pointDOM = document.querySelector("#devler .totalPoint .value");
 	var negative = [undefined, null, 0, false];
 
 	var userTeam = {
@@ -1181,7 +1182,6 @@ Event Functions
 		e.stopPropagation();
 		var week = e.currentTarget.value;
 		userTeam.week = week;
-		saveUserTeam();
 		if (!fetchedWeeklyPoints[week]) {
 			await loadJSONAsync(
 				`https://raw.githubusercontent.com/aoguk/data/master/puanlar/${week}.json?${Math.random()}`
@@ -1323,7 +1323,6 @@ function loadDev(e){
 	function initUserTeam(dev) {
 
 		userTeam = devlerData[dev];
-		console.log(userTeam)
 		strategyDom.innerHTML = userTeam.strategy ;
 		updatedTeamCheckbox.checked = userTeam.new;
 		userTeam.week = negative.includes(userTeam.week)
@@ -1423,37 +1422,6 @@ HTML Content Generating Functions
 			teamDetail.classList.add("team");
 			teamDetail.innerHTML = team;
 			element.prepend(teamDetail);
-
-			//add dropdown button for player operations
-			var operations = document.createElement("div");
-			operations.classList.add(
-				..."ui icon top left pointing dropdown button mini detail teamPlayerOperations".split(
-					" "
-				)
-			);
-			operations.innerHTML = `<i class="ellipsis vertical icon"></i>
-        <div class="menu">
-            <div class="header"> ${players[team][id].name}</div>
-            <div class="item change"><i class="exchange icon"></i> Değiştir</div>
-            <div class="item captain ${
-							yedek == "yedek" ? "disabled" : ""
-						}"><i class="user secret icon"></i> Kaptan Yap</div>
-            <div class="item delete"><i class="trash alternate icon"></i> Sil</div>
-        </div>`;
-
-			element.appendChild(operations);
-			$(element)
-				.children(".ui.dropdown")
-				.dropdown();
-			//bind events of dropdown items
-			var deleteButton = element.querySelector(".item.delete");
-			deleteButton.addEventListener("click", deletePlayer);
-
-			var changeButton = element.querySelector(".item.change");
-			changeButton.addEventListener("click", changePlayer);
-
-			var captainButton = element.querySelector(".item.captain");
-			captainButton.addEventListener("click", makeCaptain);
 		} else {
 			console.error("Invalid type of user team player Item");
 		}

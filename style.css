@@ -516,47 +516,47 @@ select.strategy option, select.week option  {
 }
 
 /*Colors*/
-.userTeam .positionContainer.k {
-	background-color: #b5f2c3;
-	color: #21ba45;
+.positionContainer.k {
+	background-color: #b5f2c3!important;
+	color: #21ba45!important;
 }
 
-.userTeam a.player.k,
+a.player.k,
 .modal .header .label.k {
-	background-color: #21ba45;
+	background-color: #21ba45!important;
 }
 
-.userTeam .positionContainer.d {
+.positionContainer.d {
 	background-color: #b5d8f3;
 	color: #2185d0;
 }
 
-.userTeam a.player.d,
+a.player.d,
 .modal .header .label.d {
-	background-color: #2185d0;
+	background-color: #2185d0!important;
 }
 
-.userTeam .positionContainer.os {
+.positionContainer.os {
 	background-color: #cbbbed;
 	color: #6435c9;
 }
 
-.userTeam a.player.os,
+a.player.os,
 .modal .header .label.os {
-	background-color: #6435c9;
+	background-color: #6435c9!important;
 }
 
-.userTeam .positionContainer.f {
+.positionContainer.f {
 	background-color: #e7cfc1;
 	color: #a5673f;
 }
 
-.userTeam a.player.f,
+a.player.f,
 .modal .header .label.f {
-	background-color: #a5673f;
+	background-color: #a5673f!important;
 }
 
-.userTeam .positionContainer.y {
+.positionContainer.y {
 	background-color: #d4d4d4;
 }
 
