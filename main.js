@@ -527,7 +527,7 @@ Event Functions
 		availableWeeklyPoints = [];
 		//fetch available week points file names
 		await loadJSONAsync(
-			`https://api.github.com/repos/aoguk/data/contents/puanlar}`
+			`https://api.github.com/repos/aoguk/data/contents/puanlar`
 		)
 			.then(function(data) {
 				availableWeeklyPoints = data.map(function(week) {
