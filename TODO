@@ -1,4 +1,23 @@
 
+develer ligi
+
+sayfaları ayır
+
+serviceworker
+
+cache mekanizması
+    puanlar son hafta nocache
+    puanlar önceki haftalar haftalık cache
+    oyuncular 6 yda 12 saatlik
+    fikstür 6 saat
+    sakat cezzaı 6 saat
+
+
+fikstür loading 
+
+kodular ana sayfa ve ayrı sayfalar
+
+
 ------------
 (selectUserUI) metodu parametrede verilen oyuncuyu kadro arayüzünde ilgili yere koyan metot
     :Hem kullanıcı oyuncu secerken(selectUser içinde) hem sayfaya yeni girildiğinde takım load edilirken(loadUserTeam içinde) kullanılacak

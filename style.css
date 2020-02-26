@@ -146,6 +146,41 @@ flex-direction: column;
     justify-content: space-between;
 }
 
+.page#devler > .content .devList{
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-columns: 50% 50%;
+	
+	
+}
+
+.page#devler > .content .devList .dev{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 15%;
+}
+
+.page#devler > .content .devList img{
+	
+	width: 10em;
+	border-radius: 5em;
+}
+
+.page#devler > .content .devList span{
+	font-size: 1.25em;
+	font-weight: 800;
+	color: white;
+	margin-top:-20% ;
+	background-color: rgb(14, 14, 14);
+	padding: .25em;
+	border-radius: 1em;
+	text-transform: uppercase;
+}
+
+
+
 div#gizlilik.page{
 	display: flex;
 	align-items: center;
@@ -189,7 +224,6 @@ div#gizlilik.page{
 #home.page>.middle .gizlilik{
 	position: absolute;
 	top:2vh
-
 }
 
 #home .navigation{

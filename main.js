@@ -527,7 +527,7 @@ Event Functions
 		availableWeeklyPoints = [];
 		//fetch available week points file names
 		await loadJSONAsync(
-			`https://api.github.com/repos/aoguk/data/contents/puanlar?${Math.random()}`
+			`https://api.github.com/repos/aoguk/data/contents/puanlar}`
 		)
 			.then(function(data) {
 				availableWeeklyPoints = data.map(function(week) {
@@ -933,7 +933,6 @@ async function fiksturPage() {
         function renderWeek(week){
             matchItems.forEach(function(match,index){
                 var data = fiksturData[week][index];
-                console.log(currentWeek, fiksturData)
                 match.querySelector(".takim1").innerHTML = data.takim1;
                 match.querySelector(".takim2").innerHTML = data.takim2;
                 match.querySelector(".skor1").innerHTML = data.skor1 == null ? "-": data.skor1 ;
@@ -973,8 +972,496 @@ async function oyundisiPage() {
 	page.querySelector(".content").appendChild(html);
 }
 
-function devlerPage() {
+async function devlerPage() {
 	console.log(window.location.hash + " sayfasındasın ");
+	var hesapla = hesapla || false;
+
+	var points = {};
+	var allPlayers = {};
+	var players;
+	var players2 = {};
+	var availableWeeklyPoints = [];
+	var fetchedWeeklyPoints = {};
+	var devler=[];
+	var devlerData = {}
+
+	//DOM elements
+	var devlerDOM = document.querySelector(".devler");
+	var devTeamDom = devlerDOM.querySelector(".devTeam")
+	var positionContainers = devlerDOM.querySelectorAll(".positionContainer");
+	var devListDom = document.querySelector(".devList");
+	var devlerButtons = devListDom.querySelectorAll(".dev");
+	var allDevsButton = document.querySelector(".allDevsButton");
+	var strategyDom = devTeamDom.querySelector(".strategy span");
+
+	var weekDropdown = document.querySelector("select.week");
+	var updatedTeamCheckbox = document.querySelector("input.updatedTeam");
+	var calcButton = document.querySelector("button.calc");
+	var pointDOM = document.querySelector(".totalPoint .value");
+	var negative = [undefined, null, 0, false];
+
+	var userTeam = {
+		strategy: "442",
+		players: {
+			k: [null],
+			d: [null, null, null, null],
+			os: [null, null, null, null],
+			f: [null, null],
+			y: [null, null, null, null]
+		},
+		count: 0,
+		teamCount: {},
+		captain: "null",
+		new: true
+	};
+
+	var positions = {
+		k: {
+			name: "Kaleci",
+			color: {
+				base: "#21ba45",
+				dark: "#1eab3f",
+				fade: "#7dd892",
+				bg: "#b5f2c3"
+			}
+		},
+		d: {
+			name: "Defans",
+			color: {
+				base: "#2185d0",
+				dark: "#1e7abf",
+				fade: "#7db5df",
+				bg: "#b5d8f3"
+			}
+		},
+		os: {
+			name: "Orta Saha",
+			color: {
+				base: "#6435c9",
+				dark: "#5c30b9",
+				fade: "#a288da",
+				bg: "#cbbbed"
+			}
+		},
+		f: {
+			name: "Forvet",
+			color: {
+				base: "#a5673f",
+				dark: "#985e3a",
+				fade: "#caa68f",
+				bg: "#e7cfc1"
+			}
+		},
+		y: {
+			name: "Yedek",
+			color: {
+				base: "#1a1a1a",
+				dark: "#1a1a1a",
+				fade: "#b9b9b9",
+				bg: "#d4d4d4"
+			}
+		}
+	};
+
+	var strategies = {
+		"442": { k: 1, d: 4, os: 4, f: 2, y: 4 },
+		"451": { k: 1, d: 4, os: 5, f: 1, y: 4 },
+		"433": { k: 1, d: 4, os: 3, f: 3, y: 4 },
+		"532": { k: 1, d: 5, os: 3, f: 2, y: 4 },
+		"541": { k: 1, d: 5, os: 4, f: 1, y: 4 },
+		"343": { k: 1, d: 3, os: 4, f: 3, y: 4 },
+		"352": { k: 1, d: 3, os: 5, f: 2, y: 4 }
+	};
+
+	var teams = await import("./data/json/takimlar.js");
+	teams = teams.default;
+	main();
+
+	async function main() {
+		await initWeekDropdown();
+		userTeam.week = availableWeeklyPoints[0]
+		
+
+		//load dev Data
+		await loadJSONAsync(
+			`https://raw.githubusercontent.com/aoguk/data/master/devler.json?${Math.random()}`
+		)
+			.then(function(data) {
+				devlerData = data;
+				devler = Object.keys(devlerData);
+				renderDevButtons();
+			})
+			.catch(reason =>
+				console.log(`JSON okunurken hata: devler data ${reason.message}`)
+			);
+
+		//load points
+		await loadJSONAsync(
+			`https://raw.githubusercontent.com/aoguk/data/master/puanlar/${
+				userTeam.week
+			}.json?${Math.random()}`
+		)
+			.then(function(data) {
+				Object.entries(data).forEach(function(player) {
+					points[player[0]] = player[1][2];
+				});
+			})
+			.catch(reason =>
+				console.log(`JSON okunurken hata: points ${reason.message}`)
+			);
+
+		//load allplayers
+		await loadJSONAsync(
+			"https://raw.githubusercontent.com/aoguk/data/master/all.json" +
+				"?" +
+				Math.random()
+		)
+			.then(data => {
+				allPlayers = data;
+			})
+			.catch(reason =>
+				console.log(`JSON okunurken hata: allplayers ${reason.message}`)
+			);
+
+		players = await allPlayers;
+		//without team
+		Object.values(players).forEach(function(team) {
+			Object.entries(team).forEach(function(player) {
+				players2[player[0]] = player[1];
+			});
+		});
+
+		//-------- Initial Render
+		loadUserTeam();
+		devlerDOM.classList.remove("placeholder");
+
+
+		//Player chosing Events
+		//devlerDOM.querySelectorAll(".player").forEach((player)=>player.addEventListener("click", handlePlayerClick));
+		//close and reset modal when user press back button when url has futbolcusec hash
+		window.addEventListener("hashchange", function(e) {
+			if (e.oldURL.split("#")[1] == "futbolcusec") {
+				closeMenu();
+				resetModalMenu();
+			} else if (window.location.hash == "#hesapla") {
+				hesaplaPage();
+			}
+		});
+
+		weekDropdown.addEventListener("change", changeWeek);
+		
+		allDevsButton.addEventListener("click",function(){
+			devListDom.classList.remove("hidden");
+			devTeamDom.classList.add("hidden");
+			location.hash = "#devler"
+		})
+
+		calcButton.addEventListener("click", function(e) {
+			pointDOM.innerHTML = calc();
+		});
+
+		if (window.location.hash == "#hesapla" && hesapla == true) {
+			history.pushState(
+				"",
+				document.title,
+				window.location.pathname + window.location.search + "#kadro"
+			);
+			pointDOM.innerHTML = calc();
+		}
+	}
+
+	/*-------------------------------------------------
+                    FUNCTIONS
+-------------------------------------------------*/
+/*--------------
+Event Functions 
+----------------*/
+	async function changeWeek(e) {
+		devlerDOM.classList.add("placeholder");
+		e.stopPropagation();
+		var week = e.currentTarget.value;
+		userTeam.week = week;
+		saveUserTeam();
+		if (!fetchedWeeklyPoints[week]) {
+			await loadJSONAsync(
+				`https://raw.githubusercontent.com/aoguk/data/master/puanlar/${week}.json?${Math.random()}`
+			)
+				.then(function(data) {
+					fetchedWeeklyPoints[week] = {};
+					Object.entries(data).forEach(function(player) {
+						fetchedWeeklyPoints[week][player[0]] = player[1][2];
+					});
+				})
+				.catch(reason =>
+					console.log(`JSON okunurken hata: points ${reason.message}`)
+				);
+		}
+
+		points = fetchedWeeklyPoints[week];
+		loadUserTeam();
+	}
+
+	//User Team player operations events
+	function calc() {
+		var pos = ["k", "d", "os", "f", "y"];
+
+		var captain = !negative.includes(userTeam.captain)
+			? userTeam.captain
+			: null;
+		var captainPositon = !negative.includes(captain)
+			? players2[captain]["pozisyon"]
+			: "y";
+		var captainPoint = 0;
+
+		var includedPlayers = [];
+		var yedek = [...userTeam.players.y];
+		var total = 0;
+
+		for (var i = 0; i < 4; i++) {
+			//console.log(userTeam.players[pos[i]])
+			if (userTeam.captain == null) {
+				displayInfo("Kaptan Seçmelisin...");
+				break;
+			}
+
+			userTeam.players[pos[i]].forEach(function(player) {
+				//check yedek
+				var point = getPoint(player);
+				if (point < getPoint(yedek[i])) {
+					point = getPoint(yedek[i]);
+					//eğer kaptansa değişen captanı ata
+					if (captainPositon == pos[i] && player == captain) {
+						captain = yedek[i];
+					}
+					// add to included players and switch and increment total
+					includedPlayers.push(yedek[i]);
+					yedek[i] = player;
+					total += point;
+				} else {
+					negative.includes(player) ? "" : includedPlayers.push(player);
+					total += point;
+				}
+			});
+		}
+
+		//check total and finalize
+		includedPlayers.reduce((tot, curr) => {
+			return Number(tot) + getPoint(curr);
+		}, 0);
+
+		if (
+			total ==
+			includedPlayers.reduce((tot, curr) => {
+				return Number(tot) + getPoint(curr);
+			}, 0)
+		) {
+			captainPoint = getPoint(captain);
+			var isNew = userTeam.new ? 5 : 0;
+			total += captainPoint + isNew;
+			if (includedPlayers.length == 11) {
+				document
+					.querySelectorAll(".player.full .detail.hidden")
+					.forEach(el => el.classList.remove("hidden"));
+				return total;
+			} else {
+				displayInfo("İlk onbiri tamamla...");
+				return `<i style = "margin: 3px; display:inline" class="times icon inline red"></i>`;
+			}
+		} else {
+			console.error("yedekler ve asiller arası puan hesaplama hatası");
+		}
+	}
+
+	async function initWeekDropdown() {
+		availableWeeklyPoints = [];
+		//fetch available week points file names
+		await loadJSONAsync(
+			`https://api.github.com/repos/aoguk/data/contents/puanlar`
+		)
+			.then(function(data) {
+				availableWeeklyPoints = data.map(function(week) {
+					return Number(week.name.split(".")[0]);
+				});
+			})
+			.catch(reason =>
+				console.log(`JSON okunurken hata: points ${reason.message}`)
+			);
+		//sort
+		availableWeeklyPoints.sort(function(a, b) {
+			if (a < b) return 1;
+			else return -1;
+		});
+		//render items to dropdown
+		availableWeeklyPoints.forEach(function(item) {
+			var value = item;
+			weekDropdown.appendChild(createDropdownItem(value, value + ". Hafta"));
+		});
+	}
+
+function renderDevButtons(){
+	devlerButtons.forEach(function(dev,index){
+		dev.dataset.dev = devler[index];
+		dev.appendChild($(`<span>${devler[index]}</span>`)[0])
+		dev.addEventListener("click",loadDev);
+		dev.querySelector("img").setAttribute("src",`./static/assets/devler/${devler[index]}.jpg`)
+	})
+}
+
+function loadDev(e){
+	var dev = e.currentTarget.dataset.dev;
+
+	initUserTeam(dev);
+	loadUserTeam();
+	devlerDOM.classList.remove("placeholder");
+	location.hash = "#"+dev;
+	devListDom.classList.add("hidden");
+	devTeamDom.classList.remove("hidden");
+}
+
+	//strategy dropdownını ata
+	//load user teamı calıştır
+	function initUserTeam(dev) {
+
+		userTeam = devlerData[dev];
+		console.log(userTeam)
+		strategyDom.innerHTML = userTeam.strategy ;
+		updatedTeamCheckbox.checked = userTeam.new;
+		userTeam.week = negative.includes(userTeam.week)
+			? availableWeeklyPoints[0]
+			: userTeam.week;
+		weekDropdown.value = userTeam.week;
+	}
+
+	//objedeki her mevki arrayini arayüzdekiyle kontrol et ona göre doldur
+	function loadUserTeam() {
+		var strategy = strategies[userTeam.strategy];
+		positionContainers.forEach(function(pos) {
+			pos.querySelector(".players").innerHTML = "";
+
+			var positionID = pos.dataset.position;
+			var count = strategy[positionID];
+			var name = positions[positionID].name;
+			var yedek = positionID == "y" || false;
+			pos.querySelector(".name").innerHTML = name;
+			//render players specified limit in strategy
+			[...Array(count)].forEach(function(_, i) {
+				//if current container is yedek put positon
+				var position =
+					positionID == "y" ? Object.keys(positions)[i] : positionID;
+				var playerID = userTeam.players[positionID][i];
+				var player = players2[playerID];
+
+				if ([undefined, null].includes(playerID)) {
+					pos
+						.querySelector(".players")
+						.appendChild(createUserPlayerItem("empty", i, position, yedek));
+				} else {
+					pos
+						.querySelector(".players")
+						.appendChild(
+							createUserPlayerItem(
+								"full",
+								i,
+								position,
+								yedek,
+								playerID,
+								player.name,
+								player.team,
+								points[playerID]
+							)
+						);
+				}
+			});
+		});
+		devlerDOM.classList.remove("placeholder");
+	}
+
+
+	/*-------------------------------
+HTML Content Generating Functions
+--------------------------------*/
+	function createDropdownItem(value, name) {
+		var element = document.createElement("option");
+		element.setAttribute("value", value);
+		element.innerHTML = name;
+		return element;
+	}
+
+	function createUserPlayerItem(
+		type,
+		index,
+		position,
+		yedek,
+		id,
+		name,
+		team,
+		point
+	) {
+		var yedek = yedek ? "yedek" : "";
+		var element;
+		if (type == "empty") {
+			var html = `<a class="player ${type} ${yedek} ${position} ui image label large" data-index="${index}" data-position="${position}">
+        <span class="name">Futbolcu Seç...</span>
+        <div class="detail">
+            <i class="plus icon"></i>
+        </div>
+        </a>`;
+			element = $(html)[0];
+		} else if (type == "full") {
+			var captain = userTeam.captain == id ? "captain" : "";
+			var html = `<a class="player ${type} ${yedek} ${captain} ${position} ui image label large" 
+        data-index="${index}" data-position="${position}"  data-id="${id}" data-team="${team}" >
+        <span class="name">${name}</span>
+        <div class="detail hidden">
+            ${points[id] == null ? "0" : points[id]}
+        </div>
+        </a>`;
+			element = $(html)[0];
+
+			//add team of selected player to left of player item
+			var teamDetail = document.createElement("div");
+			teamDetail.classList.add("team");
+			teamDetail.innerHTML = team;
+			element.prepend(teamDetail);
+
+			//add dropdown button for player operations
+			var operations = document.createElement("div");
+			operations.classList.add(
+				..."ui icon top left pointing dropdown button mini detail teamPlayerOperations".split(
+					" "
+				)
+			);
+			operations.innerHTML = `<i class="ellipsis vertical icon"></i>
+        <div class="menu">
+            <div class="header"> ${players[team][id].name}</div>
+            <div class="item change"><i class="exchange icon"></i> Değiştir</div>
+            <div class="item captain ${
+							yedek == "yedek" ? "disabled" : ""
+						}"><i class="user secret icon"></i> Kaptan Yap</div>
+            <div class="item delete"><i class="trash alternate icon"></i> Sil</div>
+        </div>`;
+
+			element.appendChild(operations);
+			$(element)
+				.children(".ui.dropdown")
+				.dropdown();
+			//bind events of dropdown items
+			var deleteButton = element.querySelector(".item.delete");
+			deleteButton.addEventListener("click", deletePlayer);
+
+			var changeButton = element.querySelector(".item.change");
+			changeButton.addEventListener("click", changePlayer);
+
+			var captainButton = element.querySelector(".item.captain");
+			captainButton.addEventListener("click", makeCaptain);
+		} else {
+			console.error("Invalid type of user team player Item");
+		}
+		return element;
+	}
+	function getPoint(id) {
+		return negative.includes(points[id]) ? 0 : Number(points[id]);
+	}
 }
 
 /* Misc Functions */
