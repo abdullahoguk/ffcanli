@@ -992,6 +992,7 @@ async function devlerPage() {
 	var devListDom = document.querySelector("#devler .devList");
 	var devlerButtons = devListDom.querySelectorAll(".dev");
 	var allDevsButton = document.querySelector("#devler .allDevsButton");
+	var devNameDom = devTeamDom.querySelector("#devler .devName");
 	var strategyDom = devTeamDom.querySelector("#devler .strategy span");
 
 	var weekDropdown = document.querySelector("#devler select.week");
@@ -1301,7 +1302,6 @@ Event Functions
 function renderDevButtons(){
 	devlerButtons.forEach(function(dev,index){
 		dev.dataset.dev = devler[index];
-		dev.appendChild($(`<span>${devler[index]}</span>`)[0])
 		dev.addEventListener("click",loadDev);
 		dev.querySelector("img").setAttribute("src",`./static/assets/devler/${devler[index]}.jpg`)
 	})
@@ -1313,7 +1313,6 @@ function loadDev(e){
 	initUserTeam(dev);
 	loadUserTeam();
 	devlerDOM.classList.remove("placeholder");
-	location.hash = "#"+dev;
 	devListDom.classList.add("hidden");
 	devTeamDom.classList.remove("hidden");
 }
@@ -1323,6 +1322,7 @@ function loadDev(e){
 	function initUserTeam(dev) {
 
 		userTeam = devlerData[dev];
+		devNameDom.innerHTML = dev;
 		strategyDom.innerHTML = userTeam.strategy ;
 		updatedTeamCheckbox.checked = userTeam.new;
 		userTeam.week = negative.includes(userTeam.week)

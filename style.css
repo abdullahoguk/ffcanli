@@ -50,7 +50,7 @@ main {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-  	justify-content: space-between;
+	  justify-content: space-between;
 	background-color: hsla(0, 0%, 36%, 0.76);
 	color:rgb(179, 179, 179);
 	border-radius: .5em;
@@ -133,6 +133,8 @@ padding: .5em;
 	pointer-events: none;
 }
 
+
+
 .page#oyundisi > .content .list{
 padding:2em;
 display: flex;
@@ -146,12 +148,14 @@ flex-direction: column;
     justify-content: space-between;
 }
 
+.page#devler > .content {
+	height: 85vh;
+	}
+
 .page#devler > .content .devList{
 	display: grid;
 	grid-template-rows: 1fr 1fr 1fr;
-	grid-template-columns: 50% 50%;
-	
-	
+	grid-template-columns: 50% 50%;	
 }
 
 .page#devler > .content .devList .dev{
@@ -162,34 +166,52 @@ flex-direction: column;
 	margin-top: 15%;
 }
 
+.page#devler > .content .devList .dev::after{
+	content: attr(data-dev);
+	font-size: 1.1rem;
+	font-weight: 800;
+	color: white;
+	margin-top:-3em ;
+	background-color: rgb(14, 14, 14);
+	padding: .25em;
+	border-radius: .25em;
+	text-transform: uppercase;
+}
+
 .page#devler > .content .devList img{
-	
 	width: 10em;
 	border-radius: 5em;
 }
 
-.page#devler > .content .devList span{
-	font-size: 1.25em;
-	font-weight: 800;
-	color: white;
-	margin-top:-20% ;
-	background-color: rgb(14, 14, 14);
-	padding: .25em;
-	border-radius: 1em;
-	text-transform: uppercase;
+.page#devler .content .devTeam div.header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right:1em;
+	color: white!important;
+	background-color: #e6212178;
+    border-radius: .25em;
 }
 
+.page#devler .content .devTeam div.header .devName{
+	font-size: 1.2em;
+	font-weight: 800;
+	text-transform: uppercase;
+	background-color: rgb(90, 0, 0);
+	color: white;
+	padding: .25em;
+	border-radius: .25em;
+}
 
+.page#devler .content .devTeam div.header label{
+	color: white;
+}
 
 div#gizlilik.page{
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-	
-
-
-
 
 #home.page{
 	width: 100vh;
@@ -302,7 +324,7 @@ select.strategy, select.week {
 	font-weight: 600;
 	padding: 0.5em;
 	margin: -0.5em;
-	margin-left: 1em;
+	margin-left: .5em;
 	background-color: rgba(255, 255, 255, 0);
 	border: none;
 	border-radius: 0.5em;
@@ -326,6 +348,7 @@ select.strategy option, select.week option  {
 	display: flex;
 	height: 1em;
 	align-items: center;
+	padding-left: 1em;
 }
 
 .clearTeam .label{
