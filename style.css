@@ -398,7 +398,16 @@ select.strategy option, select.week option  {
 @media screen and ( max-height: 639px )
 {
    .page{
-	   transform: scale(.75);
+	   transform: scale(.85);
+   }
+}
+
+@media screen and ( min-height: 650px )
+{
+   .page{
+	   height: 80vh;
+	   transform: scale(1);
+	   margin-top: 50px;
    }
 }
 
