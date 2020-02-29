@@ -395,6 +395,14 @@ select.strategy option, select.week option  {
 		0px -1px 20px 0px rgba(15, 15, 15, 0.8);
 }
 
+@media screen and ( max-height: 639px )
+{
+   .page{
+	   transform: scale(.75);
+   }
+}
+
+
 @media (orientation:landscape) {
 	main {
 		height: inherit;
