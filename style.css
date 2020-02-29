@@ -29,7 +29,7 @@ html body {
 main {
 	width: inherit;
 	height: inherit;
-	display: flex !important;
+	display: flex ;
 	flex-direction: column;
 	align-items: center;
 
@@ -385,6 +385,8 @@ select.strategy option, select.week option  {
 	min-width: 10vw;
 	max-width: 60vw !important;
 	margin: 0.1em !important;
+	padding-top: 5px!important;
+	padding-bottom: 5px!important;
 	display: flex !important;
 	align-items: stretch;
 	justify-content: center;
@@ -395,24 +397,38 @@ select.strategy option, select.week option  {
 		0px -1px 20px 0px rgba(15, 15, 15, 0.8);
 }
 
-@media screen and ( max-height: 639px )
+@media screen and (max-height:600px) 
 {
    .page{
-	   transform: scale(.85);
+	   transform: scale(.95);
    }
 }
 
-@media screen and ( min-height: 650px )
+@media only screen and ( min-height: 601px )
 {
    .page{
-	   height: 80vh;
+	   height: 90vh;
 	   transform: scale(1);
 	   margin-top: 50px;
+	   margin-bottom: 50px;
    }
+
+   .page .positions{
+	   height: 80vh;
+	   
+   }
+
+   .page .positionContainer{
+	height: 100%;
 }
+}
+
+
 
 
 @media (orientation:landscape) {
+	
+
 	main {
 		height: inherit;
 		display: flex !important;
@@ -420,13 +436,8 @@ select.strategy option, select.week option  {
     align-items: center;
     justify-content: space-evenly;
   }
-  
-  .rek{
-    display: block;
-    width: 15%;
-    height: 100%;
-    background-color: hsla(0, 0%, 100%, 0.35);
-  }
+
+ 
 
 	.page {
 		width: 50vw;
@@ -534,6 +545,7 @@ select.strategy option, select.week option  {
   transform: rotate(180deg);*/
 	margin-left: 0.5em;
 }
+
 
 .positionContainer .player .team {
 	display: inline-flex;
