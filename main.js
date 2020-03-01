@@ -464,8 +464,12 @@ Event Functions
 				displayInfo("Kaptan Seçmelisin...");
 				break;
 			}
+			var positionPlayers = userTeam.players[pos[i]].sort(function(a, b) {
+				if (getPoint(a) > getPoint(b)) return 1;
+				else return -1;
+			});
 
-			userTeam.players[pos[i]].forEach(function(player) {
+			positionPlayers.forEach(function(player) {
 				//check yedek
 				var point = getPoint(player);
 				if (point < getPoint(yedek[i])) {
@@ -1225,7 +1229,12 @@ Event Functions
 				break;
 			}
 
-			userTeam.players[pos[i]].forEach(function(player) {
+			var positionPlayers = userTeam.players[pos[i]].sort(function(a, b) {
+				if (getPoint(a) > getPoint(b)) return 1;
+				else return -1;
+			});
+
+			positionPlayers.forEach(function(player) {
 				//check yedek
 				var point = getPoint(player);
 				if (point < getPoint(yedek[i])) {
