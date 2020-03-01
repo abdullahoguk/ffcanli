@@ -148,6 +148,25 @@ flex-direction: column;
     justify-content: space-between;
 }
 
+.page#oyundisi > .content .list > a .name{
+	flex-grow: 1;
+}
+
+.page#oyundisi > .content .list > a .team{
+	display: inline-flex;
+	justify-content: center;
+	background-color: rgba(51, 50, 50, 0.335);
+	width: 3em;
+	margin: -0.25em;
+	margin-right: 0.5em;
+	padding: 0.25em;
+
+	text-transform: uppercase;
+	background-color: rgb(24, 44, 24);
+	color: rgb(174, 245, 179);
+	border-radius: .25em;
+}
+
 .page#devler > .content {
 	height: 85vh;
 	}
