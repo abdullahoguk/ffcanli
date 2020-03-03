@@ -267,6 +267,29 @@ div#gizlilik.page{
 	top:2vh
 }
 
+#home.page  .middle .sponsored{
+	position: absolute;
+	top: 65%;
+	right: 0;
+	padding: 1.5em .5em .5em .5em;
+	background-color: rgba(0, 0, 0, 0.479);
+	border-radius: .25em;
+}
+
+#home.page  .middle .sponsored::before{
+	background-color: rgba(255, 255, 255, 0.472);
+	content: "Sponsorlu";
+	font-size: .75em;
+	border-radius: .25em;
+
+	font-style: italic;
+	padding: .25em;
+	line-height: 1em;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
 #home .navigation{
   background-color: hsla(0, 0%, 100%, 0);
   width: 80%!important;
@@ -296,6 +319,8 @@ div#gizlilik.page{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	margin-top: 0px!important;
+	   margin-bottom: 0px!important;
 }
 
 .hidden {
