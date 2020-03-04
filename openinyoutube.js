@@ -4,9 +4,9 @@ var youtubeLinks = document
 		button.addEventListener("click", function(e) {
 			var videoId = e.currentTarget.dataset.youtube;
 
-			var desktopFallback = "https://youtube.com/watch?v="+videoId,
-				mobileFallback = "https://youtube.com/watch?v="+videoId,
-				app = "vnd.youtube://"+videoId;
+			var desktopFallback = "www.youtube.com/watch?v="+videoId,
+				mobileFallback = "www.youtube.com/watch?v="+videoId,
+				app = "vnd.youtube://www.youtube.com/watch?v="+videoId;
 
 			if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 				window.location = app;
