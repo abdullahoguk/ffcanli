@@ -65,7 +65,7 @@ main {
 .page > .content{
 	height: inherit;
 	background-color: rgb(30, 30, 36);
-	overflow-x: scroll;
+	overflow-y: scroll;
 	height: 80vh;
 	border-radius: .5em;
 }
@@ -267,6 +267,14 @@ div#gizlilik.page{
 	top:2vh
 }
 
+#home.page  .middle .blog{
+	position: absolute;
+	top: 65%;
+	left: 0;
+	padding: 1.5em .5em .5em .5em;
+	border-radius: .25em;
+}
+
 #home.page  .middle .sponsored{
 	position: absolute;
 	top: 65%;
@@ -323,11 +331,36 @@ div#gizlilik.page{
 	   margin-bottom: 0px!important;
 }
 
+#blog.page .feed {
+	
+}
+
+#blog.page .feed .item{
+	padding: 1em;
+	border: 1px solid grey;
+	border-radius: .5em;
+    border-left: 10px solid rgba(128, 128, 128, 0.274);
+}
+
+#blog.page .feed .header{
+	padding: .25em;
+	background-color:rgba(255, 255, 255, 0.082);
+	color:white!important;
+	border-left: 5px solid rgb(255, 149, 149);
+
+
+	border-radius: .25em;
+}
+
+#blog.page .feed .detail{
+	padding: .25em;
+	color:white!important;
+	border-radius: .25em;
+}
+
 .hidden {
 	display: none !important;
 }
-
-
 
 
 .rek{
