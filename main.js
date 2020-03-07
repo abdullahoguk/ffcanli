@@ -460,7 +460,7 @@ Event Functions
 
 		for (var i = 0; i < 4; i++) {
 			//console.log(userTeam.players[pos[i]])
-			if (userTeam.captain == null) {
+			if (captain == null) {
 				displayInfo("Kaptan Seçmelisin...");
 				break;
 			}
@@ -470,9 +470,9 @@ Event Functions
 			});
 
 			positionPlayers.forEach(function(player) {
-				//check yedek
 				var point = getPoint(player);
-				if (point < getPoint(yedek[i])) {
+				//check yedek
+				if (yedek[i] && point < getPoint(yedek[i])) {
 					point = getPoint(yedek[i]);
 					//eğer kaptansa değişen captanı ata
 					if (captainPositon == pos[i] && player == captain) {
@@ -490,10 +490,7 @@ Event Functions
 		}
 
 		//check total and finalize
-		includedPlayers.reduce((tot, curr) => {
-			return Number(tot) + getPoint(curr);
-		}, 0);
-
+		
 		if (
 			total ==
 			includedPlayers.reduce((tot, curr) => {
@@ -1235,9 +1232,9 @@ Event Functions
 			});
 
 			positionPlayers.forEach(function(player) {
-				//check yedek
 				var point = getPoint(player);
-				if (point < getPoint(yedek[i])) {
+				//check yedek				
+				if (yedek[i] &&  point < getPoint(yedek[i])) {
 					point = getPoint(yedek[i]);
 					//eğer kaptansa değişen captanı ata
 					if (captainPositon == pos[i] && player == captain) {
