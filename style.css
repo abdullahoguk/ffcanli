@@ -270,32 +270,50 @@ div#gizlilik.page{
 #home.page  .middle .blog{
 	position: absolute;
 	top: 65%;
-	left: 0;
-	padding: 1.5em .5em .5em .5em;
+	left: 0%;
 	border-radius: .25em;
+	margin:1em!important;
+	background-color: hsla(187, 100%, 21%, 0.911);
+	color:white;
+    border: none!important;
+    box-shadow: none;
 }
 
-#home.page  .middle .sponsored{
+#home.page  .middle .blog a{
+	
+	color:hsl(0, 0%, 100%);
+    opacity: 1;
+}
+
+#home.page  .middle .links{
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: stretch;
 	position: absolute;
-	top: 65%;
+	top: 60%;
 	right: 0;
-	padding: 1.5em .5em .5em .5em;
-	background-color: rgba(0, 0, 0, 0.479);
-	border-radius: .25em;
+	background-color: rgba(255, 255, 255, 0.26);
+	width: 25%;
+	margin: 0;
 }
 
-#home.page  .middle .sponsored::before{
-	background-color: rgba(255, 255, 255, 0.472);
-	content: "Sponsorlu";
-	font-size: .75em;
+#home.page  .middle .links .sponsored::before{
+	background-color: rgb(223, 0, 0);
+	content: " ";
+	font-size: 1.75em;
 	border-radius: .25em;
 
 	font-style: italic;
-	padding: .25em;
 	line-height: 1em;
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: -5px;
+	left: -5px;
+}
+
+#home.page  .middle .links a{
+	padding: 0.25em;
+	
 }
 
 #home .navigation{
@@ -304,7 +322,7 @@ div#gizlilik.page{
   padding: 1em;
   border: none!important;
   margin-top: -25vh;
-  
+  box-shadow: none;
 }
 
 #home .navigation a{
