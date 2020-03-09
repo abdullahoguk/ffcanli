@@ -3,7 +3,7 @@
 var content = document.querySelector(".feed");
 content.classList.add("ui","items")
 var dataURL =
-	"https://cdn.contentful.com/spaces/blfw5f11e921/environments/master/entries?access_token=5Kg3FYTOA0My4ZXtgfI_E6shQHGAsEyQRYOdS5CeHvg";
+	"https://cdn.contentful.com/spaces/blfw5f11e921/environments/master/entries?access_token=5Kg3FYTOA0My4ZXtgfI_E6shQHGAsEyQRYOdS5CeHvg&order=sys.createdAt";
 
 main();
 
