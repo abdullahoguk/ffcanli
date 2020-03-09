@@ -22,7 +22,7 @@ async function main() {
 		})
 		.catch(reason => console.log(`JSON okunurken hata: ${reason.message}`));
 
-	await data.items.forEach(function(item) {
+	await data.items.reverse().forEach(function(item) {
 		var feedItem = document.createElement("div");
 		feedItem.classList.add("item");
 
