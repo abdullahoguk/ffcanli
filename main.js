@@ -269,6 +269,7 @@ Event Functions
 			//count selected players and team limit for that positon array
 			players.forEach(function(player) {
 				if (![undefined, null].includes(player)) {
+					var team = players2[player].team;
 					count++;
 					teamCount[team] ? teamCount[team]++ : (teamCount[team] = 1);
 					selectedPlayersArray.push(player);
@@ -913,7 +914,7 @@ async function fiksturPage() {
             fiksturData = data;
         })
         .catch(reason =>
-            console.log(`JSON okunurken hata: allplayers ${reason.message}`)
+            console.log(`JSON okunurken hata: fikstur ${reason.message}`)
         );
         //init week dropdown
         Object.keys(fiksturData).reverse().forEach(function(week) {
