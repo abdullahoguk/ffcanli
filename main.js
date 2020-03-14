@@ -382,7 +382,7 @@ Event Functions
 				? player.dataset.id
 				: null;
 		var team =
-			player.dataset.team == players[player.dataset.team][id]["team"]
+			player.dataset.team == players[player.dataset.team][id][team]
 				? player.dataset.team
 				: null;
 
@@ -460,12 +460,11 @@ Event Functions
 		var total = 0;
 
 		for (var i = 0; i < 4; i++) {
-			//console.log(userTeam.players[pos[i]])
 			if (captain == null) {
 				displayInfo("Kaptan Seçmelisin...");
 				break;
 			}
-			var positionPlayers = userTeam.players[pos[i]].sort(function(a, b) {
+			var positionPlayers = userTeam.players[pos[i]].slice().sort(function(a, b) {
 				if (getPoint(a) > getPoint(b)) return 1;
 				else return -1;
 			});
@@ -1227,7 +1226,7 @@ Event Functions
 				break;
 			}
 
-			var positionPlayers = userTeam.players[pos[i]].sort(function(a, b) {
+			var positionPlayers = userTeam.players[pos[i]].slice().sort(function(a, b) {
 				if (getPoint(a) > getPoint(b)) return 1;
 				else return -1;
 			});
