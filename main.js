@@ -464,10 +464,16 @@ Event Functions
 				displayInfo("Kaptan Seçmelisin...");
 				break;
 			}
+			//sort current position array
 			var positionPlayers = userTeam.players[pos[i]].slice().sort(function(a, b) {
 				if (getPoint(a) > getPoint(b)) return 1;
 				else return -1;
 			});
+			//switch captan if its point is same with the first (smallest) element
+			if (captainPositon == pos[i] && !(positionPlayers[0] == captain) && getPoint(captain) == getPoint(positionPlayers[0])) {
+				var captainIndex = positionPlayers.indexOf(captain);
+				[positionPlayers[0],positionPlayers[captainIndex]] = [positionPlayers[captainIndex], positionPlayers[0]]
+			}
 
 			positionPlayers.forEach(function(player) {
 				var point = getPoint(player);
@@ -999,7 +1005,6 @@ async function devlerPage() {
 	var weekDropdown = document.querySelector("#devler select.week");
 	var updatedTeamCheckbox = document.querySelector("#devler input.updatedTeam");
 	var calcButton = document.querySelector("#devler button.calc");
-	console.log(calcButton)
 	var pointDOM = document.querySelector("#devler .totalPoint .value");
 	var negative = [undefined, null, 0, false];
 
@@ -1220,21 +1225,25 @@ Event Functions
 		var total = 0;
 
 		for (var i = 0; i < 4; i++) {
-			//console.log(userTeam.players[pos[i]])
-			if (userTeam.captain == null) {
+			if (captain == null) {
 				displayInfo("Kaptan Seçmelisin...");
 				break;
 			}
-
+			//sort current position array
 			var positionPlayers = userTeam.players[pos[i]].slice().sort(function(a, b) {
 				if (getPoint(a) > getPoint(b)) return 1;
 				else return -1;
 			});
+			//switch captan if its point is same with the first (smallest) element
+			if (captainPositon == pos[i] && !(positionPlayers[0] == captain) && getPoint(captain) == getPoint(positionPlayers[0])) {
+				var captainIndex = positionPlayers.indexOf(captain);
+				[positionPlayers[0],positionPlayers[captainIndex]] = [positionPlayers[captainIndex], positionPlayers[0]]
+			}
 
 			positionPlayers.forEach(function(player) {
 				var point = getPoint(player);
-				//check yedek				
-				if (yedek[i] &&  point < getPoint(yedek[i])) {
+				//check yedek
+				if (yedek[i] && point < getPoint(yedek[i])) {
 					point = getPoint(yedek[i]);
 					//eğer kaptansa değişen captanı ata
 					if (captainPositon == pos[i] && player == captain) {
@@ -1252,10 +1261,7 @@ Event Functions
 		}
 
 		//check total and finalize
-		includedPlayers.reduce((tot, curr) => {
-			return Number(tot) + getPoint(curr);
-		}, 0);
-
+		
 		if (
 			total ==
 			includedPlayers.reduce((tot, curr) => {
