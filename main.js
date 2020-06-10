@@ -617,8 +617,6 @@ Event Functions
 
 	function initTeamSelectMenu() {
 		var menu = playerSelectMenu.querySelector(".content.team");
-		//var ad = `<div id="ezoic-pub-ad-placeholder-101"> </div>`
-		//menu.appendChild($(ad)[0]);
 		var teamsArray = Object.entries(teams).sort(function(a, b) {
 			if (a[1].name > b[1].name) {
 				return 1;
