@@ -289,7 +289,6 @@ div#gizlilik.page{
 }
 
 #home.page  .middle .blog a{
-	
 	color:hsl(0, 0%, 100%);
     opacity: 1;
 }
@@ -300,29 +299,16 @@ div#gizlilik.page{
 	align-items: stretch;
 	justify-content: stretch;
 	position: absolute;
-	top: 60%;
+	margin:1em!important;
+	top: 65%;
 	right: 0;
-	background-color: rgba(255, 255, 255, 0.26);
+	background-color: rgba(255, 255, 255, 1);
 	width: 25%;
 	margin: 0;
 }
 
-#home.page  .middle .links .sponsored::before{
-	background-color: rgb(223, 0, 0);
-	content: " ";
-	font-size: 1.75em;
-	border-radius: .25em;
-
-	font-style: italic;
-	line-height: 1em;
-	position: absolute;
-	top: -5px;
-	left: -5px;
-}
-
 #home.page  .middle .links a{
 	padding: 0.25em;
-	
 }
 
 #home .navigation{
@@ -346,8 +332,7 @@ div#gizlilik.page{
 #home .navigation a > div.label{
 	position: absolute;
 	top:0;
-	
-  }
+}
 
 #home.page {
 	width: inherit;
