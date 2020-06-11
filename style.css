@@ -262,9 +262,18 @@ div#gizlilik.page{
 	width: inherit;
 }
 
-#home.page>.middle .gizlilik{
+#home.page>.middle .gizlilikandplaystore{
+	display:flex;
+	align-items: center;
 	position: absolute;
-	top:2vh
+	top:1vh
+}
+
+
+
+ .playstore img{
+	width: 10em;
+	
 }
 
 #home.page  .middle .blog{
