@@ -102,5 +102,23 @@ Güncel sakat/cezalı oyuncular, Devler ligi puanları, Fikstür ...">
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.js"></script>
+<script>
+  $('body')
+  .toast({
+    class: 'error',
+    position: 'top center',
+    showProgress: 'bottom',
+    showIcon: 'sync',
 
+    title: 'Lütfen Uygulamayı Google Play\'den Güncelleyin',
+    message: `Güncellediyeseniz bu mesajı dikkate almayın...`
+  })
+;
+</script>
+
+<style>
+  div.error.ui.toast > div > div:nth-child(2){
+    font-size: smaller;
+  }
+</style>
 </html>
