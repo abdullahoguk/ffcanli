@@ -190,7 +190,7 @@ flex-direction: column;
 	font-size: 1.1rem;
 	font-weight: 800;
 	color: white;
-	margin-top:-3em ;
+	margin-top:-3em;
 	background-color: rgb(14, 14, 14);
 	padding: .25em;
 	border-radius: .25em;
@@ -399,7 +399,7 @@ div#gizlilik.page{
 	flex-direction: row;
 	align-items: center;
   	justify-content: space-between;
-	background-color: hsla(0, 1%, 83%, 0.787);
+	background-color: hsl(0, 0%, 76%);
 	border-radius: .5em;
 	padding: .2em .3em;
 }
@@ -498,7 +498,7 @@ select.strategy option, select.week option  {
    .page{
 	   height: 90vh;
 	   transform: scale(1);
-	   margin-top: 50px;
+	   margin-top: 25px;
 	   margin-bottom: 50px;
    }
 
@@ -612,6 +612,14 @@ select.strategy option, select.week option  {
 	text-overflow: ellipsis;
 }
 
+.positionContainer .player .name, .positionContainer .player .team {
+	color:white !important;
+}
+
+.positionContainer .player .detail {
+	color:rgb(247, 230, 230) !important;
+}
+
 .positionContainer .player.captain::before {
 	content: "C";
 	text-align: center;
@@ -658,51 +666,53 @@ select.strategy option, select.week option  {
 
 /*Colors*/
 .positionContainer.k {
-	background-color: #b5f2c3!important;
-	color: #21ba45!important;
+	background-color: #0e3317!important;
+	color: rgb(124, 235, 150)!important;
 }
 
 a.player.k,
 .modal .header .label.k {
-	background-color: #21ba45!important;
+	background-color: #16722b!important;
 }
 
 .positionContainer.d {
-	background-color: #b5d8f3;
-	color: #2185d0;
+	background-color: #051420;
+	color: #9ccef5;
 }
 
 a.player.d,
 .modal .header .label.d {
-	background-color: #2185d0!important;
+	background-color: #113e5f!important;
 }
 
 .positionContainer.os {
-	background-color: #cbbbed;
-	color: #6435c9;
+	background-color: #13082a;
+	color: #bc9ffb;
 }
 
 a.player.os,
 .modal .header .label.os {
-	background-color: #6435c9!important;
+	background-color: #311d5c!important;
 }
 
 .positionContainer.f {
-	background-color: #e7cfc1;
-	color: #a5673f;
+	background-color: #2f180b;
+	color: #eca270;
 }
 
 a.player.f,
 .modal .header .label.f {
-	background-color: #a5673f!important;
+	background-color: #3d2719!important;
 }
 
 .positionContainer.y {
-	background-color: #d4d4d4;
+	color: #fbc7c7;
+
+	background-color: #330909;
 }
 
 .positionContainer .player.empty {
-	opacity: 0.6;
+	opacity: 0.8;
 }
 
 .modal.ui .header {
@@ -732,102 +742,6 @@ a.player.f,
 	color: grey !important;
 }
 
-/*SEARCH RESULTS
-.searchSection{
-  grid-area: searchSection;
-  width: 90%;
-  display: grid;
-  grid-gap: .5em;
-  grid-template-columns: 100%;
-  grid-template-rows: 3fr 1fr 3fr;
-  grid-template-areas: 
-    "userTeam"
-    "filterOperations"
-    "searchResultsContainer";
-}
-.filterOperations{
-  grid-area: filterOperations;
-  display: grid;
-  grid-gap: .5em;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr; 
-  grid-template-areas: 
-  ". searchInput searchInput ."
-  "teamInput teamInput teamInput positionInput";
-}
-.filterOperations div.search{
-  grid-area:searchInput;
-  
-}
-.filterOperations div.team{
-  grid-area: teamInput;
-}
-.filterOperations div.position{
-grid-area: positionInput;
-}
-.searchResultsContainer{
-  position: relative;
-  grid-area: searchResultsContainer;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  margin-bottom: 2em;
-}
-.searchResults{
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: .5em;
-}
-.playerItem, .playerItemTitle{
-  width: 100%;
-  height: 2.5em;
-  display: grid;
-  align-items: center;
-  align-content: center;
-  grid-template-columns: 1fr 7fr 3fr 1fr;
-  grid-template-rows: 1fr;
-  margin:.1em;
-  padding:.3em;
-background-color:#E0E5EC;
-}
-.playerItem:hover{
-  background-color: lightblue;
-}
-.playerItem[selected]{
-  background-color: rgb(2, 255, 234);
-}
-.playerItem[selected]:hover{
-  background-color: rgb(124, 255, 244);
-}
-.playerItem, .playerItem *{
-  cursor: pointer;
-}
-.playerItem span.name{
-font-size: 1.2em;
-  font-weight: 800;
-}
-.playerItemTitle{
-  padding-right: .5em;
-  padding-left: .5em;
-  font-weight: 800;
-  background-color: lawngreen;
-}
-
-.infoBar {
-	text-align: center;
-	font-size: 2em;
-	width: 50%;
-	position: absolute;
-	margin-left: auto !important;
-	margin-right: auto !important;
-	left: 0;
-	right: 0;
-	bottom: 1em;
-	z-index: 10000;
-}
-*/
 .neu {
 	box-shadow: 6px 6px 16px rgb(163, 177, 198, 0.8),
 		-6px -6px 16px rgba(255, 255, 255, 0.8);
