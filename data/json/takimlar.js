@@ -142,7 +142,33 @@ var teams={
       "green",
       "black"
     ]
-  }
+  },
+  "erz": {
+    "id": "erz",
+    "name": "Erzurumspor",
+    "renk": [
+      "blue",
+      "white"
+    ]
+  },
+  "fkg": {
+    "id": "fkg",
+    "name": "Fatih Karagümrük",
+    "renk": [
+      "red",
+      "black"
+    ]
+  },
+  "hty": {
+    "id": "hty",
+    "name": "Hatayspor",
+    "renk": [
+      "#800000",
+      "white"
+    ]
+  },
+
+
 };
 
 export default teams;
