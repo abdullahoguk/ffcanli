@@ -87,6 +87,39 @@ padding: .5em;
 	border-radius: .5em;
 	color:white;
 }
+
+.bay{
+	display: grid;
+	grid-template-columns:1fr 1.5fr ;
+	margin-top: 5%;
+	border-top:5px solid white;
+	color:white;
+	background-color: rgb(70, 70, 70);
+	padding: 1em 2em;
+	border-radius: .5em;
+	background:repeating-linear-gradient(
+		45deg,
+		#000000,
+		#000000 10px,
+		#090909 10px,
+		#090909 20px
+	  );
+}
+
+.bay >h3{
+	margin:0!important;
+}
+
+.bay >h3:first-child{
+	margin:0!important;
+	text-align: left;
+}
+
+.bay >h3:last-child{
+	margin:0!important;
+	text-align: right;
+}
+
 .page#fikstur .label{
 	background-color: rgb(30, 30, 36);
 	color: white;

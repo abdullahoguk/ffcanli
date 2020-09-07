@@ -902,7 +902,9 @@ async function fiksturPage() {
     var fiksturData = {};
     var weekDropdown = document.querySelector("#fikstur .dropdown.week");
     var currentWeek = "";
-    var matchItems = document.querySelectorAll("#fikstur .content div.match");
+	var matchItems = document.querySelectorAll("#fikstur .content div.match");
+	var baytakim = document.querySelector("#fikstur .content div.bay");
+
 
     console.log(window.location.hash + " sayfasındasın ");
     
@@ -912,7 +914,8 @@ async function fiksturPage() {
             Math.random()
     )
         .then(data => {
-            fiksturData = data;
+			fiksturData = data;
+			
         })
         .catch(reason =>
             console.log(`JSON okunurken hata: fikstur ${reason.message}`)
@@ -935,12 +938,16 @@ async function fiksturPage() {
 
         function renderWeek(week){
             matchItems.forEach(function(match,index){
-                var data = fiksturData[week][index];
+                var data = fiksturData[week]["fikstur"][index];
                 match.querySelector(".takim1").innerHTML = data.takim1;
                 match.querySelector(".takim2").innerHTML = data.takim2;
                 match.querySelector(".skor1").innerHTML = data.skor1 == null ? "-": data.skor1 ;
-                match.querySelector(".skor2").innerHTML = data.skor2 == null ? "-": data.skor2;
-            })
+				match.querySelector(".skor2").innerHTML = data.skor2 == null ? "-": data.skor2;
+			})
+			console.log(baytakim.innerHTML)
+			baytakim.querySelector(".takim").innerHTML = fiksturData[week]["bay"];
+
+
         }
         
 
