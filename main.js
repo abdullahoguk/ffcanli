@@ -135,8 +135,14 @@ async function kadroPage(hesapla) {
 	//initial empty load placeholder before imports
 	//loadUserTeam();
 	//userTeamDOM.classList.add("placeholder");
-	var teams = await import("./data/json/takimlar.js");
-	teams = teams.default;
+	var teams;
+	await loadJSONAsync(`https://raw.githubusercontent.com/aoguk/data/master/takimlar.json?${Math.random()}`	)
+		.then(function(data) {teams = data;})
+		.catch(reason =>
+			console.log(`JSON okunurken hata: takimlar.json ${reason.message}`)
+		);
+
+
 	main();
 
 	async function main() {
