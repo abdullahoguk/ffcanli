@@ -467,7 +467,7 @@ Event Functions
 				if (getPoint(a) > getPoint(b)) return 1;
 				else return -1;
 			});
-			//switch captan if its point is same with the first (smallest) element
+			//switch captain if its point is same with the first (smallest) element
 			if (captainPositon == pos[i] && !(positionPlayers[0] == captain) && getPoint(captain) == getPoint(positionPlayers[0])) {
 				var captainIndex = positionPlayers.indexOf(captain);
 				[positionPlayers[0],positionPlayers[captainIndex]] = [positionPlayers[captainIndex], positionPlayers[0]]
