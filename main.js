@@ -350,12 +350,9 @@ Event Functions
 		if (selectedposition == position) {
 			if (!element.hasAttribute("selected") && userTeam.count < 15) {
 				//control same team limit
-				if (!userTeam.teamCount[team] || userTeam.teamCount[team] < 4) {
-					//select player
+				//select player
 					success = selectPlayer(id, team, position, selectindex);
-				} else {
-					displayInfo("Aynı takımdan en fazla 4 oyuncu seçebilirsin");
-				}
+				
 			} else if (element.hasAttribute("selected")) {
 				displayInfo("Bu oyuncu zaten kadronda...");
 			} else {
@@ -389,17 +386,12 @@ Event Functions
 			player.dataset.team == players[player.dataset.team][id][team]
 				? player.dataset.team
 				: null;
-
-		var furtherCheck =
-			player ==
-			document.querySelector(
-				`.positionContainer.${parent} .player[data-index="${index}"]`
-			);
-		if (furtherCheck) {
+	
 			//delete user info and associated info from userTeam data
 			userTeam.players[parent][index] = null;
 			userTeam.count--;
 			userTeam.teamCount[team]--;
+
 			if (userTeam.captain == id) userTeam.captain = null;
 
 			//hide dropdown before deleting from dom to prevent semantic ui transition errors
@@ -423,7 +415,7 @@ Event Functions
 
 			saveUserTeam();
 			return true;
-		}
+		
 	}
 
 	function changePlayer(e) {
