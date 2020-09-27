@@ -2,7 +2,7 @@
 
 var content = document.querySelector("body");
 var dataURL =
-	"https://cdn.contentful.com/spaces/blfw5f11e921/environments/master/entries?access_token=5Kg3FYTOA0My4ZXtgfI_E6shQHGAsEyQRYOdS5CeHvg&order=sys.createdAt";
+	"https://cdn.contentful.com/spaces/blfw5f11e921/environments/master/entries?access_token=5Kg3FYTOA0My4ZXtgfI_E6shQHGAsEyQRYOdS5CeHvg&order=sys.createdAt&limit=1000";
 
 main();
 
@@ -21,10 +21,7 @@ async function main() {
 		})
 		.catch(reason => console.log(`JSON okunurken hata: ${reason.message}`));
 
-	await data.items.reverse().forEach(function(item) {
-		
-    item.fields.detail = documentToHtmlString(item.fields.detail)
-  });
+	
   content.innerText = JSON.stringify(data);
 
 }
