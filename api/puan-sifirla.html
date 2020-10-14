@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre class="jsonOutput">
+</pre>
+
+
+</body>
+</html>
+
+<style>
+.jsonOutput{
+  width:600px;
+white-space: pre-wrap; 
+}
+</style>
+
+<script>
+var url = "https://raw.githubusercontent.com/aoguk/data/master/oyuncular.json"
+var output = document.querySelector(".jsonOutput");
+
+fetch(url)
+	.then(res => {
+		return res.json();
+	})
+	.then(data =>{
+  var puanlar = [];
+  data.forEach(team =>{
+    team.oyuncular.forEach(player=>{
+      var puanObj = {};
+      puanObj.id = player.id;
+      puanObj.name = player.name
+      puanObj.position = player.pozisyon
+      puanObj.point = 0;
+      puanlar.push(puanObj);
+    })
+    
+  })
+  output.innerHTML = JSON.stringify(puanlar);
+});
+</script>
